@@ -11,7 +11,7 @@
 </head>
 <body>
 	<br>
-	<h1>WELCOME FRIENDS</h1>
+	<h1>Car Buying/Selling/Renting</h1>
 	<form method="post" action="query.jsp">
 		<!-- note the show.jsp will be invoked when the choice is made -->
 		<!-- The next lines give HTML for radio buttons being displayed -->
