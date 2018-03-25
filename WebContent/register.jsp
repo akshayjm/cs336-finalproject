@@ -67,7 +67,7 @@
 			ResultSet result = stmt.executeQuery(str);
 			while (result.next()) {
 				if (result.getString("username").equals(newUsername)) {
-					out.print("Registration Failed. Try Again!");
+					out.print("Registration Failed. Try a different username and submit again!");
 					successful = false;
 					break;
 				}
