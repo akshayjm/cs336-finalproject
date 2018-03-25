@@ -14,8 +14,8 @@
 	<h1>Mehtallica Buying/Selling/Renting</h1>
 	<form method="post">
 		<h3>Log into your Mehtallica Account</h3>
-		Username: <input type="text" name="username" pattern="^.{1,}$" required><br>
-		Password: <input type="password" name="password" pattern="^.{1,}$" required><br>
+		Username: <input type="text" name="username" pattern="^.{1,}$" required /><br>
+		Password: <input type="password" name="password" pattern="^.{1,}$" required /><br>
 		<input type="submit" value="Submit" name="login" />
 	</form>
 	
