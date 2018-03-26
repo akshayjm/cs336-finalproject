@@ -15,14 +15,39 @@
 	<title>Mehtallica</title>
 </head>
 <body>
-	<br>
-	<h1>Mehtallica Buying/Selling/Renting</h1>
-	<form method="post">
-		<h3>Log into your Mehtallica Account</h3>
-		Username: <input type="text" name="username" pattern="^.{1,}$" required /><br>
-		Password: <input type="password" name="password" pattern="^.{1,}$" required /><br>
-		<input type="submit" value="Submit" name="login" />
-	</form>
+	<div class="container">
+		<div class="row" style="margin-top: 20px">
+			<div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+				<h2>Buying/Selling/Renting</h2>
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="row" style="margin-top: 20px">
+			<div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+				<form role="form">
+					<fieldset>
+						<h3>Please Sign In</h3>
+						<div class="form-group">
+							<input type="text" class="form-control input-lg" id="username" name="username" placeholder="Username" pattern= "^.{1,}$" required/>
+						</div>
+						<div class="form-group">
+							<input type="password" class="form-control input-lg" id="password" name="password" placeholder="Password" pattern= "^.{1,}$" required/>
+						</div>
+						<div class="row">
+							<div class="col-xs-6 col-sm-6 col-md-6">
+								<input type="submit" name="login" class="btn btn-lg btn-success btn-block" value="Sign In">
+							</div>
+							<div class="col-xs-6 col-sm-6 col-md-6">
+								<a href="register.jsp" class="btn btn-lg btn-primary btn-block">Register</a>
+							</div>
+						</div>
+					</fieldset>
+				</form>
+			</div>
+		</div>
+	</div>
 	
 	<%
 	if (request.getParameter("login") != null) {
@@ -58,7 +83,18 @@
 			}
 
 			if (!successful) {
-				out.print("Login Failed. Please try again!");
+				out.print("<div class=\"container\">");
+				out.print("<div class=\"row\" style=\"margin-top: 20px\">");
+				out.print("<div class=\"col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3\">");
+				out.print("<div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\">");
+				out.print("<strong>Login Failed.</strong> Please try again!");
+				out.print("<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">");
+				out.print("<span aria-hidden=\"true\">&times;</span>");   
+				out.print("</button>");
+				out.print("</div>");
+				out.print("</div>");
+				out.print("</div>");
+				out.print("</div>");
 			}
 
 			//close the connection.
@@ -69,14 +105,6 @@
 		
 	}
 	 %>
-	
-	<br>
-	<br>
-	
-	Need an Account?
-	<form method="post" action="register.jsp">
-		<input type="submit" value="Register Here!" />
-	</form>
 	
 	<!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

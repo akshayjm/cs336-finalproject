@@ -18,22 +18,55 @@
 	<title>Register Page</title>
 </head>
 <body>
-	<h1>Register Here</h1>
-	
-	<form method="post" action="register.jsp"><br>
-		Username: <input type="text" name="username" pattern="^[a-z0-9]{6,15}$" required /><br>
-		Password: <input type="password" name="password" pattern="^.{6,20}$" required /><br>
-		First Name: <input type="text" name="first_name" pattern="^[A-Za-z]{0,20}$" required /><br>
-		Last Name: <input type="text" name="last_name" pattern="^[A-Za-z]{0,20}$" required /><br>
-		Email: <input type="email" name="email" required /><br>
-		Phone: <input type="text" name="phone" pattern="^[0-9]{10}$" required /><br>
-		Age: <input type="text" name="age" pattern="^[0-9]{2,3}$" required /><br>
-		Address: <input type="text" name="address" pattern="^\d+\s[A-z]+\s[A-z]+$" required /><br>
-		City: <input type="text" name="city" pattern="^[a-zA-Z]+(?:[\s-][a-zA-Z]+)*$" required /><br>
-		State: <input type="text" name="state" pattern="^[A-Z]{2}$" required /><br>
-		Zip Code: <input type="text" name="zip_code" pattern="^[0-9]{5}$" required /><br>
-		<input type="submit" value="Submit" name="register" />
-	</form>
+	<div class="container">
+		<div class="row" style="margin-top: 20px">
+			<div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+				<form role="form">
+					<fieldset>
+						<h3>Register Here</h3>
+						<div class="form-group">
+							<input type="text" class="form-control input-lg" id="username" name="username" placeholder="Username" pattern="^[a-z0-9]{6,15}$" required/>
+						</div>
+						<div class="form-group">
+							<input type="password" class="form-control input-lg" id="password" name="password" placeholder="Password" pattern="^.{6,20}$" required/>
+						</div>
+						<div class="form-group">
+							<input type="text" class="form-control input-lg" id="first_name" name="first_name" placeholder="First Name" pattern="^[A-Za-z]{0,20}$" required/>
+						</div>
+						<div class="form-group">
+							<input type="text" class="form-control input-lg" id="last_name" name="last_name" placeholder="Last Name" pattern="^[A-Za-z]{0,20}$" required/>
+						</div>
+						<div class="form-group">
+							<input type="email" class="form-control input-lg" id="email" name="email" placeholder="Email" required/>
+						</div>
+						<div class="form-group">
+							<input type="text" class="form-control input-lg" id="phone" name="phone" placeholder="Phone" pattern="^[0-9]{10}$" required/>
+						</div>
+						<div class="form-group">
+							<input type="text" class="form-control input-lg" id="age" name="age" placeholder="Age" pattern="^[0-9]{2,3}$" required/>
+						</div>
+						<div class="form-group">
+							<input type="text" class="form-control input-lg" id="address" name="address" placeholder="Address" pattern="^\d+\s[A-z]+\s[A-z]+$" required/>
+						</div>
+						<div class="form-group">
+							<input type="text" class="form-control input-lg" id="city" name="city" placeholder="City" pattern="^[a-zA-Z]+(?:[\s-][a-zA-Z]+)*$" required/>
+						</div>
+						<div class="form-group">
+							<input type="text" class="form-control input-lg" id="state" name="state" placeholder="State" pattern="^[A-Z]{2}$" required/>
+						</div>
+						<div class="form-group">
+							<input type="text" class="form-control input-lg" id="zip_code" name="zip_code" placeholder="Zip Code" pattern="^[0-9]{5}$" required/>
+						</div>						
+						<div class="row">
+							<div class="col-xs-6 col-sm-6 col-md-6">
+								<input type="submit" name="register" class="btn btn-lg btn-success btn-block" value="Submit">
+							</div>
+						</div>
+					</fieldset>
+				</form>
+			</div>
+		</div>
+	</div>
 	
 	<%
 	if (request.getParameter("register") != null) {
@@ -72,7 +105,18 @@
 			ResultSet result = stmt.executeQuery(str);
 			while (result.next()) {
 				if (result.getString("username").equals(newUsername)) {
-					out.print("Registration Failed. Try a different username and submit again!");
+					out.print("<div class=\"container\">");
+					out.print("<div class=\"row\" style=\"margin-top: 20px\">");
+					out.print("<div class=\"col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3\">");
+					out.print("<div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\">");
+					out.print("<strong>Registration Failed</strong>. Try a different username and submit again!");
+					out.print("<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">");
+					out.print("<span aria-hidden=\"true\">&times;</span>");   
+					out.print("</button>");
+					out.print("</div>");
+					out.print("</div>");
+					out.print("</div>");
+					out.print("</div>");
 					successful = false;
 					break;
 				}
@@ -102,18 +146,41 @@
 				//Run the query against the DB
 				ps.executeUpdate();
 
-				out.print("<br>");
+/* 				out.print("<br>");
 				out.print("Registration Successful! Click the button below to log in.");
 				out.print("<form method=\"post\" action=\"index.jsp\">");
 				out.print("<input type=\"submit\" value=\"Log In\" />");
-				out.print("</form>");
+				out.print("</form>"); */
+				out.print("<div class=\"container\">");
+				out.print("<div class=\"row\" style=\"margin-top: 20px\">");
+				out.print("<div class=\"col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3\">");
+				out.print("<div class=\"alert alert-succes alert-dismissible fade show\" role=\"alert\">");
+				out.print("<strong>Registration Successful</strong>! Click <a href=\"index.jsp\" class=\"alert-link\">here</a> to log in.");
+				out.print("<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">");
+				out.print("<span aria-hidden=\"true\">&times;</span>");   
+				out.print("</button>");
+				out.print("</div>");
+				out.print("</div>");
+				out.print("</div>");
+				out.print("</div>");
 			}
 
 		//close the connection.
 		con.close();
 
 		} catch (Exception e) {
-			out.print("Registration Failed.");
+			out.print("<div class=\"container\">");
+			out.print("<div class=\"row\" style=\"margin-top: 20px\">");
+			out.print("<div class=\"col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3\">");
+			out.print("<div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">");
+			out.print("<strong>Registration Failed</strong>!");
+			out.print("<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">");
+			out.print("<span aria-hidden=\"true\">&times;</span>");   
+			out.print("</button>");
+			out.print("</div>");
+			out.print("</div>");
+			out.print("</div>");
+			out.print("</div>");
 		}
 	}
 	%>
