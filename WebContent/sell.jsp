@@ -25,7 +25,7 @@
 					<fieldset>
 						<h3>Register Here</h3>
 						<div class="form-group">
-							<input type="text" class="form-control input-lg" id="car_id" name="car_id" placeholder="Any 8-digit number" pattern="^[0-9]{8}$" required/>
+							<input type="text" class="form-control input-lg" id="car_id" name="car_id" placeholder="Any 1 to 8-digit number" pattern="^[0-9]{1,8}$" required/>
 						</div>
 						<div class="form-group">
 							<input type="text" class="form-control input-lg" id="make" name="make" placeholder="Make" pattern="^[A-Za-z]{0,20}$" required/>
@@ -97,7 +97,7 @@
 					out.print("<div class=\"row\" style=\"margin-top: 20px\">");
 					out.print("<div class=\"col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3\">");
 					out.print("<div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\">");
-					out.print("<strong>Registration Failed</strong>. Try a different 8-digit car ID and submit again!");
+					out.print("<strong>Registration Failed</strong>. Try a different 1 to 8-digit car ID and submit again!");
 					out.print("<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">");
 					out.print("<span aria-hidden=\"true\">&times;</span>");   
 					out.print("</button>");
