@@ -64,7 +64,7 @@
 		<div class="row" style="margin-top: 20px">
 			<div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
 				<br>
-				<h2><a href="">Buy</a></h2><br>
+				<h2><a href="buy.jsp">Buy</a></h2><br>
 				<h2><a href="sell.jsp">Sell</a></h2><br>
 				<h2><a href="">Rent</a></h2>
 				<br><h2><a href="index.jsp">Log out!</a></h2>
