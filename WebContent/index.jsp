@@ -75,7 +75,7 @@
 			while (result.next()) {
 				if (result.getString("username").equals(newUsername)
 						&& result.getString("userpassword").equals(newUserPassword)) {
-					String redirectURL = "login.jsp?name="+result.getString("first_name");
+					String redirectURL = "login.jsp?name="+result.getString("username");
 					response.sendRedirect(redirectURL);
 					successful = true;
 					break;

@@ -15,13 +15,62 @@
 	<title>User Portal</title>
 </head>
 <body>
+	<%!
+		public String name;
+	%>
 
+	<%
+	try {
+
+		//Get the database connection
+		ApplicationDB db = new ApplicationDB();
+		Connection con = db.getConnection();
+
+		//Create a SQL statement
+		Statement stmt = con.createStatement();
+		//Get the combobox from the index.jsp
+		/* 			String entity = request.getParameter("price"); */
+		//Make a SELECT query from the sells table with the price range specified by the 'price' parameter at the index.jsp
+		String str = "SELECT username, first_name FROM User";
+		//Run the query against the database.
+		ResultSet result = stmt.executeQuery(str);
+
+		String username = request.getParameter("name");
+		
+		while (result.next()) {
+			if (result.getString("username").equals(username)) {
+				name = result.getString("first_name");
+			}
+		}
+	} catch (Exception e) {
+	}
+	%>
+
+
+	<div class="container">
+		<div class="row" style="margin-top: 20px">
+			<div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
 	<%
 		out.print("<h1>");
 		out.print("Welcome Back, ");
-		out.print(request.getParameter("name"));
+		out.print(name);
 		out.print("!</h1>");
 	%>
+			</div>
+		</div>
+	</div>
+	
+	<div class="container">
+		<div class="row" style="margin-top: 20px">
+			<div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+				<br>
+				<h2><a href="">Buy</a></h2><br>
+				<h2><a href="sell.jsp">Sell</a></h2><br>
+				<h2><a href="">Rent</a></h2>
+				<br><h2><a href="index.jsp">Log out!</a></h2>
+			</div>
+		</div>
+	</div>
 	
 	<!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
