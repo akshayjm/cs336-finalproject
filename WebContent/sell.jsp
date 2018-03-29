@@ -23,7 +23,7 @@
 			<div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
 				<form role="form">
 					<fieldset>
-						<h3>Register Here</h3>
+						<h3>Sell your car here</h3>
 						<div class="form-group">
 							<input type="text" class="form-control input-lg" id="car_id" name="car_id" placeholder="Any 1 to 8-digit number" pattern="^[0-9]{1,8}$" required/>
 						</div>
