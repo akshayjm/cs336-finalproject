@@ -23,29 +23,90 @@
 					<fieldset>
 						<h3>Search for a car to buy</h3>
 						<div class="form-group">
+							<p>Select Type</p>
 							<select>
-								<option value="hello">Hello</option>
+								<option value="Sedan">Sedan</option>
+								<option value="Hatchback">Hatchback</option>
+								<option value="SUV">SUV</option>
+								<option value="Truck">Truck</option>
+								<option value="Minivan">Minivan</option>
+								<option value="Coupe">Coupe</option>
+								<option value="Wagon">Wagon</option>
+								<option value="Convertible">Convertible</option>
+								<option value="Sport">Sport</option>
+								<option value="Crossover">Crossover</option>
+								<option value="Luxury">Luxury</option>
+								<option value="Hybrid">Hybrid</option>
 							</select>
 						</div>
 						<div class="form-group">
-							<input type="text" class="form-control input-lg" id="make" name="make" placeholder="Make" pattern="^[A-Za-z]{0,20}$" required/>
+							<p>Select Make</p>
+							<select>
+								<option value="Audi">Audi</option>
+								<option value="BMW">BMW</option>
+								<option value="Ferrari">Ferrari</option>
+								<option value="Ford">Ford</option>
+								<option value="Honda">Honda</option>
+								<option value="Hyundai">Hyundai</option>
+								<option value="Infiniti">Infiniti</option>
+								<option value="Jaguar">Jaguar</option>
+								<option value="Jeep">Jeep</option>
+								<option value="Kia">Honda</option>
+								<option value="Lexus">Lexus</option>
+								<option value="Mazda">Mazda</option>
+								<option value="Mercedes">Mercedes</option>
+								<option value="Porsche">Porsche</option>
+								<option value="Subaru">Subaru</option>
+								<option value="Tesla">Tesla</option>
+								<option value="Toyota">Toyota</option>
+								<option value="Volkswagon">Volkswagon</option>
+							</select>
 						</div>
 						<div class="form-group">
+							<p>Type Model</p>
 							<input type="text" class="form-control input-lg" id="model" name="model" placeholder="Model" pattern="^[A-Za-z]{0,20}$" required/>
 						</div>
 						<div class="form-group">
+							<p>Type Color</p>
 							<input type="text" class="form-control input-lg" id="color" name="color" placeholder="Color" pattern="^[A-Za-z]{0,20}$" required/>
 						</div>
 						<div class="form-group">
-							<input type="text" class="form-control input-lg" id="carYear" name="carYear" placeholder="Year" pattern="^[0-9]{4}$" required/>
+							<p>Select Make</p>
+							<select>
+								<option value="2000">2000</option>
+								<option value="2001">2001</option>
+								<option value="2002">2002</option>
+								<option value="2003">2003</option>
+								<option value="2004">2004</option>
+								<option value="2005">2005</option>
+								<option value="2006">2006</option>
+								<option value="2007">2007</option>
+								<option value="2008">2008</option>
+								<option value="2009">2009</option>
+								<option value="2010">2010</option>
+								<option value="2011">2011</option>
+								<option value="2012">2012</option>
+								<option value="2013">2013</option>
+								<option value="2014">2014</option>
+								<option value="2015">2015</option>
+								<option value="2016">2016</option>
+								<option value="2017">2017</option>
+								<option value="2018">2018</option>
+							</select>
 						</div>
 						<div class="form-group">
-							<input type="text" class="form-control input-lg" id="cond" name="cond" placeholder="Condition" pattern="^[A-Za-z]{0,20}$" required/>
-						</div>
+							<p>Select Condition</p>
+							<select>
+								<option value="New">New</option>
+								<option value="Like New">Like New</option>
+								<option value="Good">Good</option>
+								<option value="Fair">Fair</option>
+								<option value="Poor">Poor</option>
+								<option value="For Parts">For Parts</option>
+							</select>
+						</div>	
 						<div class="form-group">
-							<input type="text" class="form-control input-lg" id="carType" name="carType" placeholder="Type" pattern="^[A-Za-z]{0,20}$" required/>
-						</div>			
-						<div class="form-group">
+							<p>Type Price</p>
 							<input type="text" class="form-control input-lg" id="price" name="price" placeholder="Price" pattern="^[0-9]{0,10}$" required/>
 						</div>			
 						<div class="row">
