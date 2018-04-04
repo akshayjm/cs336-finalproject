@@ -121,7 +121,7 @@
 							</select>
 						</div>
 						<div class="form-group">
-							<input type="text" class="form-control input-lg" id="carType" name="carType" placeholder="Type" pattern="^[A-Za-z]{0,20}$" required/>
+							<!--<input type="text" class="form-control input-lg" id="carType" name="carType" placeholder="Type" pattern="^[A-Za-z]{0,20}$" required/>-->
 							<p>Select Type</p>
 							<select>
 								<option value="Sedan">Sedan</option>
@@ -227,7 +227,15 @@
 				
 				String listingInsert = "INSERT INTO Listing(sale_num, car_id, seller_id, price, date_posted, sale_date) VALUES(?, ?, ?, ?, ?, ?)";
 				PreparedStatement ps2 = con.prepareStatement(listingInsert);
-				ps2.setString(1, newCar_id); //Could stay the same? unsure
+				
+				String counter = "SELECT COUNT(car_id) As Counter FROM Listing";
+				ResultSet countInit = stmt.executeQuery(counter);
+				countInit.next();
+				int sale_num = Integer.parseInt(countInit.getString("Counter"));
+				sale_num++;
+				
+				
+				ps2.setString(1, Integer.toString(sale_num)); 
 				ps2.setString(2, newCar_id);
 				ps2.setString(3, name); //NEED TO CHANGE SELLER ID TO MAKE LISTING INSERT WORK
 				ps2.setString(4, newPrice);
@@ -282,7 +290,7 @@
 	<%
 		out.print("<h1>");
 		out.print("Sell your car here, ");
-		out.print(name);
+		out.print(username);
 		out.print("!</h1>");
 	%>
 			</div>
