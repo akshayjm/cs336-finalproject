@@ -237,7 +237,7 @@
 				
 				ps2.setString(1, Integer.toString(sale_num)); 
 				ps2.setString(2, newCar_id);
-				ps2.setString(3, name); //NEED TO CHANGE SELLER ID TO MAKE LISTING INSERT WORK
+				ps2.setString(3, username); 
 				ps2.setString(4, newPrice);
 				ps2.setString(5, dateFormat.format(date));
 				ps2.setString(6, dateFormat.format(date));
