@@ -66,6 +66,7 @@
 				<br>
 				<h2><a href="buy.jsp">Buy</a></h2><br>
 				<h2><a href="sell.jsp">Sell</a></h2><br>
+				<h2><a href="">My Cars</a></h2>
 				<h2><a href="">Rent</a></h2>
 				<br><h2><a href="index.jsp">Log out!</a></h2>
 			</div>
