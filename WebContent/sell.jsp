@@ -252,7 +252,7 @@
 				out.print("<div class=\"container\">");
 				out.print("<div class=\"row\" style=\"margin-top: 20px\">");
 				out.print("<div class=\"col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3\">");
-				out.print("<div class=\"alert alert-succes alert-dismissible fade show\" role=\"alert\">");
+				out.print("<div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">");
 				out.print("<strong>Listing Successful</strong>! Click <a href=\"index.jsp\" class=\"alert-link\">here</a> to return home.");
 				out.print("<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">");
 				out.print("<span aria-hidden=\"true\">&times;</span>");   
@@ -271,7 +271,7 @@
 			out.print("<div class=\"container\">");
 			out.print("<div class=\"row\" style=\"margin-top: 20px\">");
 			out.print("<div class=\"col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3\">");
-			out.print("<div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">");
+			out.print("<div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\">");
 			out.print("<strong>Listing Failed</strong>!");
 			out.print("<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">");
 			out.print("<span aria-hidden=\"true\">&times;</span>");   
