@@ -170,7 +170,7 @@
 			/* 			ResultSet result = stmt.executeQuery(str); */
 
 			//Get parameters from the HTML form at the HelloWorld.jsp
-			name = request.getParameter("name");
+		
 			String newCar_id = request.getParameter("car_id");
 			String newMake = request.getParameter("make");
 			String newModel = request.getParameter("model");
