@@ -68,11 +68,11 @@
 		<div class="row" style="margin-top: 20px">
 			<div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
 				<br>
-				<h2><a href="buy.jsp">Buy</a></h2><br>
-				<h2><a href="<%=sell%>">Sell</a></h2><br>
-				<h2><a href="">My Cars</a></h2><br>
-				<h2><a href="">Rent</a></h2><br>
-				<h2><a href="index.jsp">Log out!</a></h2>
+				<h2><a style="color:MEDIUMSEAGREEN;" href="buy.jsp">Buy</a></h2><br>
+				<h2><a style="color:MEDIUMSEAGREEN;" href="<%=sell%>">Sell</a></h2><br>
+				<h2><a style="color:MEDIUMSEAGREEN;" href="">My Cars</a></h2><br>
+				<h2><a style="color:MEDIUMSEAGREEN;" href="">Rent</a></h2><br>
+				<h2><a style="color:crimson;" href="index.jsp">Log out!</a></h2>
 			</div>
 		</div>
 	</div>
