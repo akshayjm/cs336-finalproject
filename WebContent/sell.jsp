@@ -34,7 +34,7 @@
 	<div class="container">
 		<div class="row" style="margin-top: 20px">
 			<div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-				<form role="form">
+				<form role="form" method="post">
 					<fieldset>
 						<h3>Sell your car here</h3>
 						<div class="form-group">
@@ -123,7 +123,7 @@
 						<div class="form-group">
 							<!--<input type="text" class="form-control input-lg" id="carType" name="carType" placeholder="Type" pattern="^[A-Za-z]{0,20}$" required/>-->
 							<p>Select Type</p>
-							<select>
+							<select name="carType">
 								<option value="Sedan">Sedan</option>
 								<option value="Hatchback">Hatchback</option>
 								<option value="SUV">SUV</option>
