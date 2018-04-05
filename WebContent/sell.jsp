@@ -27,10 +27,6 @@
 
 
 <body>
-	<%!
-		public String name;
-	%>
-	
 	<div class="container">
 		<div class="row" style="margin-top: 20px">
 			<div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
@@ -38,7 +34,7 @@
 					<fieldset>
 						<h3>Sell your car here</h3>
 						<div class="form-group">
-							<input type="text" class="form-control input-lg" id="car_id" name="car_id" placeholder="Enter VIN" pattern="^[a-zA-Z0-9]{17}$" required/>
+							<input type="text" class="form-control input-lg" id="car_id" name="car_id" placeholder="Enter VIN" pattern="^[a-zA-Z0-9]{17}$" maxlength="17" required/>
 						</div>
 						<div class="form-group">
 							<!--<input type="text" class="form-control input-lg" id="make" name="make" placeholder="Make" pattern="^[A-Za-z]{0,20}$" required/>-->
@@ -65,7 +61,7 @@
 							</select>
 						</div>
 						<div class="form-group">
-							<input type="text" class="form-control input-lg" id="model" name="model" placeholder="Model" pattern="^[A-Za-z]{0,20}$" required/>
+							<input type="text" class="form-control input-lg" id="model" name="model" placeholder="Model" pattern="^.{0,15}$" required/>
 						</div>
 						<div class="form-group">
 							<!--<input type="text" class="form-control input-lg" id="color" name="color" placeholder="Color" pattern="^[A-Za-z]{0,20}$" required/>-->
@@ -251,7 +247,7 @@
 				out.print("<div class=\"row\" style=\"margin-top: 20px\">");
 				out.print("<div class=\"col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3\">");
 				out.print("<div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">");
-				out.print("<strong>Listing Successful</strong>! Click <a href=\"index.jsp\" class=\"alert-link\">here</a> to return home.");
+				out.print("<strong>Listing Successful</strong>! Click <a href=\"login.jsp?name="+username+"\" class=\"alert-link\">here</a> to return home.");
 				out.print("<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">");
 				out.print("<span aria-hidden=\"true\">&times;</span>");   
 				out.print("</button>");
@@ -283,18 +279,6 @@
 		
 	}
 	%>
-	<div class="container">
-		<div class="row" style="margin-top: 20px">
-			<div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-	<%
-		out.print("<h1>");
-		out.print("Sell your car here, ");
-		out.print(username);
-		out.print("!</h1>");
-	%>
-			</div>
-		</div>
-	</div>
 	
 	<!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
