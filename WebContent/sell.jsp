@@ -34,7 +34,7 @@
 	<div class="container">
 		<div class="row" style="margin-top: 20px">
 			<div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-				<form role="form">
+				<form role="form" method="post">
 					<fieldset>
 						<h3>Sell your car here</h3>
 						<div class="form-group">
@@ -179,7 +179,6 @@
 			String newCarType = request.getParameter("carType");
 			String newPrice = request.getParameter("price");
 			boolean successful = true;
-			
 			
 			String str = "SELECT car_id FROM Car";
 			//Run the query against the database.
