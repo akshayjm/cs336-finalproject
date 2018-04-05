@@ -170,7 +170,7 @@
 			/* 			ResultSet result = stmt.executeQuery(str); */
 
 			//Get parameters from the HTML form at the HelloWorld.jsp
-			name = request.getParameter("name");
+/* 			name = request.getParameter("username"); */
 			String newCar_id = request.getParameter("car_id");
 			String newMake = request.getParameter("make");
 			String newModel = request.getParameter("model");
@@ -237,7 +237,7 @@
 				
 				ps2.setString(1, Integer.toString(sale_num)); 
 				ps2.setString(2, newCar_id);
-				ps2.setString(3, name); //NEED TO CHANGE SELLER ID TO MAKE LISTING INSERT WORK
+				ps2.setString(3, username); //NEED TO CHANGE SELLER ID TO MAKE LISTING INSERT WORK
 				ps2.setString(4, newPrice);
 				ps2.setString(5, dateFormat.format(date));
 				ps2.setString(6, dateFormat.format(date));
