@@ -18,10 +18,12 @@
 	<%!
 		public String name;
 		public String sell;
+		public String mycars;
 	%>
 	
 	<%
 		sell = "sell.jsp?username=" + request.getParameter("name");
+		mycars = "mycars.jsp?username=" + request.getParameter("name");
 	%>
 	<%
 	try {
@@ -70,7 +72,7 @@
 				<br>
 				<h2><a style="color:MEDIUMSEAGREEN;" href="buy.jsp">Buy</a></h2><br>
 				<h2><a style="color:MEDIUMSEAGREEN;" href="<%=sell%>">Sell</a></h2><br>
-				<h2><a style="color:MEDIUMSEAGREEN;" href="">My Cars</a></h2><br>
+				<h2><a style="color:MEDIUMSEAGREEN;" href="<%=mycars%>">My Cars</a></h2><br>
 				<h2><a style="color:MEDIUMSEAGREEN;" href="">Rent</a></h2><br>
 				<h2><a style="color:crimson;" href="index.jsp">Log out!</a></h2>
 			</div>
