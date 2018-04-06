@@ -28,20 +28,8 @@
 <div class="container">
 		<div class="row" style="margin-top: 20px">
 			<div class="col-xs-12 col-sm-8 col-md-12 col-sm-offset-2 col-md-offset-3">
-				<h3>My Cars</h3>
-				<form role="form" method="post">
-					<fieldset>
-						<h1>Enter the Listing Number you wish to delete below:</h1>
-						<div class="form-group">
-							<input type="text" class="form-control input-lg" id="sale_num" name="sale_num" placeholder="Listing Number" pattern= "^.{1,}$" required/>
-						</div>
-						<div class="row">
-							<div class="col-xs-6 col-sm-6 col-md-6">
-								<input type="submit" name="delete" class="btn btn-lg btn-danger btn-block" value="Delete">
-							</div>
-						</div>
-					</fieldset>
-				</form>
+				<h1>My Cars</h1>
+				
 			
 				<% 
 				try{
@@ -58,50 +46,22 @@
 					
 					ResultSet result = stmt.executeQuery(str);
 					
-					//Row
+					out.print("<table class=\"table\">");
+					out.print("<thead>");
 					out.print("<tr>");
-					//Columns
-					out.print("<td>");
-					out.print("Listing Number");
-					out.print("</td>");
+					out.print("<th scope=\"col\">Listing Number</th>");
+					out.print("<th scope=\"col\">VIN Number</th>");
+					out.print("<th scope=\"col\">Make</th>");
+					out.print("<th scope=\"col\">Model</th>");
+					out.print("<th scope=\"col\">Color</th>");
+					out.print("<th scope=\"col\">Year</th>");
+					out.print("<th scope=\"col\">Condition</th>");
+					out.print("<th scope=\"col\">Type</th>");
+					out.print("<th scope=\"col\">Price</th>");
+					out.print("<th scope=\"col\">Date Posted</th>");
+					out.print("</tr></thead>");
 					
-					out.print("<td>");
-					out.print("VIN Number");
-					out.print("</td>");
-					
-					out.print("<td>");
-					out.print("Make");
-					out.print("</td>");
-					
-					out.print("<td>");
-					out.print("Color");
-					out.print("</td>");
-					
-					out.print("<td>");
-					out.print("Color");
-					out.print("</td>");
-					
-					out.print("<td>");
-					out.print("Year");
-					out.print("</td>");
-					
-					out.print("<td>");
-					out.print("Condition");
-					out.print("</td>");
-					
-					out.print("<td>");
-					out.print("Type");
-					out.print("</td>");
-					
-					out.print("<td>");
-					out.print("Price");
-					out.print("</td>");
-					
-					out.print("<td>");
-					out.print("Date Posted");
-					out.print("</td>");
-					out.print("</tr>");
-					
+					out.print("<tbody>");
 					while(result.next()){
 						//Row
 						out.print("<tr>");
@@ -148,7 +108,7 @@
 						
 						out.print("</tr>");
 					}
-					
+					out.print("</tbody></table>");
 					con.close();
 				}catch (Exception e) {
 					out.print("<div class=\"container\">");
@@ -170,6 +130,28 @@
 				%>
 				
 				
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="row" style="margin-top: 20px">
+			<div class="col-xs-12 col-sm-8 col-md-12 col-sm-offset-2 col-md-offset-3">
+				<form role="form" method="post">
+					<fieldset>
+						<h3>Enter the Listing Number you wish to delete below:</h3>
+						<div class="row">
+							<div class="col-xs-6 col-sm-6 col-md-6">
+								<div class="form-group">
+									<input type="text" class="form-control input-lg" id="sale_num" name="sale_num" placeholder="Listing Number" pattern= "^.{1,}$" required/>
+								</div>
+							</div>
+							
+							<div class="col-xs-6 col-sm-6 col-md-6">
+								<input type="submit" name="delete" class="btn btn-sm btn-danger btn-block" value="Delete">
+							</div>
+						</div>
+					</fieldset>
+				</form>
 			</div>
 		</div>
 	</div>
