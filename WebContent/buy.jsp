@@ -6,37 +6,56 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<!-- Required meta tags -->
-	<meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
-    <!-- Bootstrap CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-	<title>Buying Page</title>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+<title>Buying Page</title>
 </head>
+<%!CarNode head;
+	String newMake;
+	String newModel;
+	String newColor;
+	String newCarYear;
+	String newCond;
+	String newCarType;
+	String newPrice;%>
+
+<%!public String username;%>
+
+<%
+	username = request.getParameter("username");
+%>
 <body>
 
-<div class="container">
+	<div class="container">
 		<div class="row" style="margin-top: 20px">
-			<div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+			<div
+				class="col-xs-6">
 				<form role="form">
 					<fieldset>
 						<h3>Search for a car to buy</h3>
 						<div class="form-group">
 							<p>Select Type</p>
 							<select>
-								<option value="Sedan">Sedan</option>
+								<option value="Convertible">Convertible</option>
+								<option value="Coupe">Coupe</option>
+								<option value="Crossover">Crossover</option>
 								<option value="Hatchback">Hatchback</option>
+								<option value="Hybrid">Hybrid</option>
+								<option value="Luxury">Luxury</option>
+								<option value="Minivan">Minivan</option>
+								<option value="Sedan">Sedan</option>
+								<option value="Sport">Sport</option>
 								<option value="SUV">SUV</option>
 								<option value="Truck">Truck</option>
-								<option value="Minivan">Minivan</option>
-								<option value="Coupe">Coupe</option>
 								<option value="Wagon">Wagon</option>
-								<option value="Convertible">Convertible</option>
-								<option value="Sport">Sport</option>
-								<option value="Crossover">Crossover</option>
-								<option value="Luxury">Luxury</option>
-								<option value="Hybrid">Hybrid</option>
 							</select>
 						</div>
 						<div class="form-group">
@@ -64,11 +83,25 @@
 						</div>
 						<div class="form-group">
 							<p>Type Model</p>
-							<input type="text" class="form-control input-lg" id="model" name="model" placeholder="Model" pattern="^[A-Za-z]{0,20}$" required/>
+							<input type="text" class="form-control input-lg" id="model"
+								name="model" placeholder="Model" pattern="^[A-Za-z]{0,20}$"
+								required />
 						</div>
 						<div class="form-group">
-							<p>Type Color</p>
-							<input type="text" class="form-control input-lg" id="color" name="color" placeholder="Color" pattern="^[A-Za-z]{0,20}$" required/>
+							<!--<input type="text" class="form-control input-lg" id="color" name="color" placeholder="Color" pattern="^[A-Za-z]{0,20}$" required/>-->
+							<p>Select Color</p>
+							<select name="color">
+								<option value="Blue">Blue</option>
+								<option value="Red">Red</option>
+								<option value="Yellow">Yellow</option>
+								<option value="Green">Green</option>
+								<option value="Black">Black</option>
+								<option value="Grey">Grey</option>
+								<option value="White">White</option>
+								<option value="Brown">Brown</option>
+								<option value="Pink">Pink</option>
+							</select>
+
 						</div>
 						<div class="form-group">
 							<p>Select Make</p>
@@ -104,14 +137,17 @@
 								<option value="Poor">Poor</option>
 								<option value="For Parts">For Parts</option>
 							</select>
-						</div>	
+						</div>
 						<div class="form-group">
 							<p>Type Price</p>
-							<input type="text" class="form-control input-lg" id="price" name="price" placeholder="Price" pattern="^[0-9]{0,10}$" required/>
-						</div>			
+							<input type="text" class="form-control input-lg" id="price"
+								name="price" placeholder="Price" pattern="^[0-9]{0,10}$"
+								required />
+						</div>
 						<div class="row">
 							<div class="col-xs-6 col-sm-6 col-md-6">
-								<input type="submit" name="List" class="btn btn-lg btn-success btn-block" value="Submit">
+								<input type="submit" name="List"
+									class="btn btn-lg btn-success btn-block" value="Submit">
 							</div>
 						</div>
 					</fieldset>
@@ -119,14 +155,176 @@
 			</div>
 		</div>
 	</div>
-	
-	
+	<%
+		if (request.getParameter("List") != null) {
+			try {
+
+				//Get the database connection
+				ApplicationDB db = new ApplicationDB();
+				Connection con = db.getConnection();
+
+				//Create a SQL statement
+				Statement stmt = con.createStatement();
+				//Get the combobox from the index.jsp
+				/* 			String entity = request.getParameter("price"); */
+				//Make a SELECT query from the sells table with the price range specified by the 'price' parameter at the index.jsp
+				/* 			String str = "SELECT * FROM Log_in"; */
+				//Run the query against the database.
+				/* 			ResultSet result = stmt.executeQuery(str); */
+
+				//Get parameters from the HTML form at the HelloWorld.jsp
+				newMake = request.getParameter("make");
+				newModel = request.getParameter("model");
+				newColor = request.getParameter("color");
+				newCarYear = request.getParameter("carYear");
+				newCond = request.getParameter("cond");
+				newCarType = request.getParameter("carType");
+				newPrice = request.getParameter("price");
+				boolean successful = true;
+
+				String str = "SELECT * FROM Car";
+				//Run the query against the database.
+				ResultSet result = stmt.executeQuery(str);
+
+				str = "SELECT * FROM Listing";
+				//Run the query against the database.
+				ResultSet listingResult = stmt.executeQuery(str);
+
+				while (result.next()) {
+					CarNode node = new CarNode(result.getString("car_id"));
+					if (result.getString("make").equals(newMake))
+						node.add();
+					if (result.getString("model").equals(newModel))
+						node.add();
+					if (result.getString("color").equals(newColor))
+						node.add();
+					if (result.getString("carYear").equals(newCarYear))
+						node.add();
+					if (result.getString("cond").equals(newCond))
+						node.add();
+					if (result.getString("carType").equals(newCarType))
+						node.add();
+					if (listingResult.getString("price").equals(newPrice))
+						node.add();
+
+					//add to list
+					if (head == null) {
+						head = node;
+					}
+
+					CarNode temp = head.next;
+					while (temp != null) {
+
+						//insert between
+						if (node.count() > temp.count()) {
+							node.prev = temp.prev;
+							node.next = temp;
+							temp.prev.next = node;
+							temp.prev = node;
+							break;
+						}
+
+						//move on
+						else {
+							temp = temp.next;
+						}
+					}
+					if (temp == null)
+						temp = node;
+
+				}
+	%>
+	<%
+		if (successful) {
+
+					//Make a select statement for the Car table:
+					String carDelete = "DELETE FROM Car(car_id, make, model, color, carYear, cond, carType)"
+							+ "VALUES (?, ?, ?, ?, ?, ?, ?)";
+
+					CarNode temp = head;
+					while (temp != null) {
+						CarNode selectedNode;
+						/* if (selectedNode.carID.equals(temp.carID)) {
+							break;
+						} */
+					}
+
+					//Create a Prepared SQL statement allowing you to introduce the parameters of the query
+					PreparedStatement ps = con.prepareStatement(carDelete);
+
+					//Add parameters of the query. Start with 1, the 0-parameter is the INSERT statement itself
+					ps.setString(1, temp.carID);
+					ps.setString(2, newMake);
+					ps.setString(3, newModel);
+					ps.setString(4, newColor);
+					ps.setString(5, newCarYear);
+					ps.setString(6, newCond);
+					ps.setString(7, newCarType);
+
+					ps.executeUpdate();
+
+					String listingInsert = "INSERT INTO Listing(sale_num, car_id, seller_id, price, date_posted, sale_date) VALUES(?, ?, ?, ?, ?, ?)";
+					PreparedStatement ps2 = con.prepareStatement(listingInsert);
+
+					ps2.executeUpdate();
+
+					/* 				out.print("<br>");
+									out.print("Listing Successful!");
+									out.print("<form method=\"post\" action=\"index.jsp\">");
+									out.print("<input type=\"submit\" value=\"Log In\" />");
+									out.print("</form>"); */
+					out.print("<div class=\"container\">");
+					out.print("<div class=\"row\" style=\"margin-top: 20px\">");
+					out.print("<div class=\"col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3\">");
+					out.print("<div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">");
+					out.print("<strong>Buying Successful</strong>! Click <a href=\"login.jsp?name=" + username
+							+ "\" class=\"alert-link\">here</a> to return home.");
+					out.print(
+							"<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">");
+					out.print("<span aria-hidden=\"true\">&times;</span>");
+					out.print("</button>");
+					out.print("</div>");
+					out.print("</div>");
+					out.print("</div>");
+					out.print("</div>");
+
+				}
+
+				//close the connection.
+				con.close();
+
+			} catch (Exception e) {
+				out.print("<div class=\"container\">");
+				out.print("<div class=\"row\" style=\"margin-top: 20px\">");
+				out.print("<div class=\"col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3\">");
+				out.print("<div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\">");
+				out.print("<strong>Listing Failed</strong>!");
+				out.print(e);
+				out.print("<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">");
+				out.print("<span aria-hidden=\"true\">&times;</span>");
+				out.print("</button>");
+				out.print("</div>");
+				out.print("</div>");
+				out.print("</div>");
+				out.print("</div>");
+			}
+
+		}
+	%>
 
 	<!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+		crossorigin="anonymous"></script>
 
 </body>
 </html>
