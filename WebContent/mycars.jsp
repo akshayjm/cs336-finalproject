@@ -27,8 +27,22 @@
 
 <div class="container">
 		<div class="row" style="margin-top: 20px">
-			<div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+			<div class="col-xs-12 col-sm-8 col-md-12 col-sm-offset-2 col-md-offset-3">
 				<h3>My Cars</h3>
+				<form role="form" method="post">
+					<fieldset>
+						<h1>Enter the Listing Number you wish to delete below:</h1>
+						<div class="form-group">
+							<input type="text" class="form-control input-lg" id="sale_num" name="sale_num" placeholder="Listing Number" pattern= "^.{1,}$" required/>
+						</div>
+						<div class="row">
+							<div class="col-xs-6 col-sm-6 col-md-6">
+								<input type="submit" name="delete" class="btn btn-lg btn-danger btn-block" value="Delete">
+							</div>
+						</div>
+					</fieldset>
+				</form>
+			
 				<% 
 				try{
 					//Get the database connection
@@ -38,14 +52,101 @@
 					//Create a SQL statement
 					Statement stmt = con.createStatement();
 					
-					String str = "SELECT C.car_id, C.make, C.model, C.color, C.carYear, C.cond, C.carType, L.price, L.date_posted ";
+					String str = "SELECT C.car_id, C.make, C.model, C.color, C.carYear, C.cond, C.carType, L.sale_num, L.price, L.date_posted ";
 					str += "FROM Car As C, Listing As L WHERE C.car_id = L.car_id AND L.seller_id = \"";
 					str += username + "\" ORDER BY date_posted";
 					
 					ResultSet result = stmt.executeQuery(str);
 					
+					//Row
+					out.print("<tr>");
+					//Columns
+					out.print("<td>");
+					out.print("Listing Number");
+					out.print("</td>");
+					
+					out.print("<td>");
+					out.print("VIN Number");
+					out.print("</td>");
+					
+					out.print("<td>");
+					out.print("Make");
+					out.print("</td>");
+					
+					out.print("<td>");
+					out.print("Color");
+					out.print("</td>");
+					
+					out.print("<td>");
+					out.print("Color");
+					out.print("</td>");
+					
+					out.print("<td>");
+					out.print("Year");
+					out.print("</td>");
+					
+					out.print("<td>");
+					out.print("Condition");
+					out.print("</td>");
+					
+					out.print("<td>");
+					out.print("Type");
+					out.print("</td>");
+					
+					out.print("<td>");
+					out.print("Price");
+					out.print("</td>");
+					
+					out.print("<td>");
+					out.print("Date Posted");
+					out.print("</td>");
+					out.print("</tr>");
+					
 					while(result.next()){
-						out.print(result);
+						//Row
+						out.print("<tr>");
+						//Columns
+						out.print("<td>");
+						out.print(result.getString("sale_num"));
+						out.print("</td>");
+						
+						out.print("<td>");
+						out.print(result.getString("car_id"));
+						out.print("</td>");
+						
+						out.print("<td>");
+						out.print(result.getString("make"));
+						out.print("</td>");
+						
+						out.print("<td>");
+						out.print(result.getString("model"));
+						out.print("</td>");
+						
+						out.print("<td>");
+						out.print(result.getString("color"));
+						out.print("</td>");
+						
+						out.print("<td>");
+						out.print(result.getString("carYear"));
+						out.print("</td>");
+						
+						out.print("<td>");
+						out.print(result.getString("cond"));
+						out.print("</td>");
+						
+						out.print("<td>");
+						out.print(result.getString("carType"));
+						out.print("</td>");
+						
+						out.print("<td>");
+						out.print(result.getString("price"));
+						out.print("</td>");
+						
+						out.print("<td>");
+						out.print(result.getString("date_posted"));
+						out.print("</td>");
+						
+						out.print("</tr>");
 					}
 					
 					con.close();
@@ -72,7 +173,58 @@
 			</div>
 		</div>
 	</div>
+	<%
+		if(request.getParameter("delete") != null){
+			try{
+				//Get the database connection
+				ApplicationDB db = new ApplicationDB();
+				Connection con = db.getConnection();
 	
+				//Create a SQL statement
+				
+				
+				String saleNum = request.getParameter("sale_num");
+				String deletion = "DELETE FROM Car WHERE Car.car_id IN (SELECT car_id FROM Listing WHERE sale_num = ? AND seller_id = ?)";
+				
+				PreparedStatement ps = con.prepareStatement(deletion);
+				
+				ps.setInt(1, Integer.parseInt(saleNum));
+				ps.setString(2, username);
+				
+				ps.executeUpdate();
+				
+				out.print("<div class=\"container\">");
+				out.print("<div class=\"row\" style=\"margin-top: 20px\">");
+				out.print("<div class=\"col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3\">");
+				out.print("<div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">");
+				out.print("<strong>Deletion Successful</strong>! Click <a href=\"index.jsp\" class=\"alert-link\">here</a> to log in.");
+				out.print("<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">");
+				out.print("<span aria-hidden=\"true\">&times;</span>");   
+				out.print("</button>");
+				out.print("</div>");
+				out.print("</div>");
+				out.print("</div>");
+				out.print("</div>");
+				
+				con.close();
+			}catch(Exception e){
+				out.print("<div class=\"container\">");
+				out.print("<div class=\"row\" style=\"margin-top: 20px\">");
+				out.print("<div class=\"col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3\">");
+				out.print("<div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\">");
+				out.print("<strong>Deletion Failed</strong>!");
+				out.print(e);
+				out.print("<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">");
+				out.print("<span aria-hidden=\"true\">&times;</span>");   
+				out.print("</button>");
+				out.print("</div>");
+				out.print("</div>");
+				out.print("</div>");
+				out.print("</div>");
+			}
+		}
+	
+	%>
 	
 
 	<!-- Optional JavaScript -->
