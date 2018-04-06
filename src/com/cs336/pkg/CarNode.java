@@ -7,7 +7,7 @@ public class CarNode {
 	
 	public CarNode(String car_id) {
 		carID = car_id;
-		parameters++;
+		parameters = 0;
 	}
 	
 	public void add() { parameters++;}

@@ -36,8 +36,7 @@
 
 	<div class="container">
 		<div class="row" style="margin-top: 20px">
-			<div
-				class="col-xs-6">
+			<div class="col-xs-6 col-xs-offset-2">
 				<form role="form">
 					<fieldset>
 						<h3>Search for a car to buy</h3>
@@ -165,12 +164,6 @@
 
 				//Create a SQL statement
 				Statement stmt = con.createStatement();
-				//Get the combobox from the index.jsp
-				/* 			String entity = request.getParameter("price"); */
-				//Make a SELECT query from the sells table with the price range specified by the 'price' parameter at the index.jsp
-				/* 			String str = "SELECT * FROM Log_in"; */
-				//Run the query against the database.
-				/* 			ResultSet result = stmt.executeQuery(str); */
 
 				//Get parameters from the HTML form at the HelloWorld.jsp
 				newMake = request.getParameter("make");
@@ -182,13 +175,9 @@
 				newPrice = request.getParameter("price");
 				boolean successful = true;
 
-				String str = "SELECT * FROM Car";
+				String str = "SELECT * FROM Car NATURAL JOIN Listing";
 				//Run the query against the database.
 				ResultSet result = stmt.executeQuery(str);
-
-				str = "SELECT * FROM Listing";
-				//Run the query against the database.
-				ResultSet listingResult = stmt.executeQuery(str);
 
 				while (result.next()) {
 					CarNode node = new CarNode(result.getString("car_id"));
@@ -204,16 +193,17 @@
 						node.add();
 					if (result.getString("carType").equals(newCarType))
 						node.add();
-					if (listingResult.getString("price").equals(newPrice))
+					if (result.getString("price").equals(newPrice))
 						node.add();
 
 					//add to list
 					if (head == null) {
 						head = node;
 					}
-
-					CarNode temp = head.next;
-					while (temp != null) {
+					else {
+						CarNode temp = head.next;
+						CarNode prev = head;
+						while (temp != null) {
 
 						//insert between
 						if (node.count() > temp.count()) {
@@ -226,45 +216,61 @@
 
 						//move on
 						else {
+							prev = temp;
 							temp = temp.next;
 						}
+						}
+						if (temp == null)
+							prev.next = node;
+						
 					}
-					if (temp == null)
-						temp = node;
+				}
+				//NOW PRINT THE SHIT
+				CarNode temp = head;
+				result.close();
+				while (temp != null) {
 
+					str = "SELECT make, model, color, carYear, cond, carType FROM Car, Listing WHERE Listing.car_id = "
+							+ temp.carID + " AND Car.car_id = " + temp.carID;
+					//Run the query against the database.
+					result = stmt.executeQuery(str);
+					result.next();
+					
+					String tempMake = result.getString("make");
+					String tempModel = result.getString("model");
+					String tempColor = result.getString("color");
+					String tempCarYear = result.getString("carYear");
+					String tempCond = result.getString("cond");
+					String tempCarType = result.getString("carType");
+
+					System.out.println(temp.carID);
+					
+					out.print("<div class=\"card\" style=\"width: 18rem;\">");
+					out.print("<img class=\"card-img-top\" src=\"...\" alt=\"Card image cap\">");
+					out.print("<div class=\"card-body\">");
+					out.print("<h5 class=\"card-title\">" + tempMake + " " + tempModel + "</h5>");
+					out.print("<p class=\"card-text\">Color: "+tempColor+"<br/>Year: "+tempCarYear+"<br/>");
+					out.print("Condition: "+tempCond+"<br/>Type: "+tempCarType+"</p>");
+				    out.print("<input type=\"submit\" name=\"buy\" class=\"btn btn-primary\" value=\"Buy\">");
+				    out.print("</div>");
+					out.print("</div>");
+					temp = temp.next;
 				}
 	%>
 	<%
-		if (successful) {
-
+	if (request.getParameter("buy") != null) {
+					System.out.println("Are you being pressed");
 					//Make a select statement for the Car table:
-					String carDelete = "DELETE FROM Car(car_id, make, model, color, carYear, cond, carType)"
-							+ "VALUES (?, ?, ?, ?, ?, ?, ?)";
-
-					CarNode temp = head;
-					while (temp != null) {
-						CarNode selectedNode;
-						/* if (selectedNode.carID.equals(temp.carID)) {
-							break;
-						} */
-					}
+					String carDelete = "DELETE FROM Car WHERE car_id = '"+head.carID+"'";
 
 					//Create a Prepared SQL statement allowing you to introduce the parameters of the query
 					PreparedStatement ps = con.prepareStatement(carDelete);
-
-					//Add parameters of the query. Start with 1, the 0-parameter is the INSERT statement itself
-					ps.setString(1, temp.carID);
-					ps.setString(2, newMake);
-					ps.setString(3, newModel);
-					ps.setString(4, newColor);
-					ps.setString(5, newCarYear);
-					ps.setString(6, newCond);
-					ps.setString(7, newCarType);
-
 					ps.executeUpdate();
+					
+					String listingDelete = "DELETE FROM Listing WHERE car_id = '"+head.carID+"'";
 
-					String listingInsert = "INSERT INTO Listing(sale_num, car_id, seller_id, price, date_posted, sale_date) VALUES(?, ?, ?, ?, ?, ?)";
-					PreparedStatement ps2 = con.prepareStatement(listingInsert);
+
+					PreparedStatement ps2 = con.prepareStatement(listingDelete);
 
 					ps2.executeUpdate();
 
@@ -291,6 +297,7 @@
 				}
 
 				//close the connection.
+				result.close();
 				con.close();
 
 			} catch (Exception e) {
