@@ -147,7 +147,7 @@
 							</div>
 							
 							<div class="col-xs-6 col-sm-6 col-md-6">
-								<input type="submit" name="delete" class="btn btn-sm btn-danger btn-block" value="Delete">
+								<input type="submit" name="delete" class="btn btn-sm btn-danger btn-block" value="Remove Listing">
 							</div>
 						</div>
 					</fieldset>
@@ -173,28 +173,43 @@
 				ps.setInt(1, Integer.parseInt(saleNum));
 				ps.setString(2, username);
 				
-				ps.executeUpdate();
+				int succ = ps.executeUpdate();
 				
-				out.print("<div class=\"container\">");
-				out.print("<div class=\"row\" style=\"margin-top: 20px\">");
-				out.print("<div class=\"col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3\">");
-				out.print("<div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">");
-				out.print("<strong>Deletion Successful</strong>! Click <a href=\"index.jsp\" class=\"alert-link\">here</a> to log in.");
-				out.print("<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">");
-				out.print("<span aria-hidden=\"true\">&times;</span>");   
-				out.print("</button>");
-				out.print("</div>");
-				out.print("</div>");
-				out.print("</div>");
-				out.print("</div>");
-				
+				if(succ > 0){
+					out.print("<div class=\"container\">");
+					out.print("<div class=\"row\" style=\"margin-top: 20px\">");
+					out.print("<div class=\"col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3\">");
+					out.print("<div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">");
+					out.print("<strong>Listing Removal Successful</strong>!");
+					out.print("<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">");
+					out.print("<span aria-hidden=\"true\">&times;</span>");   
+					out.print("</button>");
+					out.print("</div>");
+					out.print("</div>");
+					out.print("</div>");
+					out.print("</div>");
+				}
+				else{
+					out.print("<div class=\"container\">");
+					out.print("<div class=\"row\" style=\"margin-top: 20px\">");
+					out.print("<div class=\"col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3\">");
+					out.print("<div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\">");
+					out.print("<strong>Listing Removal Failed</strong>!");
+					out.print("<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">");
+					out.print("<span aria-hidden=\"true\">&times;</span>");   
+					out.print("</button>");
+					out.print("</div>");
+					out.print("</div>");
+					out.print("</div>");
+					out.print("</div>");
+				}
 				con.close();
 			}catch(Exception e){
 				out.print("<div class=\"container\">");
 				out.print("<div class=\"row\" style=\"margin-top: 20px\">");
 				out.print("<div class=\"col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3\">");
 				out.print("<div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\">");
-				out.print("<strong>Deletion Failed</strong>!");
+				out.print("<strong>Listing Removal Failed</strong>!");
 				out.print(e);
 				out.print("<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">");
 				out.print("<span aria-hidden=\"true\">&times;</span>");   
