@@ -39,7 +39,7 @@
 						<div class="form-group">
 							<!--<input type="text" class="form-control input-lg" id="make" name="make" placeholder="Make" pattern="^[A-Za-z]{0,20}$" required/>-->
 							<p>Select Make</p>
-							<select name="make">
+							<select name="make" class="form-control">
 								<option value="Audi">Audi</option>
 								<option value="BMW">BMW</option>
 								<option value="Ferrari">Ferrari</option>
@@ -66,7 +66,7 @@
 						<div class="form-group">
 							<!--<input type="text" class="form-control input-lg" id="color" name="color" placeholder="Color" pattern="^[A-Za-z]{0,20}$" required/>-->
 							<p>Select Color</p>
-							<select name="color">
+							<select name="color" class="form-control">
 								<option value="Blue">Blue</option>
 								<option value="Red">Red</option>
 								<option value="Yellow">Yellow</option>
@@ -82,7 +82,7 @@
 						<div class="form-group">
 							<!--<input type="text" class="form-control input-lg" id="carYear" name="carYear" placeholder="Year" pattern="^[0-9]{4}$" required/>-->
 							<p>Select Year</p>
-							<select name="carYear">
+							<select name="carYear" class="form-control">
 								<option value="2000">2000</option>
 								<option value="2001">2001</option>
 								<option value="2002">2002</option>
@@ -107,7 +107,7 @@
 						<div class="form-group">
 							<!--<input type="text" class="form-control input-lg" id="cond" name="cond" placeholder="Condition" pattern="^[A-Za-z]{0,20}$" required/>-->
 							<p>Select Condition</p>
-							<select name="cond">
+							<select name="cond" class="form-control">
 								<option value="New">New</option>
 								<option value="Like New">Like New</option>
 								<option value="Good">Good</option>
@@ -119,7 +119,7 @@
 						<div class="form-group">
 							<!--<input type="text" class="form-control input-lg" id="carType" name="carType" placeholder="Type" pattern="^[A-Za-z]{0,20}$" required/>-->
 							<p>Select Type</p>
-							<select name="carType">
+							<select name="carType" class="form-control">
 								<option value="Sedan">Sedan</option>
 								<option value="Hatchback">Hatchback</option>
 								<option value="SUV">SUV</option>
@@ -267,7 +267,6 @@
 			out.print("<div class=\"col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3\">");
 			out.print("<div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\">");
 			out.print("<strong>Listing Failed</strong>!");
-			out.print(e);
 			out.print("<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">");
 			out.print("<span aria-hidden=\"true\">&times;</span>");   
 			out.print("</button>");

@@ -12,42 +12,115 @@
     
     <!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link href="./css/renting.css" rel="stylesheet">
 	<title>Mehtallica</title>
 </head>
 <body>
-	<div class="container">
-		<div class="row" style="margin-top: 20px">
-			<div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-				<h2>Buying/Selling/Renting</h2>
-			</div>
-		</div>
-	</div>
-
-	<div class="container">
-		<div class="row" style="margin-top: 20px">
-			<div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-				<form role="form" method="post">
-					<fieldset>
-						<h3>Please Sign In</h3>
-						<div class="form-group">
-							<input type="text" class="form-control input-lg" id="username" name="username" placeholder="Username" pattern= "^.{1,}$" required/>
-						</div>
-						<div class="form-group">
-							<input type="password" class="form-control input-lg" id="password" name="password" placeholder="Password" pattern= "^.{1,}$" required/>
-						</div>
-						<div class="row">
-							<div class="col-xs-6 col-sm-6 col-md-6">
-								<input type="submit" name="login" class="btn btn-lg btn-success btn-block" value="Sign In">
-							</div>
-							<div class="col-xs-6 col-sm-6 col-md-6">
-								<a href="register.jsp" class="btn btn-lg btn-primary btn-block">Register</a>
-							</div>
-						</div>
-					</fieldset>
-				</form>
-			</div>
-		</div>
-	</div>
+    <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+      <h1 class="display-4">Renting</h1>
+      <p class="lead">Car Types</p>
+    </div>
+    
+    <div class="container">
+      <div class="card-deck mb-3 text-center">
+        <div class="card mb-4 box-shadow">
+          <div class="card-header">
+            <h4 class="my-0 font-weight-normal">Sedan</h4>
+          </div>
+          <img class="card-img-top" src="./images/sedan_cropped.png" alt="Card image sedan">
+          <div class="card-body">
+            <h1 class="card-title pricing-card-title">$45 <small class="text-muted">/ day</small></h1>
+            <ul class="list-unstyled mt-3 mb-4">
+              <li>Up to 4 passengers</li>
+              <li>Automatic Drive</li>
+              <li>For short commutes</li>
+              <li>Up to 200 HP</li>
+            </ul>
+            <button type="button" class="btn btn-lg btn-block btn-primary">Select</button>
+          </div>
+        </div>
+        <div class="card mb-4 box-shadow">
+          <div class="card-header">
+            <h4 class="my-0 font-weight-normal">Coupe</h4>
+          </div>
+          <img class="card-img-top" src="./images/coupe.png" alt="Card image coupe">
+          <div class="card-body">
+            <h1 class="card-title pricing-card-title">$60 <small class="text-muted">/ day</small></h1>
+            <ul class="list-unstyled mt-3 mb-4">
+              <li>Up to 3 passengers</li>
+              <li>Automatic or Manual Drive</li>
+              <li>For sporty commutes</li>
+              <li>Up to 300 HP</li>
+            </ul>
+            <button type="button" class="btn btn-lg btn-block btn-primary">Select</button>
+          </div>
+        </div>
+        <div class="card mb-4 box-shadow">
+          <div class="card-header">
+            <h4 class="my-0 font-weight-normal">SUV</h4>
+          </div>
+          <img class="card-img-top" src="./images/suv.png" alt="Card image coupe">
+          <div class="card-body">
+            <h1 class="card-title pricing-card-title">$75 <small class="text-muted">/ day</small></h1>
+            <ul class="list-unstyled mt-3 mb-4">
+              <li>Up to 4 passengers</li>
+              <li>Automatic Drive</li>
+              <li>For comfortable commutes</li>
+              <li>Up to 250 HP</li>
+            </ul>
+            <button type="button" class="btn btn-lg btn-block btn-primary">Select</button>
+          </div>
+        </div>
+        <div class="card mb-4 box-shadow">
+          <div class="card-header">
+            <h4 class="my-0 font-weight-normal">Minivan</h4>
+          </div>
+          <img class="card-img-top" src="./images/minivan.png" alt="Card image coupe">
+          <div class="card-body">
+            <h1 class="card-title pricing-card-title">$90 <small class="text-muted">/ day</small></h1>
+            <ul class="list-unstyled mt-3 mb-4">
+              <li>Up to 6 passengers</li>
+              <li>Automatic Drive</li>
+              <li>For spacious commutes</li>
+              <li>Up to 225 HP</li>
+            </ul>
+            <button type="button" class="btn btn-lg btn-block btn-primary">Select</button>
+          </div>
+        </div>
+        <div class="card mb-4 box-shadow">
+          <div class="card-header">
+            <h4 class="my-0 font-weight-normal">Pick-up Truck</h4>
+          </div>
+          <img class="card-img-top" src="./images/pickup.png" alt="Card image coupe">
+          <div class="card-body">
+            <h1 class="card-title pricing-card-title">$115 <small class="text-muted">/ day</small></h1>
+            <ul class="list-unstyled mt-3 mb-4">
+              <li>Up to 4 passengers</li>
+              <li>Automatic or Manual Drive</li>
+              <li>For tough jobs</li>
+              <li>Up to 450 HP</li>
+            </ul>
+            <button type="button" class="btn btn-lg btn-block btn-primary">Select</button>
+          </div>
+        </div>
+        <div class="card mb-4 box-shadow">
+          <div class="card-header">
+            <h4 class="my-0 font-weight-normal">Luxury</h4>
+          </div>
+          <img class="card-img-top" src="./images/luxury.png" alt="Card image coupe">
+          <div class="card-body">
+            <h1 class="card-title pricing-card-title">$150+ <small class="text-muted">/ day</small></h1>
+            <ul class="list-unstyled mt-3 mb-4">
+              <li>Up to 1 passengers</li>
+              <li>Automatic or Manual Drive</li>
+              <li>For the ultimate experience</li>
+              <li>Up to 600 HP</li>
+            </ul>
+            <button type="button" class="btn btn-lg btn-block btn-primary">Contact us</button>
+          </div>
+        </div>
+      </div>
+    </div>
 	
 	<%
 	if (request.getParameter("login") != null) {
