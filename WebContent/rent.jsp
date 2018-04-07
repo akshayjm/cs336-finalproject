@@ -77,18 +77,7 @@
 
 <% if (username != null) { %>
 <body>
-	<div class="pricing-""e""</li>
-						<li>Automatic Drive</li>
-						<li>For short commutes</li>
-						<li>Up to 200 HP</li>
-					</ul>
-					<form role="form" method="post">
-						<button type="submit" class="btn btn-lg btn-block btn-primary"
-							name="sedanSelect">Select</button>
-					</form>
-				</div>
-			</div>
-			<div class="card mb-4 box-shadow">
+	<div class="pricing-""e""
 				<div class="card-header">
 					<h4 class="my-0 font-weight-normal">Coupe</h4>
 				</div>
