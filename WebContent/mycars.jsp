@@ -23,6 +23,7 @@
 		username = request.getParameter("username");
 	%>
 
+<% if (username != null) { %>
 <body>
 
 <div class="container">
@@ -223,6 +224,25 @@
 	
 	%>
 	
+	    <body class="text-center" style="height: 100%; display: -ms-flexbox;
+  display: -webkit-box;
+  display: flex;
+  -ms-flex-align: center;
+  -ms-flex-pack: center;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #f5f5f5;">
+    <form class="form-signin" method="post" action="index.jsp">
+      <h1 class="h3 mb-3 font-weight-normal">Please log in before renting</h1>
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Click here to log in</button>
+    </form>
+    
+    
+    <% } %>
 
 	<!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

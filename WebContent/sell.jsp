@@ -25,7 +25,7 @@
 		username = request.getParameter("username");
 	%>
 
-
+<% if (username != null) { %>
 <body>
 	<div class="container">
 		<div class="row" style="margin-top: 20px">
@@ -174,6 +174,7 @@
 			String newCond = request.getParameter("cond");
 			String newCarType = request.getParameter("carType");
 			String newPrice = request.getParameter("price");
+			String newInventory = "-1";
 			boolean successful = true;
 			
 			String str = "SELECT car_id FROM Car";
@@ -200,7 +201,7 @@
 			
 			if (successful) {
 				//Make an insert statement for the Sells table:
-				String carInsert = "INSERT INTO Car(car_id, make, model, color, carYear, cond, carType)" + "VALUES (?, ?, ?, ?, ?, ?, ?)";
+				String carInsert = "INSERT INTO Car(car_id, make, model, color, carYear, cond, carType, inventory)" + "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 				//Create a Prepared SQL statement allowing you to introduce the parameters of the query
 				PreparedStatement ps = con.prepareStatement(carInsert);
 
@@ -212,6 +213,7 @@
 				ps.setString(5, newCarYear);
 				ps.setString(6, newCond);
 				ps.setString(7, newCarType);
+				ps.setString(8, newInventory);
 				
 				DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm");
 				Date date = new Date();
@@ -267,6 +269,7 @@
 			out.print("<div class=\"col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3\">");
 			out.print("<div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\">");
 			out.print("<strong>Listing Failed</strong>!");
+			out.print(e);
 			out.print("<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">");
 			out.print("<span aria-hidden=\"true\">&times;</span>");   
 			out.print("</button>");
@@ -278,6 +281,26 @@
 		
 	}
 	%>
+	
+	    <body class="text-center" style="height: 100%; display: -ms-flexbox;
+  display: -webkit-box;
+  display: flex;
+  -ms-flex-align: center;
+  -ms-flex-pack: center;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #f5f5f5;">
+    <form class="form-signin" method="post" action="index.jsp">
+      <h1 class="h3 mb-3 font-weight-normal">Please log in before renting</h1>
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Click here to log in</button>
+    </form>
+    
+    
+    <% } %>
 	
 	<!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

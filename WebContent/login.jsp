@@ -14,16 +14,19 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	<title>User Portal</title>
 </head>
-<body>
 	<%!
 		public String name;
+		public String username;
 		public String sell;
 		public String mycars;
+		public String rent;
 	%>
 	
 	<%
-		sell = "sell.jsp?username=" + request.getParameter("name");
-		mycars = "mycars.jsp?username=" + request.getParameter("name");
+		username = request.getParameter("name");
+		sell = "sell.jsp?username=" + username;
+		mycars = "mycars.jsp?username=" + username;
+		rent = "rent.jsp?username=" + username;
 	%>
 	<%
 	try {
@@ -40,8 +43,6 @@
 		String str = "SELECT username, first_name FROM User";
 		//Run the query against the database.
 		ResultSet result = stmt.executeQuery(str);
-
-		String username = request.getParameter("name");
 		
 		while (result.next()) {
 			if (result.getString("username").equals(username)) {
@@ -52,7 +53,8 @@
 	}
 	%>
 
-
+	<% if (username != null) { %>
+	<body>
 	<div class="container">
 		<div class="row" style="margin-top: 20px">
 			<div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
@@ -73,11 +75,33 @@
 				<h2><a style="color:MEDIUMSEAGREEN;" href="buy.jsp">Buy</a></h2><br>
 				<h2><a style="color:MEDIUMSEAGREEN;" href="<%=sell%>">Sell</a></h2><br>
 				<h2><a style="color:MEDIUMSEAGREEN;" href="<%=mycars%>">My Cars</a></h2><br>
-				<h2><a style="color:MEDIUMSEAGREEN;" href="">Rent</a></h2><br>
+				<h2><a style="color:MEDIUMSEAGREEN;" href="<%=rent%>">Rent</a></h2><br>
 				<h2><a style="color:crimson;" href="index.jsp">Log out!</a></h2>
 			</div>
 		</div>
 	</div>
+	
+	<% } else { %>
+    
+    <body class="text-center" style="height: 100%; display: -ms-flexbox;
+  display: -webkit-box;
+  display: flex;
+  -ms-flex-align: center;
+  -ms-flex-pack: center;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #f5f5f5;">
+    <form class="form-signin" method="post" action="index.jsp">
+      <h1 class="h3 mb-3 font-weight-normal">Please log in before renting</h1>
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Click here to log in</button>
+    </form>
+    
+    
+    <% } %>
 	
 	<!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
