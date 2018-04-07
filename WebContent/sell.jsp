@@ -34,6 +34,7 @@
 					<fieldset>
 						<h3>Sell your car here</h3>
 						<div class="form-group">
+							<p>Enter your car's VIN below</p>
 							<input type="text" class="form-control input-lg" id="car_id" name="car_id" placeholder="Enter VIN" pattern="^[a-zA-Z0-9]{17}$" maxlength="17" required/>
 						</div>
 						<div class="form-group">
@@ -177,6 +178,7 @@
 							</select>
 						</div>			
 						<div class="form-group">
+						<p>Enter your price below</p>
 							<input type="text" class="form-control input-lg" id="price" name="price" placeholder="Price" pattern="^[0-9]{0,10}$" required/>
 						</div>			
 						<div class="row">
