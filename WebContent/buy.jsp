@@ -85,7 +85,7 @@
 						<div class="form-group">
 							<p>Type Model</p>
 							<input type="text" class="form-control input-lg" id="model"
-								name="model" placeholder="Model" pattern="^[A-Za-z]{0,20}$"
+								name="model" placeholder="Model" pattern="^.{0,15}$"
 								required />
 						</div>
 						<div class="form-group">
@@ -256,8 +256,8 @@
 				out.print("<tbody>");
 				while(temp != null){
 					
-					str = "SELECT make, model, color, carYear, cond, carType, price, date_posted FROM Car NATURAL JOIN Listing WHERE Listing.car_id = "
-							+ temp.carID + " AND Car.car_id = " + temp.carID;
+					str = "SELECT make, model, color, carYear, cond, carType, price, date_posted FROM Car NATURAL JOIN Listing WHERE Listing.car_id = \""
+							+ temp.carID + "\" AND Car.car_id = \"" + temp.carID + "\"";
 					//Run the query against the database.
 					result = stmt.executeQuery(str);
 					result.next();
