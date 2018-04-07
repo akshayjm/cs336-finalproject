@@ -467,7 +467,7 @@
   padding-bottom: 40px;
   background-color: #f5f5f5;">
     <form class="form-signin" method="post" action="index.jsp">
-      <h1 class="h3 mb-3 font-weight-normal">Please log in before renting</h1>
+      <h1 class="h3 mb-3 font-weight-normal">Please log in before buying</h1>
       <button class="btn btn-lg btn-primary btn-block" type="submit">Click here to log in</button>
     </form>
     
