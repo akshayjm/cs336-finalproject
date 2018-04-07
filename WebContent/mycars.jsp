@@ -39,6 +39,7 @@
 
 					//Create a SQL statement
 					Statement stmt = con.createStatement();
+					Statement stmt2 = con.createStatement();
 					
 					String str = "SELECT C.car_id, C.make, C.model, C.color, C.carYear, C.cond, C.carType, L.sale_num, L.price, L.date_posted ";
 					str += "FROM Car As C, Listing As L WHERE C.car_id = L.car_id AND L.seller_id = \"";
@@ -46,8 +47,11 @@
 					
 					ResultSet result = stmt.executeQuery(str);
 					
+					//out.print("<p>Currently Selling</p>");
+					
 					out.print("<table class=\"table\">");
 					out.print("<thead>");
+					out.print("<p>Currently Selling</p>");
 					out.print("<tr>");
 					out.print("<th scope=\"col\">Listing Number</th>");
 					out.print("<th scope=\"col\">VIN Number</th>");
@@ -108,6 +112,84 @@
 						
 						out.print("</tr>");
 					}
+					
+					String str2 = "SELECT C.car_id, C.make, C.model, C.color, C.carYear, C.cond, C.carType, R.rental_num, R.out_date ";
+					str2 += "FROM Car As C, Rental As R WHERE C.car_id = R.car_id AND R.renter_id = \"";
+					str2 += username + "\" ORDER BY out_date";
+					
+					ResultSet result2 = stmt2.executeQuery(str2);
+					
+					System.out.println(username);
+					
+					//out.print("<p>Currently Renting</p>");
+					
+					out.print("<table class=\"table\">");
+					out.print("<thead>");
+					out.print("<p>Currently Renting</p>");
+					out.print("<tr>");
+					out.print("<th scope=\"col\">Rental Number</th>");
+					out.print("<th scope=\"col\">VIN Number</th>");
+					out.print("<th scope=\"col\">Make</th>");
+					out.print("<th scope=\"col\">Model</th>");
+					out.print("<th scope=\"col\">Color</th>");
+					out.print("<th scope=\"col\">Year</th>");
+					out.print("<th scope=\"col\">Condition</th>");
+					out.print("<th scope=\"col\">Type</th>");
+					//out.print("<th scope=\"col\">Price</th>");
+					out.print("<th scope=\"col\">Start Date</th>");
+					out.print("</tr></thead>");
+					
+					out.print("<tbody>");
+					
+					//result2.next();
+					
+					while(result2.next()){
+						//Row
+						out.print("<tr>");
+						//Columns
+						out.print("<td>");
+						out.print(result2.getString("rental_num"));
+						out.print("</td>");
+						
+						out.print("<td>");
+						out.print(result2.getString("car_id"));
+						out.print("</td>");
+						
+						out.print("<td>");
+						out.print(result2.getString("make"));
+						out.print("</td>");
+						
+						out.print("<td>");
+						out.print(result2.getString("model"));
+						out.print("</td>");
+						
+						out.print("<td>");
+						out.print(result2.getString("color"));
+						out.print("</td>");
+						
+						out.print("<td>");
+						out.print(result2.getString("carYear"));
+						out.print("</td>");
+						
+						out.print("<td>");
+						out.print(result2.getString("cond"));
+						out.print("</td>");
+						
+						out.print("<td>");
+						out.print(result2.getString("carType"));
+						out.print("</td>");
+						
+						//out.print("<td>");
+						//out.print(result.getString("price"));
+						//out.print("</td>");
+						
+						out.print("<td>");
+						out.print(result2.getString("out_date"));
+						out.print("</td>");
+						
+						out.print("</tr>");
+					}
+					
 					out.print("</tbody></table>");
 					con.close();
 				}catch (Exception e) {
