@@ -42,7 +42,7 @@
 					<fieldset>
 						<h3>Search for a car to buy</h3>
 						<div class="form-group">
-							<p>Select Type</p>
+							<p>Select your car's type below</p>
 							<select>
 								<option value="Convertible">Convertible</option>
 								<option value="Coupe">Coupe</option>
@@ -59,37 +59,79 @@
 							</select>
 						</div>
 						<div class="form-group">
-							<p>Select Make</p>
+							<p>Select your car's make below</p>
 							<select>
-								<option value="Audi">Audi</option>
-								<option value="BMW">BMW</option>
-								<option value="Ferrari">Ferrari</option>
-								<option value="Ford">Ford</option>
-								<option value="Honda">Honda</option>
-								<option value="Hyundai">Hyundai</option>
-								<option value="Infiniti">Infiniti</option>
-								<option value="Jaguar">Jaguar</option>
-								<option value="Jeep">Jeep</option>
+								<option value="Acura">Acura</option>
+								<option value="Alpha Romeo">Alpha Romeo</option>
+								<option value="Aptera">Aptera</option>
+								<option value="Aston Martin">Aston Martin</option>
+ 								<option value="Audi">Audi</option>
+								<option value="Bentley">Bentley</option>
+ 								<option value="BMW">BMW</option>
+								<option value="Buick">Buick</option>
+								<option value="Cadillac">Cadillac</option>
+								<option value="Chevrolet">Chevrolet</option>
+								<option value="Chevy">Chevy</option>
+								<option value="Chrysler">Chrysler</option>
+								<option value="Corbin">Corbin</option>
+								<option value="Dodge">Dodge</option>
+								<option value="Eagle">Eagle</option>
+ 								<option value="Ferrari">Ferrari</option>
+ 								<option value="Ford">Ford</option>
+								<option value="Geo">Geo</option>
+								<option value="GMC">GMC</option>
+								<option value="Holden">Holden</option>
+ 								<option value="Honda">Honda</option>
+								<option value="Hummer">Hummer</option>
+ 								<option value="Hyundai">Hyundai</option>
+ 								<option value="Infiniti">Infiniti</option>
+								<option value="Isuzu">Isuzu</option>
+ 								<option value="Jaguar">Jaguar</option>
+ 								<option value="Jeep">Jeep</option>
+								<option value="Kia">Kia</option>
+								<option value="Land Rover">Land Rover</option>
 								<option value="Kia">Honda</option>
-								<option value="Lexus">Lexus</option>
-								<option value="Mazda">Mazda</option>
+ 								<option value="Lexus">Lexus</option>
+								<option value="Lincoln">Lincoln</option>
+								<option value="Lotus">Lotus</option>
+								<option value="Maserati">Maserati</option>
+								<option value="Maybach">Maybach</option>
+ 								<option value="Mazda">Mazda</option>
+								<option value="Mercedes-Benz">Mercedes-Benz</option>
+								<option value="Mercury">Mercury</option>
+								<option value="Mitsubishi">Mitsubishi</option>
+								<option value="Nissan">Nissan</option>
+								<option value="Oldsmobile">Oldsmobile</option>
+								<option value="Panoz">Panoz</option>
+								<option value="Plymouth">Plymouth</option>
+								<option value="Pontiac">Pontiac</option>
 								<option value="Mercedes">Mercedes</option>
-								<option value="Porsche">Porsche</option>
-								<option value="Subaru">Subaru</option>
-								<option value="Tesla">Tesla</option>
-								<option value="Toyota">Toyota</option>
-								<option value="Volkswagon">Volkswagon</option>
+ 								<option value="Porsche">Porsche</option>
+								<option value="Ram">Ram</option>
+								<option value="Renault">Renault</option>
+								<option value="Rolls-Royce">Rolls-Royce</option>
+								<option value="Saab">Saab</option>
+								<option value="Saturn">Saturn</option>
+								<option value="Scion">Scion</option>
+								<option value="Spyker">Spyker</option>
+								<option value="Studebaker">Studebaker</option>
+ 								<option value="Subaru">Subaru</option>
+								<option value="Suzuki">Suzuki</option>
+ 								<option value="Tesla">Tesla</option>
+ 								<option value="Toyota">Toyota</option>
+ 								<option value="Volkswagon">Volkswagon</option>
+								<option value="Volvo">Volvo</option>
 							</select>
 						</div>
 						<div class="form-group">
-							<p>Type Model</p>
+							<p>Enter your car's model below</p>
 							<input type="text" class="form-control input-lg" id="model"
 								name="model" placeholder="Model" pattern="^.{0,15}$"
 								required />
 						</div>
 						<div class="form-group">
 							<!--<input type="text" class="form-control input-lg" id="color" name="color" placeholder="Color" pattern="^[A-Za-z]{0,20}$" required/>-->
-							<p>Select Color</p>
+							<p>Select your car's color below</p>
 							<select name="color">
 								<option value="Blue">Blue</option>
 								<option value="Red">Red</option>
@@ -104,7 +146,7 @@
 
 						</div>
 						<div class="form-group">
-							<p>Select Make</p>
+							<p>Select your car's make below</p>
 							<select>
 								<option value="2000">2000</option>
 								<option value="2001">2001</option>
@@ -128,7 +170,7 @@
 							</select>
 						</div>
 						<div class="form-group">
-							<p>Select Condition</p>
+							<p>Select your car's condition below</p>
 							<select>
 								<option value="New">New</option>
 								<option value="Like New">Like New</option>
@@ -139,7 +181,7 @@
 							</select>
 						</div>
 						<div class="form-group">
-							<p>Type Price</p>
+							<p>Enter your desired price below</p>
 							<input type="text" class="form-control input-lg" id="price"
 								name="price" placeholder="Price" pattern="^[0-9]{0,10}$"
 								required />
@@ -231,12 +273,12 @@
 						
 					}
 				}
-				//NOW PRINT THE SHIT
+				//NOW PRINT
 				
 				out.print("<table class=\"table\">");
 					out.print("<thead>");
 					out.print("<tr>");
-					out.print("<th scope=\"col\">VIN Number</th>");
+					out.print("<th scope=\"col\">Listing Number</th>");
 					out.print("<th scope=\"col\">Make</th>");
 					out.print("<th scope=\"col\">Model</th>");
 					out.print("<th scope=\"col\">Color</th>");
@@ -251,12 +293,16 @@
 				CarNode temp = head;
 				CarNode temp2;
 				result.close();
+				int count = 0;
 				
 				out.print("<tbody>");
-				while(temp != null){
+				while(count < 30 && temp != null){
 					
-					str = "SELECT make, model, color, carYear, cond, carType, price, date_posted FROM Car NATURAL JOIN Listing WHERE Listing.car_id = \""
+					str = "SELECT Car.car_id, make, model, color, carYear, cond, carType, price, date_posted, Listing.sale_num FROM Car NATURAL JOIN Listing WHERE Listing.car_id = \""
 							+ temp.carID + "\" AND Car.car_id = \"" + temp.carID + "\"";
+					//String str = "SELECT C.car_id, C.make, C.model, C.color, C.carYear, C.cond, C.carType, L.sale_num, L.price, L.date_posted ";
+					/*str += "FROM Car As C, Listing As L WHERE C.car_id = L.car_id AND L.seller_id = \"";
+					str += username + "\" ORDER BY date_posted";*/
 					//Run the query against the database.
 					result = stmt.executeQuery(str);
 					result.next();
@@ -269,14 +315,15 @@
 					String tempCarType = result.getString("carType");
 					String tempPrice = result.getString("price");
 					String tempDate = result.getString("date_posted");
+					String tempSaleNum = result.getString("Listing.sale_num");
 
-					System.out.println(temp.carID);
+					//System.out.println(temp.carID);
 					
 					//Row
 					out.print("<tr>");
 					//Columns				
 					out.print("<td>");
-					out.print(temp.carID);
+					out.print(tempSaleNum);
 					out.print("</td>");
 					
 					out.print("<td>");
@@ -315,6 +362,7 @@
 					
 					temp = temp.next;
 					
+					count++;
 				}
 				out.print("</tbody></table>");
 				
@@ -353,11 +401,11 @@
 			<div class="col-xs-12 col-sm-8 col-md-12 col-sm-offset-2 col-md-offset-3">
 				<form role="form" method="post">
 					<fieldset>
-						<h3>Enter the VIN Number of the car you wish to buy:</h3>
+						<h3>Enter the Listing Number of the car you wish to buy:</h3>
 						<div class="row">
 							<div class="col-xs-6 col-sm-6 col-md-6">
 								<div class="form-group">
-									<input type="text" class="form-control input-lg" id="vin_num" name="vin_num" placeholder="Listing Number" pattern= "^.{1,}$" required/>
+									<input type="text" class="form-control input-lg" id="sale_num" name="sale_num" placeholder="Listing Number" pattern= "^.{1,}$" required/>
 								</div>
 							</div>
 							
@@ -386,8 +434,11 @@
 		out.print("</div>");
 	}
 	else if (request.getParameter("buy") != null) {
-		
-		String vinNum = request.getParameter("vin_num");
+		String saleNum = request.getParameter("sale_num");
+		String str2 = "SELECT car_id FROM Car WHERE car_id IN (SELECT car_id FROM Listing WHERE sale_num = \"" + saleNum + "\")";
+		Statement stmt2 = con.createStatement();
+		ResultSet res = stmt2.executeQuery(str2);
+		String vinNum = res.getString("car_id");
 		boolean found = false;
 		temp = head;
 		
@@ -400,7 +451,7 @@
 		}
 		
 		if (found) {
-					System.out.println("Are you being pressed");
+					//System.out.println("Are you being pressed");
 					//Make a select statement for the Car table:
 					String carDelete = "DELETE FROM Car WHERE car_id = '"+vinNum+"'";
 
@@ -437,7 +488,7 @@
 				out.print("<div class=\"row\" style=\"margin-top: 20px\">");
 				out.print("<div class=\"col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3\">");
 				out.print("<div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\">");
-				out.print("<strong>Listing Failed</strong>!");
+				out.print("<strong>Purchase Failed</strong>!");
 				out.print(e);
 				out.print("<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">");
 				out.print("<span aria-hidden=\"true\">&times;</span>");

@@ -39,7 +39,7 @@
 						</div>
 						<div class="form-group">
 							<!--<input type="text" class="form-control input-lg" id="make" name="make" placeholder="Make" pattern="^[A-Za-z]{0,20}$" required/>-->
-							<p>Select Make</p>
+							<p>Select your car's make below</p>
 							<select name="make" class="form-control">
 								<option value="Acura">Acura</option>
 								<option value="Alpha Romeo">Alpha Romeo</option>
@@ -104,11 +104,12 @@
 							</select>
 						</div>
 						<div class="form-group">
+							<p>Enter your car's model below</p>
 							<input type="text" class="form-control input-lg" id="model" name="model" placeholder="Model" pattern="^.{0,15}$" required/>
 						</div>
 						<div class="form-group">
 							<!--<input type="text" class="form-control input-lg" id="color" name="color" placeholder="Color" pattern="^[A-Za-z]{0,20}$" required/>-->
-							<p>Select Color</p>
+							<p>Select your car's color below</p>
 							<select name="color" class="form-control">
 								<option value="Blue">Blue</option>
 								<option value="Red">Red</option>
@@ -124,7 +125,7 @@
 						</div>
 						<div class="form-group">
 							<!--<input type="text" class="form-control input-lg" id="carYear" name="carYear" placeholder="Year" pattern="^[0-9]{4}$" required/>-->
-							<p>Select Year</p>
+							<p>Select your car's year below</p>
 							<select name="carYear" class="form-control">
 								<option value="2000">2000</option>
 								<option value="2001">2001</option>
@@ -149,7 +150,7 @@
 						</div>
 						<div class="form-group">
 							<!--<input type="text" class="form-control input-lg" id="cond" name="cond" placeholder="Condition" pattern="^[A-Za-z]{0,20}$" required/>-->
-							<p>Select Condition</p>
+							<p>Select your car's condition below</p>
 							<select name="cond" class="form-control">
 								<option value="New">New</option>
 								<option value="Like New">Like New</option>
@@ -161,7 +162,7 @@
 						</div>
 						<div class="form-group">
 							<!--<input type="text" class="form-control input-lg" id="carType" name="carType" placeholder="Type" pattern="^[A-Za-z]{0,20}$" required/>-->
-							<p>Select Type</p>
+							<p>Select your car's type below</p>
 							<select name="carType" class="form-control">
 								<option value="Sedan">Sedan</option>
 								<option value="Hatchback">Hatchback</option>
@@ -178,7 +179,7 @@
 							</select>
 						</div>			
 						<div class="form-group">
-						<p>Enter your price below</p>
+						<p>Enter your desired price below</p>
 							<input type="text" class="form-control input-lg" id="price" name="price" placeholder="Price" pattern="^[0-9]{0,10}$" required/>
 						</div>			
 						<div class="row">
