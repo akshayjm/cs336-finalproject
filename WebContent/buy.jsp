@@ -38,7 +38,7 @@
 	<div class="container">
 		<div class="row" style="margin-top: 20px">
 			<div class="col-xs-6 col-xs-offset-2">
-				<form role="form">
+				<form role="form" method="post">
 					<fieldset>
 						<h3>Search for a car to buy</h3>
 						<div class="form-group">
