@@ -224,7 +224,7 @@
 				String listingInsert = "INSERT INTO Listing(sale_num, car_id, seller_id, price, date_posted) VALUES(?, ?, ?, ?, ?)";
 				PreparedStatement ps2 = con.prepareStatement(listingInsert);
 				
-				String counter = "SELECT COUNT(car_id) As Counter FROM Listing";
+				String counter = "SELECT MAX(sale_num) As Counter FROM Listing";
 				ResultSet countInit = stmt.executeQuery(counter);
 				countInit.next();
 				int sale_num = Integer.parseInt(countInit.getString("Counter"));
