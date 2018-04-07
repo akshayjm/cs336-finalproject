@@ -25,6 +25,7 @@
 
 	<%!
 		public String username;
+		public int age_restriction;
 	%>
 	
 	<% 
@@ -67,7 +68,7 @@
 		}
 		public void ageNotMet(JspWriter out) throws IOException {
 			out.print("<div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" style=\"position: absolute; top: 0px;\">");
-			out.print("<strong>Booking Failed - Must be 25 years old.</strong>");
+			out.print("<strong>Booking Failed - Must be "+age_restriction+" years old.</strong>");
 			out.print("<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">");
 			out.print("<span aria-hidden=\"true\">&times;</span>");   
 			out.print("</button>");
@@ -264,8 +265,13 @@
 	    			result = stmt.executeQuery(str);
 	    			result.next();
 	    			int age = Integer.parseInt(result.getString("age"));
+	    			
+	    			str = "SELECT rental_age_restriction FROM State WHERE State.name in (SELECT state from User WHERE User.username = '"+username+"')";
+	    			result = stmt.executeQuery(str);
+	    			result.next();
+	    			age_restriction = Integer.parseInt(result.getString("rental_age_restriction"));
     				
-	    			if (inventory > 0 && rent_count < 2 && age > 24) {
+	    			if (inventory > 0 && rent_count < 2 && age >= age_restriction) {
 		    			String rentalInsert = "INSERT INTO Rental(rental_num, car_id, renter_id, out_date) VALUES(?, ?, ?, ?)";
 		    			PreparedStatement ps = con.prepareStatement(rentalInsert);
 		    			
@@ -295,7 +301,7 @@
 	    			else if (rent_count > 1) {
 	    				criteria(out);
 	    			}
-	    			else if (age < 24) {
+	    			else if (age < age_restriction) {
 	    				ageNotMet(out);
 	    			}
 	    			
@@ -335,7 +341,12 @@
 	    			result.next();
 	    			int age = Integer.parseInt(result.getString("age"));
     				
-	    			if (inventory > 0 && rent_count < 2 && age > 24) {
+	    			str = "SELECT rental_age_restriction FROM State WHERE State.name in (SELECT state from User WHERE User.username = '"+username+"')";
+	    			result = stmt.executeQuery(str);
+	    			result.next();
+	    			age_restriction = Integer.parseInt(result.getString("rental_age_restriction"));
+    				
+	    			if (inventory > 0 && rent_count < 2 && age >= age_restriction) {
 		    			String rentalInsert = "INSERT INTO Rental(rental_num, car_id, renter_id, out_date) VALUES(?, ?, ?, ?)";
 		    			PreparedStatement ps = con.prepareStatement(rentalInsert);
 		    			
@@ -365,7 +376,7 @@
 	    			else if (rent_count > 1) {
 	    				criteria(out);
 	    			}
-	    			else if (age < 24) {
+	    			else if (age < age_restriction) {
 	    				ageNotMet(out);
 	    			}
 	    			
@@ -405,7 +416,12 @@
 	    			result.next();
 	    			int age = Integer.parseInt(result.getString("age"));
     				
-	    			if (inventory > 0 && rent_count < 2 && age > 24) {
+	    			str = "SELECT rental_age_restriction FROM State WHERE State.name in (SELECT state from User WHERE User.username = '"+username+"')";
+	    			result = stmt.executeQuery(str);
+	    			result.next();
+	    			age_restriction = Integer.parseInt(result.getString("rental_age_restriction"));
+    				
+	    			if (inventory > 0 && rent_count < 2 && age >= age_restriction) {
 		    			String rentalInsert = "INSERT INTO Rental(rental_num, car_id, renter_id, out_date) VALUES(?, ?, ?, ?)";
 		    			PreparedStatement ps = con.prepareStatement(rentalInsert);
 		    			
@@ -435,7 +451,7 @@
 	    			else if (rent_count > 1) {
 	    				criteria(out);
 	    			}
-	    			else if (age < 24) {
+	    			else if (age < age_restriction) {
 	    				ageNotMet(out);
 	    			}
 	    			
@@ -475,7 +491,12 @@
 	    			result.next();
 	    			int age = Integer.parseInt(result.getString("age"));
     				
-	    			if (inventory > 0 && rent_count < 2 && age > 24) {
+	    			str = "SELECT rental_age_restriction FROM State WHERE State.name in (SELECT state from User WHERE User.username = '"+username+"')";
+	    			result = stmt.executeQuery(str);
+	    			result.next();
+	    			age_restriction = Integer.parseInt(result.getString("rental_age_restriction"));
+    				
+	    			if (inventory > 0 && rent_count < 2 && age >= age_restriction) {
 		    			String rentalInsert = "INSERT INTO Rental(rental_num, car_id, renter_id, out_date) VALUES(?, ?, ?, ?)";
 		    			PreparedStatement ps = con.prepareStatement(rentalInsert);
 		    			
@@ -505,7 +526,7 @@
 	    			else if (rent_count > 1) {
 	    				criteria(out);
 	    			}
-	    			else if (age < 24) {
+	    			else if (age < age_restriction) {
 	    				ageNotMet(out);
 	    			}
 	    			
@@ -545,7 +566,12 @@
 	    			result.next();
 	    			int age = Integer.parseInt(result.getString("age"));
     				
-	    			if (inventory > 0 && rent_count < 2 && age > 24) {
+	    			str = "SELECT rental_age_restriction FROM State WHERE State.name in (SELECT state from User WHERE User.username = '"+username+"')";
+	    			result = stmt.executeQuery(str);
+	    			result.next();
+	    			age_restriction = Integer.parseInt(result.getString("rental_age_restriction"));
+    				
+	    			if (inventory > 0 && rent_count < 2 && age >= age_restriction) {
 		    			String rentalInsert = "INSERT INTO Rental(rental_num, car_id, renter_id, out_date) VALUES(?, ?, ?, ?)";
 		    			PreparedStatement ps = con.prepareStatement(rentalInsert);
 		    			
@@ -575,7 +601,7 @@
 	    			else if (rent_count > 1) {
 	    				criteria(out);
 	    			}
-	    			else if (age < 24) {
+	    			else if (age < age_restriction) {
 	    				ageNotMet(out);
 	    			}
 	    			
