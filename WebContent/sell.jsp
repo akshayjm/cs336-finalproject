@@ -221,7 +221,7 @@
 				//Run the query against the DB
 				ps.executeUpdate();
 				
-				String listingInsert = "INSERT INTO Listing(sale_num, car_id, seller_id, price, date_posted, sale_date) VALUES(?, ?, ?, ?, ?, ?)";
+				String listingInsert = "INSERT INTO Listing(sale_num, car_id, seller_id, price, date_posted) VALUES(?, ?, ?, ?, ?)";
 				PreparedStatement ps2 = con.prepareStatement(listingInsert);
 				
 				String counter = "SELECT COUNT(car_id) As Counter FROM Listing";
@@ -236,7 +236,6 @@
 				ps2.setString(3, username);
 				ps2.setString(4, newPrice);
 				ps2.setString(5, dateFormat.format(date));
-				ps2.setString(6, dateFormat.format(date));
 				
 				ps2.executeUpdate();
 				
