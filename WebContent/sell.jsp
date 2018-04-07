@@ -34,80 +34,38 @@
 					<fieldset>
 						<h3>Sell your car here</h3>
 						<div class="form-group">
-							<p>Enter your car's VIN below</p>
 							<input type="text" class="form-control input-lg" id="car_id" name="car_id" placeholder="Enter VIN" pattern="^[a-zA-Z0-9]{17}$" maxlength="17" required/>
 						</div>
 						<div class="form-group">
 							<!--<input type="text" class="form-control input-lg" id="make" name="make" placeholder="Make" pattern="^[A-Za-z]{0,20}$" required/>-->
-							<p>Select your car's make below</p>
+							<p>Select Make</p>
 							<select name="make" class="form-control">
-								<option value="Acura">Acura</option>
-								<option value="Alpha Romeo">Alpha Romeo</option>
-								<option value="Aptera">Aptera</option>
-								<option value="Aston Martin">Aston Martin</option>
 								<option value="Audi">Audi</option>
-								<option value="Bentley">Bentley</option>
 								<option value="BMW">BMW</option>
-								<option value="Buick">Buick</option>
-								<option value="Cadillac">Cadillac</option>
-								<option value="Chevrolet">Chevrolet</option>
-								<option value="Chevy">Chevy</option>
-								<option value="Chrysler">Chrysler</option>
-								<option value="Corbin">Corbin</option>
-								<option value="Dodge">Dodge</option>
-								<option value="Eagle">Eagle</option>
 								<option value="Ferrari">Ferrari</option>
 								<option value="Ford">Ford</option>
-								<option value="Geo">Geo</option>
-								<option value="GMC">GMC</option>
-								<option value="Holden">Holden</option>
 								<option value="Honda">Honda</option>
-								<option value="Hummer">Hummer</option>
 								<option value="Hyundai">Hyundai</option>
 								<option value="Infiniti">Infiniti</option>
-								<option value="Isuzu">Isuzu</option>
 								<option value="Jaguar">Jaguar</option>
 								<option value="Jeep">Jeep</option>
-								<option value="Kia">Kia</option>
-								<option value="Land Rover">Land Rover</option>
+								<option value="Kia">Honda</option>
 								<option value="Lexus">Lexus</option>
-								<option value="Lincoln">Lincoln</option>
-								<option value="Lotus">Lotus</option>
-								<option value="Maserati">Maserati</option>
-								<option value="Maybach">Maybach</option>
 								<option value="Mazda">Mazda</option>
-								<option value="Mercedes-Benz">Mercedes-Benz</option>
-								<option value="Mercury">Mercury</option>
-								<option value="Mitsubishi">Mitsubishi</option>
-								<option value="Nissan">Nissan</option>
-								<option value="Oldsmobile">Oldsmobile</option>
-								<option value="Panoz">Panoz</option>
-								<option value="Plymouth">Plymouth</option>
-								<option value="Pontiac">Pontiac</option>
+								<option value="Mercedes">Mercedes</option>
 								<option value="Porsche">Porsche</option>
-								<option value="Ram">Ram</option>
-								<option value="Renault">Renault</option>
-								<option value="Rolls-Royce">Rolls-Royce</option>
-								<option value="Saab">Saab</option>
-								<option value="Saturn">Saturn</option>
-								<option value="Scion">Scion</option>
-								<option value="Spyker">Spyker</option>
-								<option value="Studebaker">Studebaker</option>
 								<option value="Subaru">Subaru</option>
-								<option value="Suzuki">Suzuki</option>
 								<option value="Tesla">Tesla</option>
 								<option value="Toyota">Toyota</option>
 								<option value="Volkswagon">Volkswagon</option>
-								<option value="Volvo">Volvo</option>
 							</select>
 						</div>
 						<div class="form-group">
-							<p>Enter your car's model below</p>
 							<input type="text" class="form-control input-lg" id="model" name="model" placeholder="Model" pattern="^.{0,15}$" required/>
 						</div>
 						<div class="form-group">
 							<!--<input type="text" class="form-control input-lg" id="color" name="color" placeholder="Color" pattern="^[A-Za-z]{0,20}$" required/>-->
-							<p>Select your car's color below</p>
+							<p>Select Color</p>
 							<select name="color" class="form-control">
 								<option value="Blue">Blue</option>
 								<option value="Red">Red</option>
@@ -123,7 +81,7 @@
 						</div>
 						<div class="form-group">
 							<!--<input type="text" class="form-control input-lg" id="carYear" name="carYear" placeholder="Year" pattern="^[0-9]{4}$" required/>-->
-							<p>Select your car's year below</p>
+							<p>Select Year</p>
 							<select name="carYear" class="form-control">
 								<option value="2000">2000</option>
 								<option value="2001">2001</option>
@@ -148,7 +106,7 @@
 						</div>
 						<div class="form-group">
 							<!--<input type="text" class="form-control input-lg" id="cond" name="cond" placeholder="Condition" pattern="^[A-Za-z]{0,20}$" required/>-->
-							<p>Select your car's condition below</p>
+							<p>Select Condition</p>
 							<select name="cond" class="form-control">
 								<option value="New">New</option>
 								<option value="Like New">Like New</option>
@@ -160,7 +118,7 @@
 						</div>
 						<div class="form-group">
 							<!--<input type="text" class="form-control input-lg" id="carType" name="carType" placeholder="Type" pattern="^[A-Za-z]{0,20}$" required/>-->
-							<p>Select your car's type below</p>
+							<p>Select Type</p>
 							<select name="carType" class="form-control">
 								<option value="Sedan">Sedan</option>
 								<option value="Hatchback">Hatchback</option>
@@ -177,7 +135,6 @@
 							</select>
 						</div>			
 						<div class="form-group">
-							<p>Enter your price below</p>
 							<input type="text" class="form-control input-lg" id="price" name="price" placeholder="Price" pattern="^[0-9]{0,10}$" required/>
 						</div>			
 						<div class="row">
@@ -325,6 +282,8 @@
 	}
 	%>
 	
+	<% } else { %>
+	
 	    <body class="text-center" style="height: 100%; display: -ms-flexbox;
   display: -webkit-box;
   display: flex;
@@ -338,7 +297,7 @@
   padding-bottom: 40px;
   background-color: #f5f5f5;">
     <form class="form-signin" method="post" action="index.jsp">
-      <h1 class="h3 mb-3 font-weight-normal">Please log in before selling</h1>
+      <h1 class="h3 mb-3 font-weight-normal">Please log in before renting</h1>
       <button class="btn btn-lg btn-primary btn-block" type="submit">Click here to log in</button>
     </form>
     

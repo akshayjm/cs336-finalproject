@@ -2,9 +2,9 @@
 	pageEncoding="ISO-8859-1" import="com.cs336.pkg.*"%>
 <%@ page import="java.io.*,java.util.*,java.sql.*"%>
 <%@ page import="javax.servlet.http.*,javax.servlet.*"%>
-<%@ page import="java.util.Date"%>
-<%@ page import="java.text.DateFormat"%>
-<%@ page import="java.text.SimpleDateFormat"%>
+<%@ page import="java.util.Date" %>
+<%@ page import="java.text.DateFormat" %>
+<%@ page import="java.text.SimpleDateFormat" %>
 
 <!doctype html>
 <html lang="en">
@@ -26,7 +26,7 @@
 	<%!
 		public String username;
 	%>
-
+	
 	<% 
 		username = request.getParameter("username");
 	%>
@@ -77,7 +77,37 @@
 
 <% if (username != null) { %>
 <body>
-	<div class="pricing-""e""
+	<div
+		class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+		<h1 class="display-4">Renting</h1>
+		<p class="lead">Please select a car type:</p>
+	</div>
+
+	<div class="container">
+		<div class="card-deck mb-3 text-center">
+			<div class="card mb-4 box-shadow">
+				<div class="card-header">
+					<h4 class="my-0 font-weight-normal">Sedan</h4>
+				</div>
+				<img class="card-img-top" src="./images/sedan_cropped.png"
+					alt="Card image sedan">
+				<div class="card-body">
+					<h1 class="card-title pricing-card-title">
+						$45 <small class="text-muted">/ day</small>
+					</h1>
+					<ul class="list-unstyled mt-3 mb-4">
+						<li>Up to 4 passengers</li>
+						<li>Automatic Drive</li>
+						<li>For short commutes</li>
+						<li>Up to 200 HP</li>
+					</ul>
+					<form role="form" method="post">
+						<button type="submit" class="btn btn-lg btn-block btn-primary"
+							name="sedanSelect">Select</button>
+					</form>
+				</div>
+			</div>
+			<div class="card mb-4 box-shadow">
 				<div class="card-header">
 					<h4 class="my-0 font-weight-normal">Coupe</h4>
 				</div>
@@ -560,25 +590,22 @@
     %>
     <% } else { %>
     
-    
     <body class="text-center" style="height: 100%; display: -ms-flexbox;
-		  display: -webkit-box;
-		  display: flex;
-		  -ms-flex-align: center;
-		  -ms-flex-pack: center;
-		  -webkit-box-align: center;
-		  align-items: center;
-		  -webkit-box-pack: center;
-		  justify-content: center;
-		  padding-top: 40px;
-		  padding-bottom: 40px;
-		  background-color: #f5f5f5;">
-  	<form class="form-signin" method="post" action="index.jsp">
-      <h1 class="h3 mb-3 font-weight-normal">Please log in before renting</h1>
-      <button class="btn btn-lg btn-primary btn-block" type="submit">Click here to log in</button>
-    </form>
-    
-    
+ 		  display: -webkit-box;
+ 		  display: flex;
+ 		  -ms-flex-align: center;
+ 		  -ms-flex-pack: center;
+ 		  -webkit-box-align: center;
+ 		  align-items: center;
+ 		  -webkit-box-pack: center;
+ 		  justify-content: center;
+ 		  padding-top: 40px;
+ 		  padding-bottom: 40px;
+ 		  background-color: #f5f5f5;">
+   	<form class="form-signin" method="post" action="index.jsp">
+       <h1 class="h3 mb-3 font-weight-normal">Please log in before renting</h1>
+       <button class="btn btn-lg btn-primary btn-block" type="submit">Click here to log in</button>
+     </form>
     <% } %>
 
 	<!-- Optional JavaScript -->

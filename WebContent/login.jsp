@@ -18,19 +18,25 @@
 	crossorigin="anonymous">
 <title>User Portal</title>
 </head>
-<%!public String name;
-	public String username;
-	public String sell;
-	public String mycars;
-	public String rent;%>
+	
+	<%!
+		public String name;
+		public String username;
+		public String sell;
+		public String mycars;
+		public String rent;
+		public String buy;
+	%>
 
-<%
-	username = request.getParameter("name");
-	sell = "sell.jsp?username=" + username;
-	mycars = "mycars.jsp?username=" + username;
-	rent = "rent.jsp?username=" + username;
-%>
-<%
+	<%
+		username = request.getParameter("name");
+		sell = "sell.jsp?username=" + username;
+		mycars = "mycars.jsp?username=" + username;
+		rent = "rent.jsp?username=" + username;
+		buy = "buy.jsp?username=" + username;
+	%>
+	
+	<%
 	try {
 
 		//Get the database connection
@@ -53,12 +59,10 @@
 		}
 	} catch (Exception e) {
 	}
-%>
+	%>
 
-<%
-	if (username != null) {
-%>
-<body>
+	<% if (username != null) { %>
+	<body>
 	<div class="container">
 		<div class="row" style="margin-top: 20px">
 			<div
@@ -79,7 +83,7 @@
 				class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
 				<br>
 				<h2>
-					<a style="color: MEDIUMSEAGREEN;" href="buy.jsp">Buy</a>
+					<a style="color: MEDIUMSEAGREEN;" href="<%=buy%>">Buy</a>
 				</h2>
 				<br>
 				<h2>
@@ -105,13 +109,11 @@
 		} else {
 	%>
 
-<body class="text-center"
+	<body class="text-center"
 	style="height: 100%; display: -ms-flexbox; display: -webkit-box; display: flex; -ms-flex-align: center; -ms-flex-pack: center; -webkit-box-align: center; align-items: center; -webkit-box-pack: center; justify-content: center; padding-top: 40px; padding-bottom: 40px; background-color: #f5f5f5;">
 	<form class="form-signin" method="post" action="index.jsp">
-		<h1 class="h3 mb-3 font-weight-normal">Please log in before
-			viewing user portal</h1>
-		<button class="btn btn-lg btn-primary btn-block" type="submit">Click
-			here to log in</button>
+		<h1 class="h3 mb-3 font-weight-normal">Please log in before viewing user portal</h1>
+		<button class="btn btn-lg btn-primary btn-block" type="submit">Click here to log in</button>
 	</form>
 
 
