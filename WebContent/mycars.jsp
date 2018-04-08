@@ -3,7 +3,7 @@
 <%@ page import="java.io.*,java.util.*,java.sql.*"%>
 <%@ page import="javax.servlet.http.*,javax.servlet.*"%>
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
 	<!-- Required meta tags -->
@@ -244,8 +244,7 @@
 		<form method="post">
 			<div class="row">
 				<div class="col-md-12">
-					<label for="listing"><h4>Enter the Listing Number you
-							wish to delete below:</h4></label>
+					<h4><label for="listing">Enter the Listing Number you wish to delete below:</label></h4>
 				</div>
 			</div>
 			<div class="row">

@@ -655,7 +655,7 @@
 	        </button>
 	      </div>
 	      <div class="modal-body">
-	      	<p class="lead">Please contact us at: (732)-997-9395 to book a Luxury Rental.</p>
+	      	<p class="lead">Please contact us at: (855)-266-9565 to book a Luxury Rental.</p>
 	      </div>
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

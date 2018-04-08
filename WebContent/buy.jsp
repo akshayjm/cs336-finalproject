@@ -3,7 +3,7 @@
 <%@ page import="java.io.*,java.util.*,java.sql.*"%>
 <%@ page import="javax.servlet.http.*,javax.servlet.*"%>
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
 <!-- Required meta tags -->
@@ -16,50 +16,59 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous">
+	<link href="./css/form-validation.css" rel="stylesheet">
 <title>Buying Page</title>
 </head>
-<%!CarNode head;
-	String newMake;
-	String newModel;
-	String newColor;
-	String newCarYear;
-	String newCond;
-	String newCarType;
-	String newPrice;%>
+	<%!
+		CarNode head;
+		String newMake;
+		String newModel;
+		String newColor;
+		String newCarYear;
+		String newCond;
+		String newCarType;
+		String newPrice;
+		public String username;
+		public String home;
+	%>
 
-<%!public String username;%>
 
-<%
-	username = request.getParameter("username");
-	boolean found = false;
-	CarNode temp;
+	<%
+		username = request.getParameter("username");
+		home = "login.jsp?name="+username;
+		boolean found = false;
+		CarNode temp;
 	
-	//Get the database connection
-	ApplicationDB db = new ApplicationDB();
-	Connection con = db.getConnection();
-	
-%>
+		//Get the database connection
+		ApplicationDB db = new ApplicationDB();
+		Connection con = db.getConnection();
+	%>
 
-<%
-	if (username != null) {
-%>
-<body>
-	<div class="container">
-		<div class="row" style="margin-top: 20px">
-			<div class="col-xs-6 col-xs-offset-2">
-				<form role="form" method="post">
-					<fieldset>
-						<h3>Search for a car to buy</h3>
-						<div class="form-group">
-							<p>Select your car's make below</p>
-							<select name="make" id="make"> 
-								<option value="Acura">Acura</option>
+
+<% if (username != null) { %>
+<body class="bg-light">
+    <div class="container">
+      <div class="py-5 text-center">
+        <!-- <img class="d-block mx-auto mb-4" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72"> -->
+        <h2>Buying Form</h2>
+        <!-- <p class="lead">Below is an example form built entirely with Bootstrap's form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p> -->
+      </div>
+
+      <div class="row">
+        <div class="col-md-12 order-md-1">
+          <form class="needs-validation" novalidate method="post">
+            <div class="row">
+            <div class="col-md-6 mb-3">
+                <label for="make">Select Make</label>
+                <select name="make" class="custom-select d-block w-100" id="make" required>
+                  <option value="">Choose...</option>
+                  <option value="Acura">Acura</option>
 								<option value="Alpha Romeo">Alpha Romeo</option>
 								<option value="Aptera">Aptera</option>
 								<option value="Aston Martin">Aston Martin</option>
-								<option value="Audi">Audi</option>
+ 								<option value="Audi">Audi</option>
 								<option value="Bentley">Bentley</option>
-								<option value="BMW">BMW</option>
+ 								<option value="BMW">BMW</option>
 								<option value="Buick">Buick</option>
 								<option value="Cadillac">Cadillac</option>
 								<option value="Chevrolet">Chevrolet</option>
@@ -68,27 +77,27 @@
 								<option value="Corbin">Corbin</option>
 								<option value="Dodge">Dodge</option>
 								<option value="Eagle">Eagle</option>
-								<option value="Ferrari">Ferrari</option>
-								<option value="Ford">Ford</option>
+ 								<option value="Ferrari">Ferrari</option>
+ 								<option value="Ford">Ford</option>
 								<option value="Geo">Geo</option>
 								<option value="GMC">GMC</option>
 								<option value="Holden">Holden</option>
-								<option value="Honda">Honda</option>
+ 								<option value="Honda">Honda</option>
 								<option value="Hummer">Hummer</option>
-								<option value="Hyundai">Hyundai</option>
-								<option value="Infiniti">Infiniti</option>
+ 								<option value="Hyundai">Hyundai</option>
+ 								<option value="Infiniti">Infiniti</option>
 								<option value="Isuzu">Isuzu</option>
-								<option value="Jaguar">Jaguar</option>
-								<option value="Jeep">Jeep</option>
+ 								<option value="Jaguar">Jaguar</option>
+ 								<option value="Jeep">Jeep</option>
 								<option value="Kia">Kia</option>
 								<option value="Land Rover">Land Rover</option>
 								<option value="Kia">Honda</option>
-								<option value="Lexus">Lexus</option>
+ 								<option value="Lexus">Lexus</option>
 								<option value="Lincoln">Lincoln</option>
 								<option value="Lotus">Lotus</option>
 								<option value="Maserati">Maserati</option>
 								<option value="Maybach">Maybach</option>
-								<option value="Mazda">Mazda</option>
+ 								<option value="Mazda">Mazda</option>
 								<option value="Mercedes-Benz">Mercedes-Benz</option>
 								<option value="Mercury">Mercury</option>
 								<option value="Mitsubishi">Mitsubishi</option>
@@ -98,7 +107,7 @@
 								<option value="Plymouth">Plymouth</option>
 								<option value="Pontiac">Pontiac</option>
 								<option value="Mercedes">Mercedes</option>
-								<option value="Porsche">Porsche</option>
+ 								<option value="Porsche">Porsche</option>
 								<option value="Ram">Ram</option>
 								<option value="Renault">Renault</option>
 								<option value="Rolls-Royce">Rolls-Royce</option>
@@ -107,23 +116,32 @@
 								<option value="Scion">Scion</option>
 								<option value="Spyker">Spyker</option>
 								<option value="Studebaker">Studebaker</option>
-								<option value="Subaru">Subaru</option>
+ 								<option value="Subaru">Subaru</option>
 								<option value="Suzuki">Suzuki</option>
-								<option value="Tesla">Tesla</option>
-								<option value="Toyota">Toyota</option>
-								<option value="Volkswagon">Volkswagon</option>
+ 								<option value="Tesla">Tesla</option>
+ 								<option value="Toyota">Toyota</option>
+ 								<option value="Volkswagon">Volkswagon</option>
 								<option value="Volvo">Volvo</option>
-							</select>
-						</div>
-						<div class="form-group">
-							<p>Enter your car's model below</p>
-							<input type="text" class="form-control input-lg" id="model"
-								name="model" placeholder="Model" pattern="^.{0,15}$" required />
-						</div>
-						<div class="form-group">
-							<p>Select your car's color below</p>
-							<select name="color" id="color">
-								<option value="Blue">Blue</option>
+                </select>
+                <div class="invalid-feedback">
+                  Please select a make.
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="mode">Enter Model</label>
+                <input type="text" class="form-control" id="model" placeholder="" value="" name="model" pattern="^.{0,15}$" required>
+                <div class="invalid-feedback">
+                  Valid model is required.
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+             <div class="col-md-3 mb-3">
+                <label for="color">Select Color</label>
+                <select name="color" class="custom-select d-block w-100" id="color" required>
+                  <option value="">Choose...</option>
+                  <option value="Blue">Blue</option>
 								<option value="Red">Red</option>
 								<option value="Yellow">Yellow</option>
 								<option value="Green">Green</option>
@@ -132,12 +150,16 @@
 								<option value="White">White</option>
 								<option value="Brown">Brown</option>
 								<option value="Pink">Pink</option>
-							</select>
-						</div>
-						<div class="form-group">
-							<p>Select your car's make below</p>
-							<select name="carYear" id="carYear">
-								<option value="2000">2000</option>
+                </select>
+                <div class="invalid-feedback">
+                  Please select a color.
+                </div>
+              </div>
+              <div class="col-md-3 mb-4">
+                <label for="year">Select Year</label>
+                <select name="carYear" class="custom-select d-block w-100" id="year" required>
+                  <option value="">Choose...</option>
+                  <option value="2000">2000</option>
 								<option value="2001">2001</option>
 								<option value="2002">2002</option>
 								<option value="2003">2003</option>
@@ -156,62 +178,92 @@
 								<option value="2016">2016</option>
 								<option value="2017">2017</option>
 								<option value="2018">2018</option>
-							</select>
-						</div>
-						<div class="form-group">
-							<p>Select your car's condition below</p>
-							<select name="cond" id="cond">
-								<option value="New">New</option>
+                </select>
+                <div class="invalid-feedback">
+                  Please select a year.
+                </div>
+              </div>
+            	<div class="col-md-3 mb-4">
+                <label for="condition">Select Condition</label>
+                <select name="cond" class="custom-select d-block w-100" id="condition" required>
+                  <option value="">Choose...</option>
+                  <option value="New">New</option>
 								<option value="Like New">Like New</option>
 								<option value="Good">Good</option>
 								<option value="Fair">Fair</option>
 								<option value="Poor">Poor</option>
 								<option value="For Parts">For Parts</option>
-							</select>
-						</div>
-						<div class="form-group">
-							<p>Select your car's type below</p>
-							<select name="carType" id="carType">
-								<option value="Convertible">Convertible</option>
-								<option value="Coupe">Coupe</option>
-								<option value="Crossover">Crossover</option>
+                </select>
+                <div class="invalid-feedback">
+                  Please select a condition.
+                </div>
+              </div>
+              <div class="col-md-3 mb-3">
+                <label for="type">Select Type</label>
+                <select name="carType" class="custom-select d-block w-100" id="type" required>
+                  <option value="">Choose...</option>
+                  <option value="Sedan">Sedan</option>
 								<option value="Hatchback">Hatchback</option>
-								<option value="Hybrid">Hybrid</option>
-								<option value="Luxury">Luxury</option>
-								<option value="Minivan">Minivan</option>
-								<option value="Sedan">Sedan</option>
-								<option value="Sport">Sport</option>
 								<option value="SUV">SUV</option>
 								<option value="Truck">Truck</option>
+								<option value="Minivan">Minivan</option>
+								<option value="Coupe">Coupe</option>
 								<option value="Wagon">Wagon</option>
-							</select>
-						</div>
-						<div class="form-group">
-							<p>Enter your desired price below</p>
-							<input type="text" class="form-control input-lg" id="price"
-								name="price" placeholder="Price" pattern="^[0-9]{0,10}$"
-								required />
-						</div>
-						<div class="row">
-							<div class="col-xs-6 col-sm-6 col-md-6">
-								<input type="submit" name="List"
-									class="btn btn-lg btn-success btn-block" value="Submit">
-							</div>
-						</div>
-					</fieldset>
-				</form>
-			</div>
-		</div>
-	</div>
+								<option value="Convertible">Convertible</option>
+								<option value="Sport">Sport</option>
+								<option value="Crossover">Crossover</option>
+								<option value="Luxury">Luxury</option>
+								<option value="Hybrid">Hybrid</option>
+                </select>
+                <div class="invalid-feedback">
+                  Please select a type.
+                </div>
+              </div>
+            </div>
+            <div class="row">
+            		<div class="col-md-12 mb-3">
+            			<label for="price">Enter Price</label>
+            			<div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">$</span>
+                </div>
+                <input type="text" class="form-control" id="price" placeholder="" value="" name="price" pattern="^[0-9]{0,10}$" required>
+                <div class="invalid-feedback" style="width: 100%;">
+                  Valid price required.
+                </div>
+              </div>
+            		</div>
+            </div>
+            <hr class="mb-4">
+            <button class="btn btn-primary btn-lg btn-block" name="search" type="submit">Search</button>
+          </form>
+        </div>
+      </div>
+      
+      <!-- <div class="pb-1 text-left">
+			<img class="d-block mx-auto mb-4" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+			<h4>Search Results</h4>
+			<p class="lead">Below is an example form built entirely with Bootstrap's form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p>
+		</div> -->
+      
+     <!--  <div class="row">
+			<div class="col-md-12" style="overflow-x: scroll"> -->
+      
 	<%
-		if (request.getParameter("List") != null) {
-				System.out.println("Pressed List button");
+		if (request.getParameter("search") != null) {
+			
+			out.print("<div class=\"pb-1 text-left mt-5\">");
+			out.print("<h4>Search Results</h4>");
+			out.print("</div");
+			
+			out.print("<div class=\"row\">");
+			out.print("<div class=\"col-md-12\" style=\"overflow-x: scroll\">");
+				/* System.out.println("Pressed List button"); */
 				try {
 
 					//Create a SQL statement
 					Statement stmt = con.createStatement();
 
-					//Get parameters from the HTML form at the HelloWorld.jsp
 					newMake = request.getParameter("make");
 					newModel = request.getParameter("model");
 					newColor = request.getParameter("color");
@@ -294,6 +346,7 @@
 					out.print("<thead>");
 					out.print("<tr>");
 					out.print("<th scope=\"col\">Sale Number</th>");
+					out.print("<th scope=\"col\">Logo</th>");
 					out.print("<th scope=\"col\">Make</th>");
 					out.print("<th scope=\"col\">Model</th>");
 					out.print("<th scope=\"col\">Color</th>");
@@ -316,13 +369,14 @@
 						//add to String array to store temporarily
 						arr.add(temp.carID);
 						
-						str = "SELECT make, model, color, carYear, cond, carType, price, date_posted, sale_num FROM Car NATURAL JOIN Listing WHERE Listing.sale_num = "
+						str = "SELECT imageURL, make, model, color, carYear, cond, carType, price, date_posted, sale_num FROM Car NATURAL JOIN Listing WHERE Listing.sale_num = "
 								+ "'" + temp.carID + "'";
 
 						//Run the query against the database.
 						result = stmt.executeQuery(str);
 						result.next();
 
+						String tempLogo = result.getString("imageURL");
 						String tempMake = result.getString("make");
 						String tempModel = result.getString("model");
 						String tempColor = result.getString("color");
@@ -338,6 +392,10 @@
 						//Columns				
 						out.print("<td>");
 						out.print(temp.carID);
+						out.print("</td>");
+						
+						out.print("<td>");
+						out.print("<img src=\""+tempLogo+"\" alt=\"\" height=50 width=50>");
 						out.print("</td>");
 
 						out.print("<td>");
@@ -380,57 +438,55 @@
 					}
 					out.print("</tbody></table>");
 					
+					out.print("</div></div>");
+					
 					//store into file called storage.txt
 					TextStorage storage = new TextStorage();
 					storage.saveToFile(arr);
 					
 	%>
-	<div class="container">
-		<div class="row" style="margin-top: 20px">
-			<div
-				class="col-xs-12 col-sm-8 col-md-12 col-sm-offset-2 col-md-offset-3">
-				<form role="form" method="post">
-					<fieldset>
-						<h3>Enter the Sale Number of the car you wish to buy:</h3>
-						<div class="row">
-							<div class="col-xs-6 col-sm-6 col-md-6">
-								<div class="form-group">
-									<input type="text" class="form-control input-lg" id="sale_num"
-										name="sale_num" placeholder="Sale Number" pattern="^.{1,}$"
-										required />
-								</div>
-							</div>
+	<!-- </div>
+	</div> -->
+	
+	<hr class="mb-4">
 
-							<div class="col-xs-6 col-sm-6 col-md-6">
-								<input type="submit" name="buy"
-									class="btn btn-sm btn-danger btn-block" value="Buy Listing">
-							</div>
-						</div>
-					</fieldset>
-				</form>
+		<form method="post">
+			<div class="row">
+				<div class="col-md-12">
+					<h4><label for="buy">Enter the Sale Number of the car you wish to buy:</label></h4>
+				</div>
 			</div>
-		</div>
-	</div>
+			<div class="row">
+				<div class="col-md-6 mb-4">
+					<input type="text" class="form-control" id="buy" placeholder=""
+						value="" name="sale_num" required>
+				</div>
+				<div class="col-md-6">
+					<input type="submit" name="buy" class="btn btn-danger btn-block"
+						value="Buy Listing">
+				</div>
+
+			</div>
+		</form>
+		
 	<%
 				if (head == null) {
-						out.print("<div class=\"container\">");
-						out.print("<div class=\"row\" style=\"margin-top: 20px\">");
-						out.print("<div class=\"col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3\">");
-						out.print("<div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\">");
-						out.print("<strong>Sorry, no cars exist in the database :(</strong>");
-						out.print(
-								"<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">");
-						out.print("<span aria-hidden=\"true\">&times;</span>");
-						out.print("</button>");
-						out.print("</div>");
-						out.print("</div>");
-						out.print("</div>");
-						out.print("</div>");
+					out.print("<div class=\"row\">");
+					out.print("<div class=\"col-md-12 my-3\">");
+					out.print("<div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\">");
+					out.print("<strong>Sorry, no cars exist in the database!</strong>");
+					out.print("<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">");
+					out.print("<span aria-hidden=\"true\">&times;</span>");
+					out.print("</button>");
+					out.print("</div>");
+					out.print("</div>");
+					out.print("</div>");
 					}
 					result.close();
 
 				} catch (Exception e) {
-					out.print("<div class=\"container\">");
+					System.out.println(e);
+					/* out.print("<div class=\"container\">");
 					out.print("<div class=\"row\" style=\"margin-top: 20px\">");
 					out.print("<div class=\"col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3\">");
 					out.print("<div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\">");
@@ -443,13 +499,13 @@
 					out.print("</div>");
 					out.print("</div>");
 					out.print("</div>");
-					out.print("</div>");
+					out.print("</div>"); */
 				}
 
 			} else if (request.getParameter("buy") != null) {
 				
 				String saleNum = request.getParameter("sale_num");
-				System.out.println("Sale Num: "+saleNum);
+				/* System.out.println("Sale Num: "+saleNum); */
 				
 				TextStorage storage = new TextStorage();
 				if (true/*storage.check(saleNum)*/){
@@ -473,7 +529,21 @@
 					System.out.println("Exception found");
 					e.getStackTrace();
 				}
-				out.print("<div class=\"container\">");
+				
+				out.print("<div class=\"row\">");
+				out.print("<div class=\"col-md-12 my-3\">");
+				out.print("<div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">");
+				out.print("<strong>Found!</strong> Here is the seller's contact information:<br>");
+				out.print("Email: "+sellerEmail+"<br>");
+				out.print("Phone: "+sellerPhone);
+				out.print("<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">");
+				out.print("<span aria-hidden=\"true\">&times;</span>");
+				out.print("</button>");
+				out.print("</div>");
+				out.print("</div>");
+				out.print("</div>");
+				
+				/* out.print("<div class=\"container\">");
 				out.print("<div class=\"row\" style=\"margin-top: 20px\">");
 				out.print("<div class=\"col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3\">");
 				out.print("<div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">");
@@ -486,24 +556,18 @@
 				out.print("</div>");
 				out.print("</div>");
 				out.print("</div>");
-				out.print("</div>");
-				}
-				else{
-					out.print("<div class=\"container\">");
-					out.print("<div class=\"row\" style=\"margin-top: 20px\">");
-					out.print("<div class=\"col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3\">");
-					out.print("<div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">");
-					out.print("<strong>Please choose a car from the list.</strong>");
-					out.print("<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">");
-					out.print("<span aria-hidden=\"true\">&times;</span>");
-					out.print("</button>");
-					out.print("</div>");
-					out.print("</div>");
-					out.print("</div>");
-					out.print("</div>");
+				out.print("</div>"); */
 				}
 			}
 	%>
+	
+	<footer class="mt-5 pt-5 text-muted text-center text-small">
+      <ul class="list-inline">
+          <li class="list-inline-item"><a href="<%=home%>">Go to home page</a></li>
+        </ul>
+        <p class="mb-1">&copy; 2018 Mehtallica</p>
+      </footer>
+      </div>
 
 	<%
 		} else {
@@ -536,6 +600,32 @@
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
 		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
 		crossorigin="anonymous"></script>
+		<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+		crossorigin="anonymous"></script>
+		    <script>
+      // Example starter JavaScript for disabling form submissions if there are invalid fields
+      (function() {
+        'use strict';
+
+        window.addEventListener('load', function() {
+          // Fetch all the forms we want to apply custom Bootstrap validation styles to
+          var forms = document.getElementsByClassName('needs-validation');
+
+          // Loop over them and prevent submission
+          var validation = Array.prototype.filter.call(forms, function(form) {
+            form.addEventListener('submit', function(event) {
+              if (form.checkValidity() === false) {
+                event.preventDefault();
+                event.stopPropagation();
+              }
+              form.classList.add('was-validated');
+            }, false);
+          });
+        }, false);
+      })();
+    </script>
 
 </body>
 </html>
