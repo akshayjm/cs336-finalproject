@@ -26,10 +26,12 @@
 	<%!
 		public String username;
 		public int age_restriction;
+		public String home;
 	%>
 	
 	<% 
 		username = request.getParameter("username");
+		home = "login.jsp?name="+username;
 	%>
 
 	<%! 
@@ -275,7 +277,7 @@
 		    			String rentalInsert = "INSERT INTO Rental(rental_num, car_id, renter_id, out_date) VALUES(?, ?, ?, ?)";
 		    			PreparedStatement ps = con.prepareStatement(rentalInsert);
 		    			
-		    			String counter = "SELECT COUNT(rental_num) As Counter FROM Rental";
+		    			String counter = "SELECT MAX(rental_num) As Counter FROM Rental";
 					ResultSet countInit = stmt.executeQuery(counter);
 					countInit.next();
 					int rent_num = Integer.parseInt(countInit.getString("Counter"));
@@ -350,7 +352,7 @@
 		    			String rentalInsert = "INSERT INTO Rental(rental_num, car_id, renter_id, out_date) VALUES(?, ?, ?, ?)";
 		    			PreparedStatement ps = con.prepareStatement(rentalInsert);
 		    			
-		    			String counter = "SELECT COUNT(rental_num) As Counter FROM Rental";
+		    			String counter = "SELECT MAX(rental_num) As Counter FROM Rental";
 					ResultSet countInit = stmt.executeQuery(counter);
 					countInit.next();
 					int rent_num = Integer.parseInt(countInit.getString("Counter"));
@@ -425,7 +427,7 @@
 		    			String rentalInsert = "INSERT INTO Rental(rental_num, car_id, renter_id, out_date) VALUES(?, ?, ?, ?)";
 		    			PreparedStatement ps = con.prepareStatement(rentalInsert);
 		    			
-		    			String counter = "SELECT COUNT(rental_num) As Counter FROM Rental";
+		    			String counter = "SELECT MAX(rental_num) As Counter FROM Rental";
 					ResultSet countInit = stmt.executeQuery(counter);
 					countInit.next();
 					int rent_num = Integer.parseInt(countInit.getString("Counter"));
@@ -500,7 +502,7 @@
 		    			String rentalInsert = "INSERT INTO Rental(rental_num, car_id, renter_id, out_date) VALUES(?, ?, ?, ?)";
 		    			PreparedStatement ps = con.prepareStatement(rentalInsert);
 		    			
-		    			String counter = "SELECT COUNT(rental_num) As Counter FROM Rental";
+		    			String counter = "SELECT MAX(rental_num) As Counter FROM Rental";
 					ResultSet countInit = stmt.executeQuery(counter);
 					countInit.next();
 					int rent_num = Integer.parseInt(countInit.getString("Counter"));
@@ -575,7 +577,7 @@
 		    			String rentalInsert = "INSERT INTO Rental(rental_num, car_id, renter_id, out_date) VALUES(?, ?, ?, ?)";
 		    			PreparedStatement ps = con.prepareStatement(rentalInsert);
 		    			
-		    			String counter = "SELECT COUNT(rental_num) As Counter FROM Rental";
+		    			String counter = "SELECT MAX(rental_num) As Counter FROM Rental";
 					ResultSet countInit = stmt.executeQuery(counter);
 					countInit.next();
 					int rent_num = Integer.parseInt(countInit.getString("Counter"));
@@ -614,6 +616,13 @@
 	    		}
     		}
     %>
+    
+    <footer class="mt-5 pt-5 text-muted text-center text-small">
+      <ul class="list-inline">
+          <li class="list-inline-item"><a href="<%=home%>">Go to home page</a></li>
+        </ul>
+        <p class="mb-1">&copy; 2018 Mehtallica</p>
+      </footer>
     <% } else { %>
     
     <body class="text-center" style="height: 100%; display: -ms-flexbox;
