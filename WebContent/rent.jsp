@@ -20,7 +20,7 @@
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous">
 <link href="./css/renting.css" rel="stylesheet">
-<title>Mehtallica</title>
+<title>Renting</title>
 </head>
 
 	<%!
@@ -240,7 +240,6 @@
 	      </div>
 	    </div>
 	  </div>
-	</div>
 
 	<%
     		if (request.getParameter("sedanSelect") != null) {
@@ -623,6 +622,7 @@
         </ul>
         <p class="mb-1">&copy; 2018 Mehtallica</p>
       </footer>
+      </div>
     <% } else { %>
     
     <body class="text-center" style="height: 100%; display: -ms-flexbox;
