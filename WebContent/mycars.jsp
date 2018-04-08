@@ -12,6 +12,7 @@
     
     <!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="icon" href="./images/favicon.ico">
 	<title>My Cars</title>
 </head>
 
@@ -298,8 +299,6 @@
 				
 				int succ = ps.executeUpdate();
 				
-				response.setIntHeader("Refresh", 300);
-				
 				
 				if(succ > 0){
 					out.print("<div class=\"row\">");
@@ -317,7 +316,7 @@
 					out.print("<div class=\"row\">");
 					out.print("<div class=\"col-md-12 my-3\">");
 					out.print("<div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\">");
-					out.print("<strong>Listing Removal Failed!</strong> You do not have access to that listing.");
+					out.print("<strong>Listing Removal Failed!</strong> Listing entry not found.");
 					out.print("<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">");
 					out.print("<span aria-hidden=\"true\">&times;</span>");
 					out.print("</button>");
@@ -385,176 +384,158 @@
 			ResultSet tax_rate = ps4.executeQuery();
 			ResultSet car_type = ps5.executeQuery();
 			
-			while(days_rented.next()){
-				rental_days = Integer.parseInt(days_rented.getString("days"));
-			}
-			
-			while(tax_rate.next()){
-				tax = Float.parseFloat(tax_rate.getString("tax_rate"));
-			}
-			while(car_type.next()){
-				carType = car_type.getString("carType");
-			}
-			
-			/* System.out.println(rental_days);
-			System.out.println(tax);
-			System.out.println(carType); */
-			
-			if(carType.equals("Sedan")){
-				float finalPrice = sedan*rental_days;
-				finalPrice = finalPrice + finalPrice*tax;
-
-				
-				if(rental_days == 0){
-					finalPrice = sedan + sedan*tax;
-				}
-				
-				//formatter.format("%.2f", finalPrice);
-				
-				System.out.println(finalPrice);
-
-				/* System.out.println(finalPrice); */
-
-				out.print("<div class=\"row\">");
-				out.print("<div class=\"col-md-12 my-3\">");
-				out.print("<div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">");
-				out.print("<strong>Your Amount Due Is: </strong>");
-				out.print(formatter.format("%.2f", finalPrice));
-				out.print("<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">");
-				out.print("<span aria-hidden=\"true\">&times;</span>");
-				out.print("</button>");
-				out.print("</div>");
-				out.print("</div>");
-				out.print("</div>");
-			}
-			if(carType.equals("Coupe")){
-				float finalPrice = coupe*rental_days;
-				finalPrice = finalPrice + finalPrice*tax;
-
-				
-				if(rental_days == 0){
-					finalPrice = coupe + coupe*tax;
-				}
-				
-				//formatter.format("%.2f", finalPrice);
-				
-				System.out.println(finalPrice);
-
-				/* System.out.println(finalPrice); */
-				out.print("<div class=\"row\">");
-				out.print("<div class=\"col-md-12 my-3\">");
-				out.print("<div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">");
-				out.print("<strong>Your Amount Due Is: </strong>");
-				out.print(formatter.format("%.2f", finalPrice));
-				out.print("<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">");
-				out.print("<span aria-hidden=\"true\">&times;</span>");
-				out.print("</button>");
-				out.print("</div>");
-				out.print("</div>");
-				out.print("</div>");
-			}
-			if(carType.equals("SUV")){
-				float finalPrice = suv*rental_days;
-				finalPrice = finalPrice + finalPrice*tax;
-				
-				if(rental_days == 0){
-					finalPrice = suv + suv*tax;
-				}
-				
-				//formatter.format("%.2f", finalPrice);
-				
-				System.out.println(finalPrice);
-				
-				/* System.out.println(finalPrice); */
-				
-				out.print("<div class=\"row\">");
-				out.print("<div class=\"col-md-12 my-3\">");
-				out.print("<div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">");
-				out.print("<strong>Your Amount Due Is: </strong>");
-				out.print(formatter.format("%.2f", finalPrice));
-				out.print("<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">");
-				out.print("<span aria-hidden=\"true\">&times;</span>");
-				out.print("</button>");
-				out.print("</div>");
-				out.print("</div>");
-				out.print("</div>");
-			}
-			if(carType.equals("Minivan")){
-				float finalPrice = minivan*rental_days;
-				finalPrice = finalPrice + finalPrice*tax;
-
-				
-				if(rental_days == 0){
-					finalPrice = minivan + minivan*tax;
-				}
-				
-				//formatter.format("%.2f", finalPrice);
-				
-				System.out.println(finalPrice);
-
-				/* System.out.println(finalPrice); */
-
-				out.print("<div class=\"row\">");
-				out.print("<div class=\"col-md-12 my-3\">");
-				out.print("<div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">");
-				out.print("<strong>Your Amount Due Is: </strong>");
-				out.print(formatter.format("%.2f", finalPrice));
-				out.print("<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">");
-				out.print("<span aria-hidden=\"true\">&times;</span>");
-				out.print("</button>");
-				out.print("</div>");
-				out.print("</div>");
-				out.print("</div>");
-			}
-			if(carType.equals("Truck")){
-				float finalPrice = truck*rental_days;
-				finalPrice = finalPrice + finalPrice*tax;
-
-				
-				if(rental_days == 0){
-					finalPrice = truck + truck*tax;
-				}
-				
-				//formatter.format("%.2f", finalPrice);
-				
-				System.out.println(finalPrice);
-
-				/* System.out.println(finalPrice); */
-
-				out.print("<div class=\"row\">");
-				out.print("<div class=\"col-md-12 my-3\">");
-				out.print("<div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">");
-				out.print("<strong>Your Amount Due Is: </strong>");
-				out.print(formatter.format("%.2f", finalPrice));
-				out.print("<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">");
-				out.print("<span aria-hidden=\"true\">&times;</span>");
-				out.print("</button>");
-				out.print("</div>");
-				out.print("</div>");
-				out.print("</div>");
-			}
-			
 			int succ2 = ps2.executeUpdate();
 			int succ = ps.executeUpdate();
 			
 			
 			if(succ > 0 && succ2 > 0){
-				/*out.print("<div class=\"row\">");
-				out.print("<div class=\"col-md-12 my-3\">");
-				out.print("<div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">");
-				out.print("<strong>Renting Removal Successful!</strong>");
-				out.print("<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">");
-				out.print("<span aria-hidden=\"true\">&times;</span>");
-				out.print("</button>");
-				out.print("</div>");
-				out.print("</div>");
-				out.print("</div>");*/
+				while(days_rented.next()){
+					rental_days = Integer.parseInt(days_rented.getString("days"));
+				}
+				
+				while(tax_rate.next()){
+					tax = Float.parseFloat(tax_rate.getString("tax_rate"));
+				}
+				while(car_type.next()){
+					carType = car_type.getString("carType");
+				}
+				
+				/* System.out.println(rental_days);
+				System.out.println(tax);
+				System.out.println(carType); */
+				
+				if(carType.equals("Sedan")){
+					float finalPrice = sedan*rental_days;
+					finalPrice = finalPrice + finalPrice*tax;
+
+					
+					if(rental_days == 0){
+						finalPrice = sedan + sedan*tax;
+					}
+					
+					//formatter.format("%.2f", finalPrice);
+
+					/* System.out.println(finalPrice); */
+
+					out.print("<div class=\"row\">");
+					out.print("<div class=\"col-md-12 my-3\">");
+					out.print("<div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">");
+					out.print("<strong>Your Amount Due Is: </strong>$");
+					out.print(formatter.format("%.2f", finalPrice));
+					out.print(".<br>Click <a href=\"mycars.jsp?username="+username+"\" class=\"alert-link\">here</a> to refresh.");
+					out.print("<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">");
+					out.print("<span aria-hidden=\"true\">&times;</span>");
+					out.print("</button>");
+					out.print("</div>");
+					out.print("</div>");
+					out.print("</div>");
+				}
+				if(carType.equals("Coupe")){
+					float finalPrice = coupe*rental_days;
+					finalPrice = finalPrice + finalPrice*tax;
+
+					
+					if(rental_days == 0){
+						finalPrice = coupe + coupe*tax;
+					}
+					
+					//formatter.format("%.2f", finalPrice);
+
+					/* System.out.println(finalPrice); */
+					out.print("<div class=\"row\">");
+					out.print("<div class=\"col-md-12 my-3\">");
+					out.print("<div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">");
+					out.print("<strong>Your Amount Due Is: </strong>$");
+					out.print(formatter.format("%.2f", finalPrice));
+					out.print(".<br>Click <a href=\"mycars.jsp?username="+username+"\" class=\"alert-link\">here</a> to refresh.");
+					out.print("<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">");
+					out.print("<span aria-hidden=\"true\">&times;</span>");
+					out.print("</button>");
+					out.print("</div>");
+					out.print("</div>");
+					out.print("</div>");
+				}
+				if(carType.equals("SUV")){
+					float finalPrice = suv*rental_days;
+					finalPrice = finalPrice + finalPrice*tax;
+					
+					if(rental_days == 0){
+						finalPrice = suv + suv*tax;
+					}
+					
+					//formatter.format("%.2f", finalPrice);
+				
+					/* System.out.println(finalPrice); */
+					
+					out.print("<div class=\"row\">");
+					out.print("<div class=\"col-md-12 my-3\">");
+					out.print("<div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">");
+					out.print("<strong>Your Amount Due Is: </strong>$");
+					out.print(".<br>Click <a href=\"mycars.jsp?username="+username+"\" class=\"alert-link\">here</a> to refresh.");
+					out.print(formatter.format("%.2f", finalPrice));
+					out.print("<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">");
+					out.print("<span aria-hidden=\"true\">&times;</span>");
+					out.print("</button>");
+					out.print("</div>");
+					out.print("</div>");
+					out.print("</div>");
+				}
+				if(carType.equals("Minivan")){
+					float finalPrice = minivan*rental_days;
+					finalPrice = finalPrice + finalPrice*tax;
+
+					
+					if(rental_days == 0){
+						finalPrice = minivan + minivan*tax;
+					}
+					
+					//formatter.format("%.2f", finalPrice);
+					/* System.out.println(finalPrice); */
+
+					out.print("<div class=\"row\">");
+					out.print("<div class=\"col-md-12 my-3\">");
+					out.print("<div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">");
+					out.print("<strong>Your Amount Due Is: </strong>$");
+					out.print(formatter.format("%.2f", finalPrice));
+					out.print(".<br>Click <a href=\"mycars.jsp?username="+username+"\" class=\"alert-link\">here</a> to refresh.");
+					out.print("<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">");
+					out.print("<span aria-hidden=\"true\">&times;</span>");
+					out.print("</button>");
+					out.print("</div>");
+					out.print("</div>");
+					out.print("</div>");
+				}
+				if(carType.equals("Truck")){
+					float finalPrice = truck*rental_days;
+					finalPrice = finalPrice + finalPrice*tax;
+
+					
+					if(rental_days == 0){
+						finalPrice = truck + truck*tax;
+					}
+					
+					//formatter.format("%.2f", finalPrice);
+					/* System.out.println(finalPrice); */
+
+					out.print("<div class=\"row\">");
+					out.print("<div class=\"col-md-12 my-3\">");
+					out.print("<div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">");
+					out.print("<strong>Your Amount Due Is: </strong>$");
+					out.print(formatter.format("%.2f", finalPrice));
+					out.print(".<br>Click <a href=\"mycars.jsp?username="+username+"\" class=\"alert-link\">here</a> to refresh.");
+					out.print("<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">");
+					out.print("<span aria-hidden=\"true\">&times;</span>");
+					out.print("</button>");
+					out.print("</div>");
+					out.print("</div>");
+					out.print("</div>");
+				}
 			}
 			else{
 				out.print("<div class=\"row\">");
 				out.print("<div class=\"col-md-12 my-3\">");
 				out.print("<div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\">");
-				out.print("<strong>Renting Removal Failed!</strong> You do not have access to that listing.");
+				out.print("<strong>Renting Removal Failed!</strong> Renting entry not found.");
 				out.print("<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">");
 				out.print("<span aria-hidden=\"true\">&times;</span>");
 				out.print("</button>");
@@ -562,6 +543,8 @@
 				out.print("</div>");
 				out.print("</div>");
 			}
+			
+			formatter.close();
 			con.close();
 		}catch(Exception e){
 			System.out.println(e);
