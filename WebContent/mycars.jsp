@@ -327,16 +327,6 @@
 				con.close();
 			}catch(Exception e){
 				System.out.println(e);
-				/* out.print("<div class=\"row\">");
-				out.print("<div class=\"col-md-12 my-3\">");
-				out.print("<div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\">");
-				out.print("<strong>Listing Removal Failed!</strong>");
-				out.print("<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">");
-				out.print("<span aria-hidden=\"true\">&times;</span>");
-				out.print("</button>");
-				out.print("</div>");
-				out.print("</div>");
-				out.print("</div>"); */
 			}
 		}
 	
@@ -400,10 +390,6 @@
 					carType = car_type.getString("carType");
 				}
 				
-				/* System.out.println(rental_days);
-				System.out.println(tax);
-				System.out.println(carType); */
-				
 				if(carType.equals("Sedan")){
 					float finalPrice = sedan*rental_days;
 					finalPrice = finalPrice + finalPrice*tax;
@@ -412,10 +398,6 @@
 					if(rental_days == 0){
 						finalPrice = sedan + sedan*tax;
 					}
-					
-					//formatter.format("%.2f", finalPrice);
-
-					/* System.out.println(finalPrice); */
 
 					out.print("<div class=\"row\">");
 					out.print("<div class=\"col-md-12 my-3\">");
@@ -439,9 +421,6 @@
 						finalPrice = coupe + coupe*tax;
 					}
 					
-					//formatter.format("%.2f", finalPrice);
-
-					/* System.out.println(finalPrice); */
 					out.print("<div class=\"row\">");
 					out.print("<div class=\"col-md-12 my-3\">");
 					out.print("<div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">");
@@ -463,9 +442,6 @@
 						finalPrice = suv + suv*tax;
 					}
 					
-					//formatter.format("%.2f", finalPrice);
-				
-					/* System.out.println(finalPrice); */
 					
 					out.print("<div class=\"row\">");
 					out.print("<div class=\"col-md-12 my-3\">");
@@ -489,8 +465,6 @@
 						finalPrice = minivan + minivan*tax;
 					}
 					
-					//formatter.format("%.2f", finalPrice);
-					/* System.out.println(finalPrice); */
 
 					out.print("<div class=\"row\">");
 					out.print("<div class=\"col-md-12 my-3\">");
@@ -514,8 +488,6 @@
 						finalPrice = truck + truck*tax;
 					}
 					
-					//formatter.format("%.2f", finalPrice);
-					/* System.out.println(finalPrice); */
 
 					out.print("<div class=\"row\">");
 					out.print("<div class=\"col-md-12 my-3\">");
@@ -548,16 +520,6 @@
 			con.close();
 		}catch(Exception e){
 			System.out.println(e);
-			/* out.print("<div class=\"row\">");
-			out.print("<div class=\"col-md-12 my-3\">");
-			out.print("<div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\">");
-			out.print("<strong>Renting Removal Failed!</strong>");
-			out.print("<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">");
-			out.print("<span aria-hidden=\"true\">&times;</span>");
-			out.print("</button>");
-			out.print("</div>");
-			out.print("</div>");
-			out.print("</div>"); */
 		}
 	}
 	

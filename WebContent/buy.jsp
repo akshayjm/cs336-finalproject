@@ -487,20 +487,6 @@
 
 				} catch (Exception e) {
 					System.out.println(e);
-					/* out.print("<div class=\"container\">");
-					out.print("<div class=\"row\" style=\"margin-top: 20px\">");
-					out.print("<div class=\"col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3\">");
-					out.print("<div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\">");
-					out.print("<strong>Purchase Failed</strong>!");
-					out.print(e);
-					out.print(
-							"<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">");
-					out.print("<span aria-hidden=\"true\">&times;</span>");
-					out.print("</button>");
-					out.print("</div>");
-					out.print("</div>");
-					out.print("</div>");
-					out.print("</div>"); */
 				}
 
 			} else if (request.getParameter("buy") != null) {
@@ -544,20 +530,6 @@
 				out.print("</div>");
 				out.print("</div>");
 				
-				/* out.print("<div class=\"container\">");
-				out.print("<div class=\"row\" style=\"margin-top: 20px\">");
-				out.print("<div class=\"col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3\">");
-				out.print("<div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">");
-				out.print("<strong>Found!</strong> Here's the seller's contact information.<br>");
-				out.print("Email: "+sellerEmail+"<br>");
-				out.print("Phone: "+sellerPhone);
-				out.print("<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">");
-				out.print("<span aria-hidden=\"true\">&times;</span>");
-				out.print("</button>");
-				out.print("</div>");
-				out.print("</div>");
-				out.print("</div>");
-				out.print("</div>"); */
 				}
 			}
 	%>
