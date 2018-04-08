@@ -31,7 +31,7 @@
       </div> -->
       <button class="btn btn-lg btn-success btn-block" name="login" type="submit">Sign In</button>
       <button class="btn btn-lg btn-primary btn-block" name="register" type="button" onclick="location.href = 'register.jsp';">Register</button>
-      <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
+      <p class="mt-5 mb-3 text-muted">&copy; 2018 Mehtallica</p>
 	
 	<%
 	if (request.getParameter("login") != null) {

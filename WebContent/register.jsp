@@ -19,78 +19,121 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous">
-<title>Register Page</title>
+<link href="./css/form-validation.css" rel="stylesheet">
+<title>Register</title>
 </head>
-<body>
-	<div class="container">
-		<div class="row" style="margin-top: 20px">
-			<div
-				class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-				<form role="form" method="post">
-					<fieldset>
-						<h3>Register Here</h3>
-						<div class="form-group">
-							<input type="text" class="form-control input-lg" id="username"
-								name="username" placeholder="Username"
-								pattern="^[a-z0-9]{6,15}$" required />
-						</div>
-						<div class="form-group">
-							<input type="password" class="form-control input-lg"
-								id="password" name="password" placeholder="Password"
-								pattern="^.{6,20}$" required />
-						</div>
-						<div class="form-group">
-							<input type="text" class="form-control input-lg" id="first_name"
-								name="first_name" placeholder="First Name"
-								pattern="^[A-Za-z]{0,20}$" required />
-						</div>
-						<div class="form-group">
-							<input type="text" class="form-control input-lg" id="last_name"
-								name="last_name" placeholder="Last Name"
-								pattern="^[A-Za-z]{0,20}$" required />
-						</div>
-						<div class="form-group">
-							<input type="email" class="form-control input-lg" id="email"
-								name="email" placeholder="Email" required />
-						</div>
-						<div class="form-group">
-							<input type="text" class="form-control input-lg" id="phone"
-								name="phone" placeholder="Phone" pattern="^[0-9]{10}$" required />
-						</div>
-						<div class="form-group">
-							<input type="text" class="form-control input-lg" id="age"
-								name="age" placeholder="Age" pattern="^[0-9]{2,3}$" required />
-						</div>
-						<div class="form-group">
-							<input type="text" class="form-control input-lg" id="address"
-								name="address" placeholder="Address"
-								pattern="^\d+\s[A-z]+\s[A-z]+$" required />
-						</div>
-						<div class="form-group">
-							<input type="text" class="form-control input-lg" id="city"
-								name="city" placeholder="City"
-								pattern="^[a-zA-Z]+(?:[\s-][a-zA-Z]+)*$" required />
-						</div>
-						<div class="form-group">
-							<input type="text" class="form-control input-lg" id="state"
-								name="state" placeholder="State" pattern="^[A-Z]{2}$" required />
-						</div>
-						<div class="form-group">
-							<input type="text" class="form-control input-lg" id="zip_code"
-								name="zip_code" placeholder="Zip Code" pattern="^[0-9]{5}$"
-								required />
-						</div>
-						<div class="row">
-							<div class="col-xs-6 col-sm-6 col-md-6">
-								<input type="submit" name="register"
-									class="btn btn-lg btn-success btn-block" value="Submit">
-							</div>
-						</div>
-					</fieldset>
-				</form>
-			</div>
-		</div>
-	</div>
+<body class="bg-light">
+    <div class="container">
+      <div class="py-5 text-center">
+        <!-- <img class="d-block mx-auto mb-4" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72"> -->
+        <h2>Registration Form</h2>
+        <!-- <p class="lead">Below is an example form built entirely with Bootstrap's form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p> -->
+      </div>
+
+      <div class="row">
+        <div class="col-md-12 order-md-1">
+          <form class="needs-validation" novalidate method="post">
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="firstName">First name</label>
+                <input type="text" class="form-control" id="firstName" placeholder="" value="" name="first_name" pattern="^[A-Za-z]{0,20}$" required>
+                <div class="invalid-feedback">
+                  Valid first name is required.
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="lastName">Last name</label>
+                <input type="text" class="form-control" id="lastName" placeholder="" value="" name="last_name" pattern="^[A-Za-z]{0,20}$" required>
+                <div class="invalid-feedback">
+                  Valid last name is required.
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="userName">Username</label>
+                <input type="text" class="form-control" id="userName" placeholder="" value="" name="username" pattern="^[a-z0-9]{6,15}$" required>
+                <div class="invalid-feedback">
+                  Valid username is required.
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" placeholder="" value="" name="password" pattern="^.{6,20}$" required>
+                <div class="invalid-feedback">
+                  Valid password is required.
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" placeholder="you@example.com" value="" name="email" required>
+                <div class="invalid-feedback">
+                  Please enter a valid email address.
+                </div>
+              </div>
+              <div class="col-md-4 mb-3">
+                <label for="phone">Phone</label>
+                <input type="text" class="form-control" id="phone" placeholder="" value="" name="phone" pattern="^[0-9]{10}$" maxlength="10" required>
+                <div class="invalid-feedback">
+                  Please enter a valid phone number.
+                </div>
+              </div>
+              <div class="col-md-2 mb-3">
+                <label for="age">Age</label>
+                <input type="text" class="form-control" id="age" placeholder="" value="" name="age" pattern="^[0-9]{2,3}$" maxlength="3" required>
+                <div class="invalid-feedback">
+                  Please enter a valid age.
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-5 mb-3">
+                <label for="address">Address</label>
+                <input type="text" class="form-control" id="address" placeholder="1234 Main St" value="" name="address" pattern="^\d+\s[A-z]+\s[A-z]+$" required>
+                <div class="invalid-feedback">
+                  Please enter a valid address.
+                </div>
+                </div>
+              <div class="col-md-3 mb-3">
+                <label for="city">City</label>
+                <input type="text" class="form-control" id="city" placeholder="" value="" name="city" pattern="^[a-zA-Z]+(?:[\s-][a-zA-Z]+)*$" required>
+                <div class="invalid-feedback">
+                  Please provide a valid city.
+                </div>
+              </div>
+              <div class="col-md-2 mb-3">
+                <label for="state">State</label>
+                <input type="text" class="form-control" id="state" placeholder="" value="" name="state" pattern="^[A-Z]{2}$" maxlength="2" required>
+                <div class="invalid-feedback">
+                  Please provide a valid state.
+                </div>
+              </div>
+              <div class="col-md-2 mb-3">
+                <label for="zip">Zip</label>
+                <input type="text" class="form-control" id="zip" placeholder="" value="" name="zip" pattern="^[0-9]{5}$" maxlength="5" required>
+                <div class="invalid-feedback">
+                  Zip code required.
+                </div>
+              </div>
+            </div>
+            <hr class="mb-4">
+            <button class="btn btn-primary btn-lg btn-block" name="register" type="submit">Submit</button>
+          </form>
+        </div>
+      </div>
+
+      <footer class="mt-5 pt-5 text-muted text-center text-small">
+      <ul class="list-inline">
+          <li class="list-inline-item"><a href="index.jsp">Go to login page</a></li>
+        </ul>
+        <p class="mb-1">&copy; 2018 Mehtallica</p>
+      </footer>
+    </div>
 
 	<%
 		if (request.getParameter("register") != null) {
@@ -128,18 +171,12 @@
 				ResultSet result = stmt.executeQuery(str);
 				while (result.next()) {
 					if (result.getString("username").equals(newUsername)) {
-						out.print("<div class=\"container\">");
-						out.print("<div class=\"row\" style=\"margin-top: 20px\">");
-						out.print("<div class=\"col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3\">");
+						out.print("<div class=\"md-12\">");
 						out.print("<div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\">");
-						out.print(
-								"<strong>Registration Failed</strong>. Try a different username and submit again!");
-						out.print(
-								"<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">");
+						out.print("<strong>Registration Failed</strong>. Try a different username and submit again!");
+						out.print("<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">");
 						out.print("<span aria-hidden=\"true\">&times;</span>");
 						out.print("</button>");
-						out.print("</div>");
-						out.print("</div>");
 						out.print("</div>");
 						out.print("</div>");
 						successful = false;
@@ -177,18 +214,12 @@
 									out.print("<form method=\"post\" action=\"index.jsp\">");
 									out.print("<input type=\"submit\" value=\"Log In\" />");
 									out.print("</form>"); */
-					out.print("<div class=\"container\">");
-					out.print("<div class=\"row\" style=\"margin-top: 20px\">");
-					out.print("<div class=\"col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3\">");
+					out.print("<div class=\"md-12\">");				
 					out.print("<div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">");
-					out.print(
-							"<strong>Registration Successful</strong>! Click <a href=\"index.jsp\" class=\"alert-link\">here</a> to log in.");
-					out.print(
-							"<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">");
+					out.print("<strong>Registration Successful</strong>! Click <a href=\"index.jsp\" class=\"alert-link\">here</a> to log in.");
+					out.print("<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">");
 					out.print("<span aria-hidden=\"true\">&times;</span>");
 					out.print("</button>");
-					out.print("</div>");
-					out.print("</div>");
 					out.print("</div>");
 					out.print("</div>");
 				}
@@ -197,16 +228,13 @@
 				con.close();
 
 			} catch (Exception e) {
-				out.print("<div class=\"container\">");
-				out.print("<div class=\"row\" style=\"margin-top: 20px\">");
-				out.print("<div class=\"col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3\">");
+				System.out.println(e);
+				out.print("<div class=\"md-12\">");
 				out.print("<div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\">");
 				out.print("<strong>Registration Failed</strong>!");
 				out.print("<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">");
 				out.print("<span aria-hidden=\"true\">&times;</span>");
 				out.print("</button>");
-				out.print("</div>");
-				out.print("</div>");
 				out.print("</div>");
 				out.print("</div>");
 			}
@@ -226,5 +254,27 @@
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
 		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
 		crossorigin="anonymous"></script>
+		    <script>
+      // Example starter JavaScript for disabling form submissions if there are invalid fields
+      (function() {
+        'use strict';
+
+        window.addEventListener('load', function() {
+          // Fetch all the forms we want to apply custom Bootstrap validation styles to
+          var forms = document.getElementsByClassName('needs-validation');
+
+          // Loop over them and prevent submission
+          var validation = Array.prototype.filter.call(forms, function(form) {
+            form.addEventListener('submit', function(event) {
+              if (form.checkValidity() === false) {
+                event.preventDefault();
+                event.stopPropagation();
+              }
+              form.classList.add('was-validated');
+            }, false);
+          });
+        }, false);
+      })();
+    </script>
 </body>
 </html>
