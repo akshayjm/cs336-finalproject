@@ -263,8 +263,7 @@
 		<form method="post">
 			<div class="row">
 				<div class="col-md-12">
-					<label for="rental"><h4>Enter the Renting Number you
-							wish to delete below:</h4></label>
+					<h4><label for="rental">Enter the Renting Number you wish to delete below:</label></h4>
 				</div>
 			</div>
 			<div class="row">

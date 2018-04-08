@@ -215,7 +215,7 @@
               </div>
             </div>
             <div class="row">
-            		<div class="col-md-12 mb-3">
+            		<div class="col-md-6 mb-3">
             			<label for="price">Enter Price</label>
             			<div class="input-group">
                 <div class="input-group-prepend">
@@ -226,6 +226,13 @@
                   Valid price required.
                 </div>
               </div>
+            		</div>
+            		<div class="col-md-6 mb-3">
+            			<label for="image">Enter Image URL</label>
+                <input type="url" class="form-control" id="image" placeholder="http://example.com" value="" name="image" required>
+                <div class="invalid-feedback">
+                  Valid URL is required.
+                </div>
             		</div>
             </div>
             <hr class="mb-4">
@@ -253,6 +260,7 @@
 			String newCond = request.getParameter("cond");
 			String newCarType = request.getParameter("carType");
 			String newPrice = request.getParameter("price");
+			String newURL = request.getParameter("image");
 			String newInventory = "-1";
 			boolean successful = true;
 			
@@ -278,7 +286,7 @@
 			
 			if (successful) {
 				//Make an insert statement for the Sells table:
-				String carInsert = "INSERT INTO Car(car_id, make, model, color, carYear, cond, carType, inventory)" + "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+				String carInsert = "INSERT INTO Car(car_id, make, model, color, carYear, cond, carType, imageURL, inventory)" + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 				//Create a Prepared SQL statement allowing you to introduce the parameters of the query
 				PreparedStatement ps = con.prepareStatement(carInsert);
 
@@ -290,7 +298,8 @@
 				ps.setString(5, newCarYear);
 				ps.setString(6, newCond);
 				ps.setString(7, newCarType);
-				ps.setString(8, newInventory);
+				ps.setString(8, newURL);
+				ps.setString(9, newInventory);
 				
 				DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm");
 				Date date = new Date();
