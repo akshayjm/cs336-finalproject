@@ -20,7 +20,7 @@
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous">
 <link href="./css/renting.css" rel="stylesheet">
-<title>Mehtallica</title>
+<title>Renting</title>
 </head>
 
 	<%!
@@ -37,43 +37,63 @@
 	<%! 
 		public int sedanInventory;
 		public void success(JspWriter out) throws IOException {
-			out.print("<div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\" style=\"position: absolute; top: 0px;\">");
+			out.print("<div class=\"row\">");				
+			out.print("<div class=\"col-md-12 my-3\">");	
+			out.print("<div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\"\">");
 			out.print("<strong>Booking Successful</strong>");
 			out.print("<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">");
 			out.print("<span aria-hidden=\"true\">&times;</span>");   
 			out.print("</button>");
 			out.print("</div>");
+			out.print("</div>");
+			out.print("</div>");
 		}
 		public void failure(JspWriter out) throws IOException {
-			out.print("<div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" style=\"position: absolute; top: 0px;\">");
+			out.print("<div class=\"row\">");				
+			out.print("<div class=\"col-md-12 my-3\">");	
+			out.print("<div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\"\">");
 			out.print("<strong>Booking Failed.</strong> Please try again!");
 			out.print("<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">");
 			out.print("<span aria-hidden=\"true\">&times;</span>");   
 			out.print("</button>");
 			out.print("</div>");
+			out.print("</div>");
+			out.print("</div>");
 		}
 		public void outOfStock(JspWriter out) throws IOException {
-			out.print("<div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" style=\"position: absolute; top: 0px;\">");
+			out.print("<div class=\"row\">");				
+			out.print("<div class=\"col-md-12 my-3\">");	
+			out.print("<div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\"\">");
 			out.print("<strong>Booking Failed - Out of Stock.</strong>");
 			out.print("<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">");
 			out.print("<span aria-hidden=\"true\">&times;</span>");   
 			out.print("</button>");
 			out.print("</div>");
+			out.print("</div>");
+			out.print("</div>");
 		}
 		public void criteria(JspWriter out) throws IOException {
-			out.print("<div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" style=\"position: absolute; top: 0px;\">");
+			out.print("<div class=\"row\">");				
+			out.print("<div class=\"col-md-12 my-3\">");	
+			out.print("<div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\"\">");
 			out.print("<strong>Booking Failed - 2 Cars already rented.</strong>");
 			out.print("<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">");
 			out.print("<span aria-hidden=\"true\">&times;</span>");   
 			out.print("</button>");
 			out.print("</div>");
+			out.print("</div>");
+			out.print("</div>");
 		}
 		public void ageNotMet(JspWriter out) throws IOException {
-			out.print("<div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" style=\"position: absolute; top: 0px;\">");
+			out.print("<div class=\"row\">");				
+			out.print("<div class=\"col-md-12 my-3\">");	
+			out.print("<div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\"\">");
 			out.print("<strong>Booking Failed - Must be "+age_restriction+" years old.</strong>");
 			out.print("<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">");
 			out.print("<span aria-hidden=\"true\">&times;</span>");   
 			out.print("</button>");
+			out.print("</div>");
+			out.print("</div>");
 			out.print("</div>");
 		}
 	%>
@@ -219,28 +239,6 @@
 				</div>
 			</div>
 		</div>
-	</div>
-	
-	<!--Luxury Modal -->
-	<div class="modal fade" id="luxuryModal" tabindex="-1" role="dialog" aria-labelledby="luxuryModalLabel" aria-hidden="true">
-	  <div class="modal-dialog" role="document">
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <h5 class="modal-title" id="luxuryModalLabel">Luxury Option</h5>
-	        
-	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-	          <span aria-hidden="true">&times;</span>
-	        </button>
-	      </div>
-	      <div class="modal-body">
-	      	<p class="lead">Please contact us at: (732)-997-9395 to book a Luxury Rental.</p>
-	      </div>
-	      <div class="modal-footer">
-	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-	      </div>
-	    </div>
-	  </div>
-	</div>
 
 	<%
     		if (request.getParameter("sedanSelect") != null) {
@@ -623,6 +621,29 @@
         </ul>
         <p class="mb-1">&copy; 2018 Mehtallica</p>
       </footer>
+	</div>
+	
+	<!--Luxury Modal -->
+	<div class="modal fade" id="luxuryModal" tabindex="-1" role="dialog" aria-labelledby="luxuryModalLabel" aria-hidden="true">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title" id="luxuryModalLabel">Luxury Option</h5>
+	        
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+	      	<p class="lead">Please contact us at: (732)-997-9395 to book a Luxury Rental.</p>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+	      </div>
+	    </div>
+	  </div>
+	 </div>
+    
     <% } else { %>
     
     <body class="text-center" style="height: 100%; display: -ms-flexbox;

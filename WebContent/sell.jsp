@@ -15,33 +15,47 @@
     
     <!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link href="./css/form-validation.css" rel="stylesheet">
 	<title>Listing Page</title>
 </head>
 	<%!
 		public String username;
+		public String home;
 	%>
 	
 	<% 
 		username = request.getParameter("username");
+		home = "login.jsp?name="+username;
 	%>
 
 <% if (username != null) { %>
-<body>
-	<div class="container">
-		<div class="row" style="margin-top: 20px">
-			<div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-				<form role="form" method="post">
-					<fieldset>
-						<h3>Sell your car here</h3>
-						<div class="form-group">
-							<p>Enter your car's VIN below</p>
-							<input type="text" class="form-control input-lg" id="car_id" name="car_id" placeholder="Enter VIN" pattern="^[a-zA-Z0-9]{17}$" maxlength="17" required/>
-						</div>
-						<div class="form-group">
-							<!--<input type="text" class="form-control input-lg" id="make" name="make" placeholder="Make" pattern="^[A-Za-z]{0,20}$" required/>-->
-							<p>Select your car's make below</p>
-							<select name="make" class="form-control">
-								<option value="Acura">Acura</option>
+<body class="bg-light">
+    <div class="container">
+      <div class="py-5 text-center">
+        <!-- <img class="d-block mx-auto mb-4" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72"> -->
+        <h2>Selling Form</h2>
+        <!-- <p class="lead">Below is an example form built entirely with Bootstrap's form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p> -->
+      </div>
+
+      <div class="row">
+        <div class="col-md-12 order-md-1">
+          <form class="needs-validation" novalidate method="post">
+            <div class="row">
+              <div class="col-md-12 mb-3">
+                <label for="car_id">Enter VIN</label>
+                <input type="text" class="form-control" id="car_id" name="car_id" placeholder="Enter VIN" pattern="^[a-zA-Z0-9]{17}$" maxlength="17" value="" required>
+                <div class="invalid-feedback">
+                  Valid first name is required.
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+            <div class="col-md-6 mb-3">
+                <label for="make">Select Make</label>
+                <select name="make" class="custom-select d-block w-100" id="make" required>
+                  <option value="">Choose...</option>
+                  <option value="Acura">Acura</option>
 								<option value="Alpha Romeo">Alpha Romeo</option>
 								<option value="Aptera">Aptera</option>
 								<option value="Aston Martin">Aston Martin</option>
@@ -101,17 +115,26 @@
  								<option value="Toyota">Toyota</option>
  								<option value="Volkswagon">Volkswagon</option>
 								<option value="Volvo">Volvo</option>
-							</select>
-						</div>
-						<div class="form-group">
-							<p>Enter your car's model below</p>
-							<input type="text" class="form-control input-lg" id="model" name="model" placeholder="Model" pattern="^.{0,15}$" required/>
-						</div>
-						<div class="form-group">
-							<!--<input type="text" class="form-control input-lg" id="color" name="color" placeholder="Color" pattern="^[A-Za-z]{0,20}$" required/>-->
-							<p>Select your car's color below</p>
-							<select name="color" class="form-control">
-								<option value="Blue">Blue</option>
+                </select>
+                <div class="invalid-feedback">
+                  Please select a make.
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="mode">Enter Model</label>
+                <input type="text" class="form-control" id="model" placeholder="" value="" name="model" pattern="^.{0,15}$" required>
+                <div class="invalid-feedback">
+                  Valid model is required.
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+             <div class="col-md-3 mb-3">
+                <label for="color">Select Color</label>
+                <select name="color" class="custom-select d-block w-100" id="color" required>
+                  <option value="">Choose...</option>
+                  <option value="Blue">Blue</option>
 								<option value="Red">Red</option>
 								<option value="Yellow">Yellow</option>
 								<option value="Green">Green</option>
@@ -120,14 +143,16 @@
 								<option value="White">White</option>
 								<option value="Brown">Brown</option>
 								<option value="Pink">Pink</option>
-							</select>
-							
-						</div>
-						<div class="form-group">
-							<!--<input type="text" class="form-control input-lg" id="carYear" name="carYear" placeholder="Year" pattern="^[0-9]{4}$" required/>-->
-							<p>Select your car's year below</p>
-							<select name="carYear" class="form-control">
-								<option value="2000">2000</option>
+                </select>
+                <div class="invalid-feedback">
+                  Please select a color.
+                </div>
+              </div>
+              <div class="col-md-3 mb-4">
+                <label for="year">Select Year</label>
+                <select name="carYear" class="custom-select d-block w-100" id="year" required>
+                  <option value="">Choose...</option>
+                  <option value="2000">2000</option>
 								<option value="2001">2001</option>
 								<option value="2002">2002</option>
 								<option value="2003">2003</option>
@@ -146,25 +171,31 @@
 								<option value="2016">2016</option>
 								<option value="2017">2017</option>
 								<option value="2018">2018</option>
-							</select>
-						</div>
-						<div class="form-group">
-							<!--<input type="text" class="form-control input-lg" id="cond" name="cond" placeholder="Condition" pattern="^[A-Za-z]{0,20}$" required/>-->
-							<p>Select your car's condition below</p>
-							<select name="cond" class="form-control">
-								<option value="New">New</option>
+                </select>
+                <div class="invalid-feedback">
+                  Please select a year.
+                </div>
+              </div>
+            	<div class="col-md-3 mb-4">
+                <label for="condition">Select Condition</label>
+                <select name="cond" class="custom-select d-block w-100" id="condition" required>
+                  <option value="">Choose...</option>
+                  <option value="New">New</option>
 								<option value="Like New">Like New</option>
 								<option value="Good">Good</option>
 								<option value="Fair">Fair</option>
 								<option value="Poor">Poor</option>
 								<option value="For Parts">For Parts</option>
-							</select>
-						</div>
-						<div class="form-group">
-							<!--<input type="text" class="form-control input-lg" id="carType" name="carType" placeholder="Type" pattern="^[A-Za-z]{0,20}$" required/>-->
-							<p>Select your car's type below</p>
-							<select name="carType" class="form-control">
-								<option value="Sedan">Sedan</option>
+                </select>
+                <div class="invalid-feedback">
+                  Please select a condition.
+                </div>
+              </div>
+              <div class="col-md-3 mb-3">
+                <label for="type">Select Type</label>
+                <select name="carType" class="custom-select d-block w-100" id="type" required>
+                  <option value="">Choose...</option>
+                  <option value="Sedan">Sedan</option>
 								<option value="Hatchback">Hatchback</option>
 								<option value="SUV">SUV</option>
 								<option value="Truck">Truck</option>
@@ -176,22 +207,31 @@
 								<option value="Crossover">Crossover</option>
 								<option value="Luxury">Luxury</option>
 								<option value="Hybrid">Hybrid</option>
-							</select>
-						</div>			
-						<div class="form-group">
-						<p>Enter your desired price below</p>
-							<input type="text" class="form-control input-lg" id="price" name="price" placeholder="Price" pattern="^[0-9]{0,10}$" required/>
-						</div>			
-						<div class="row">
-							<div class="col-xs-6 col-sm-6 col-md-6">
-								<input type="submit" name="List" class="btn btn-lg btn-success btn-block" value="Submit">
-							</div>
-						</div>
-					</fieldset>
-				</form>
-			</div>
-		</div>
-	</div>
+                </select>
+                <div class="invalid-feedback">
+                  Please select a type.
+                </div>
+              </div>
+            </div>
+            <div class="row">
+            		<div class="col-md-12 mb-3">
+            			<label for="price">Enter Price</label>
+            			<div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">$</span>
+                </div>
+                <input type="text" class="form-control" id="price" placeholder="" value="" name="price" pattern="^[0-9]{0,10}$" required>
+                <div class="invalid-feedback" style="width: 100%;">
+                  Valid price required.
+                </div>
+              </div>
+            		</div>
+            </div>
+            <hr class="mb-4">
+            <button class="btn btn-success btn-lg btn-block" name="List" type="submit">Submit</button>
+          </form>
+        </div>
+      </div>
 	
 	<%
 	if (request.getParameter("List") != null) {
@@ -227,15 +267,13 @@
 			ResultSet result = stmt.executeQuery(str);
 			while (result.next()) {
 				if (result.getString("car_id").equals(newCar_id)) {
-					out.print("<div class=\"container\">");
-					out.print("<div class=\"row\" style=\"margin-top: 20px\">");
-					out.print("<div class=\"col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3\">");
+					out.print("<div class=\"row\">");				
+					out.print("<div class=\"col-md-12 my-3\">");				
 					out.print("<div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\">");
-					out.print("<strong>Registration Failed</strong>. Your car is already in the database!");
+					out.print("<strong>Listing Failed!</strong> Your car is already in the database.");
 					out.print("<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">");
-					out.print("<span aria-hidden=\"true\">&times;</span>");   
+					out.print("<span aria-hidden=\"true\">&times;</span>");
 					out.print("</button>");
-					out.print("</div>");
 					out.print("</div>");
 					out.print("</div>");
 					out.print("</div>");
@@ -284,40 +322,30 @@
 				
 				ps2.executeUpdate();
 				
-/* 				out.print("<br>");
-				out.print("Listing Successful!");
-				out.print("<form method=\"post\" action=\"index.jsp\">");
-				out.print("<input type=\"submit\" value=\"Log In\" />");
-				out.print("</form>"); */
-				out.print("<div class=\"container\">");
-				out.print("<div class=\"row\" style=\"margin-top: 20px\">");
-				out.print("<div class=\"col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3\">");
+				out.print("<div class=\"row\">");				
+				out.print("<div class=\"col-md-12 my-3\">");				
 				out.print("<div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">");
-				out.print("<strong>Listing Successful</strong>! Click <a href=\"login.jsp?name="+username+"\" class=\"alert-link\">here</a> to return home.");
+				out.print("<strong>Listing Successful!</strong>");
 				out.print("<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">");
-				out.print("<span aria-hidden=\"true\">&times;</span>");   
+				out.print("<span aria-hidden=\"true\">&times;</span>");
 				out.print("</button>");
 				out.print("</div>");
 				out.print("</div>");
 				out.print("</div>");
-				out.print("</div>");
-				
 			}
 
 		//close the connection.
 		con.close();
 
 		} catch (Exception e) {
-			out.print("<div class=\"container\">");
-			out.print("<div class=\"row\" style=\"margin-top: 20px\">");
-			out.print("<div class=\"col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3\">");
+			System.out.println(e);
+			out.print("<div class=\"row\">");
+			out.print("<div class=\"col-md-12 my-3\">");
 			out.print("<div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\">");
-			out.print("<strong>Listing Failed</strong>!");
-			out.print(e);
+			out.print("<strong>Listing Failed!</strong>");
 			out.print("<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">");
-			out.print("<span aria-hidden=\"true\">&times;</span>");   
+			out.print("<span aria-hidden=\"true\">&times;</span>");
 			out.print("</button>");
-			out.print("</div>");
 			out.print("</div>");
 			out.print("</div>");
 			out.print("</div>");
@@ -325,6 +353,14 @@
 		
 	}
 	%>
+	
+	<footer class="mt-5 pt-5 text-muted text-center text-small">
+      <ul class="list-inline">
+          <li class="list-inline-item"><a href="<%=home%>">Go to home page</a></li>
+        </ul>
+        <p class="mb-1">&copy; 2018 Mehtallica</p>
+      </footer>
+      </div>
 	
 	<% } else { %>
 	
@@ -353,5 +389,31 @@
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+		crossorigin="anonymous"></script>
+		    <script>
+      // Example starter JavaScript for disabling form submissions if there are invalid fields
+      (function() {
+        'use strict';
+
+        window.addEventListener('load', function() {
+          // Fetch all the forms we want to apply custom Bootstrap validation styles to
+          var forms = document.getElementsByClassName('needs-validation');
+
+          // Loop over them and prevent submission
+          var validation = Array.prototype.filter.call(forms, function(form) {
+            form.addEventListener('submit', function(event) {
+              if (form.checkValidity() === false) {
+                event.preventDefault();
+                event.stopPropagation();
+              }
+              form.classList.add('was-validated');
+            }, false);
+          });
+        }, false);
+      })();
+    </script>
 </body>
 </html>

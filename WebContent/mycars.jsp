@@ -17,20 +17,41 @@
 
 	<%!
 		public String username;
+		public String home;
 	%>
 	
 	<% 
 		username = request.getParameter("username");
+		home = "login.jsp?name="+username;
 	%>
 
 <% if (username != null) { %>
 <body>
-<div class="container">
+<body class="bg-light">
+	<div class="container">
+		<div class="py-5 text-center">
+			<!-- <img class="d-block mx-auto mb-4" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72"> -->
+			<h2>My Cars</h2>
+			<!-- <p class="lead">Below is an example form built entirely with Bootstrap's form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p> -->
+		</div>
+
+
+		<div class="pb-1 text-left">
+			<!-- <img class="d-block mx-auto mb-4" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72"> -->
+			<h4>Current Selling</h4>
+			<!-- <p class="lead">Below is an example form built entirely with Bootstrap's form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p> -->
+		</div>
+
+		<div class="row">
+			<div class="col-md-12" style="overflow-x: scroll">
+
+
+				<!-- <div class="container">
 		<div class="row" style="margin-top: 20px">
 			<div class="col-xs-12 col-sm-8 col-md-12 col-sm-offset-2 col-md-offset-3">
 				<h1>My Cars</h1>
 				
-			
+			 -->
 				<% 
 				try{
 					//Get the database connection
@@ -51,7 +72,6 @@
 					
 					out.print("<table class=\"table\">");
 					out.print("<thead>");
-					out.print("<p>Currently Selling</p>");
 					out.print("<tr>");
 					out.print("<th scope=\"col\">Listing Number</th>");
 					out.print("<th scope=\"col\">VIN Number</th>");
@@ -113,19 +133,37 @@
 						out.print("</tr>");
 					}
 					
+					out.print("</thead>");
+					out.print("</table>");
+					
+					%>
+
+			</div>
+		</div>
+
+		<div class="pb-1 text-left">
+			<!-- <img class="d-block mx-auto mb-4" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72"> -->
+			<h4>Current Renting</h4>
+			<!-- <p class="lead">Below is an example form built entirely with Bootstrap's form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p> -->
+		</div>
+
+		<div class="row">
+			<div class="col-md-12" style="overflow-x: scroll">
+
+				<%
+					
 					String str2 = "SELECT C.car_id, C.make, C.model, C.color, C.carYear, C.cond, C.carType, R.rental_num, R.out_date ";
 					str2 += "FROM Car As C, Rental As R WHERE C.car_id = R.car_id AND R.renter_id = \"";
 					str2 += username + "\" ORDER BY out_date";
 					
 					ResultSet result2 = stmt2.executeQuery(str2);
 					
-					System.out.println(username);
+	/* 				System.out.println(username); */
 					
 					//out.print("<p>Currently Renting</p>");
 					
 					out.print("<table class=\"table\">");
 					out.print("<thead>");
-					out.print("<p>Currently Renting</p>");
 					out.print("<tr>");
 					out.print("<th scope=\"col\">Rental Number</th>");
 					out.print("<th scope=\"col\">VIN Number</th>");
@@ -193,73 +231,52 @@
 					out.print("</tbody></table>");
 					con.close();
 				}catch (Exception e) {
-					out.print("<div class=\"container\">");
-					out.print("<div class=\"row\" style=\"margin-top: 20px\">");
-					out.print("<div class=\"col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3\">");
-					out.print("<div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\">");
-					out.print("<strong>No cars to display!</strong>!");
-					out.print(e);
-					out.print("<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">");
-					out.print("<span aria-hidden=\"true\">&times;</span>");   
-					out.print("</button>");
-					out.print("</div>");
-					out.print("</div>");
-					out.print("</div>");
-					out.print("</div>");
+					System.out.println(e);
 				}
-				
-				
 				%>
-				
-				
+
 			</div>
 		</div>
-	</div>
-	<div class="container">
-		<div class="row" style="margin-top: 20px">
-			<div class="col-xs-12 col-sm-8 col-md-12 col-sm-offset-2 col-md-offset-3">
-				<form role="form" method="post">
-					<fieldset>
-						<h3>Enter the Listing Number you wish to delete below:</h3>
-						<div class="row">
-							<div class="col-xs-6 col-sm-6 col-md-6">
-								<div class="form-group">
-									<input type="text" class="form-control input-lg" id="sale_num" name="sale_num" placeholder="Listing Number" pattern= "^.{1,}$" required/>
-								</div>
-							</div>
-							
-							<div class="col-xs-6 col-sm-6 col-md-6">
-								<input type="submit" name="delete" class="btn btn-sm btn-danger btn-block" value="Remove Listing">
-							</div>
-						</div>
-					</fieldset>
-				</form>
+
+		<hr class="mb-4">
+
+		<form method="post">
+			<div class="row">
+				<div class="col-md-12">
+					<label for="listing"><h4>Enter the Listing Number you
+							wish to delete below:</h4></label>
+				</div>
 			</div>
-		</div>
-	</div>
-	
-	<div class="container">
-		<div class="row" style="margin-top: 20px">
-			<div class="col-xs-12 col-sm-8 col-md-12 col-sm-offset-2 col-md-offset-3">
-				<form role="form" method="post">
-					<fieldset>
-						<h3>Enter the Rental Number you wish to delete below:</h3>
-						<div class="row">
-							<div class="col-xs-6 col-sm-6 col-md-6">
-								<div class="form-group">
-									<input type="text" class="form-control input-lg" id="rental_num" name="rental_num" placeholder="Rental Number" pattern= "^.{1,}$" required/>
-								</div>
-							</div>
-							
-							<div class="col-xs-6 col-sm-6 col-md-6">
-								<input type="submit" name="delete_rental" class="btn btn-sm btn-danger btn-block" value="Remove Rental">
-							</div>
-						</div>
-					</fieldset>
-				</form>
+			<div class="row">
+				<div class="col-md-6 mb-4">
+					<input type="text" class="form-control" id="listing" placeholder=""
+						value="" name="sale_num" required>
+				</div>
+				<div class="col-md-6">
+					<input type="submit" name="delete" class="btn btn-danger btn-block"
+						value="Remove Listing">
+				</div>
+
 			</div>
-		</div>
-	</div>
+		</form>
+		<form method="post">
+			<div class="row">
+				<div class="col-md-12">
+					<label for="rental"><h4>Enter the Renting Number you
+							wish to delete below:</h4></label>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6">
+					<input type="text" class="form-control" id="rental" placeholder=""
+						value="" name="rental_num" required>
+				</div>
+				<div class="col-md-6">
+					<input type="submit" name="delete_rental" class="btn btn-danger btn-block"
+						value="Remove Rental">
+				</div>
+			</div>
+		</form>
 	
 	<%
 		if(request.getParameter("delete") != null){
@@ -281,46 +298,41 @@
 				
 				int succ = ps.executeUpdate();
 				
+				
 				if(succ > 0){
-					out.print("<div class=\"container\">");
-					out.print("<div class=\"row\" style=\"margin-top: 20px\">");
-					out.print("<div class=\"col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3\">");
+					out.print("<div class=\"row\">");
+					out.print("<div class=\"col-md-12 my-3\">");
 					out.print("<div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">");
-					out.print("<strong>Listing Removal Successful</strong>!");
+					out.print("<strong>Listing Removal Successful!</strong>");
 					out.print("<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">");
-					out.print("<span aria-hidden=\"true\">&times;</span>");   
+					out.print("<span aria-hidden=\"true\">&times;</span>");
 					out.print("</button>");
-					out.print("</div>");
 					out.print("</div>");
 					out.print("</div>");
 					out.print("</div>");
 				}
 				else{
-					out.print("<div class=\"container\">");
-					out.print("<div class=\"row\" style=\"margin-top: 20px\">");
-					out.print("<div class=\"col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3\">");
+					out.print("<div class=\"row\">");
+					out.print("<div class=\"col-md-12 my-3\">");
 					out.print("<div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\">");
-					out.print("<strong>Listing Removal Failed</strong>!");
+					out.print("<strong>Listing Removal Failed!</strong> You do not have access to that listing.");
 					out.print("<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">");
-					out.print("<span aria-hidden=\"true\">&times;</span>");   
+					out.print("<span aria-hidden=\"true\">&times;</span>");
 					out.print("</button>");
-					out.print("</div>");
 					out.print("</div>");
 					out.print("</div>");
 					out.print("</div>");
 				}
 				con.close();
 			}catch(Exception e){
-				out.print("<div class=\"container\">");
-				out.print("<div class=\"row\" style=\"margin-top: 20px\">");
-				out.print("<div class=\"col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3\">");
+				System.out.println(e);
+				out.print("<div class=\"row\">");
+				out.print("<div class=\"col-md-12 my-3\">");
 				out.print("<div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\">");
-				out.print("<strong>Listing Removal Failed</strong>!");
-				out.print(e);
+				out.print("<strong>Listing Removal Failed!</strong>");
 				out.print("<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">");
-				out.print("<span aria-hidden=\"true\">&times;</span>");   
+				out.print("<span aria-hidden=\"true\">&times;</span>");
 				out.print("</button>");
-				out.print("</div>");
 				out.print("</div>");
 				out.print("</div>");
 				out.print("</div>");
@@ -337,7 +349,7 @@
 			
 			
 			String rentalNum = request.getParameter("rental_num");
-			String deletion_rental = "DELETE FROM Rental WHERE Rental.rental_num = ?";
+			String deletion_rental = "DELETE FROM Rental WHERE Rental.rental_num = ? AND Rental.renter_id = ?";
 			
 			String addToInventory = "UPDATE Car SET inventory = inventory +1 WHERE car_id IN(SELECT car_id FROM Rental where rental_num = ?)";
 			
@@ -345,6 +357,7 @@
 			PreparedStatement ps2 = con.prepareStatement(addToInventory);
 					
 			ps.setInt(1, Integer.parseInt(rentalNum));
+			ps.setString(2, username);
 			ps2.setInt(1, Integer.parseInt(rentalNum));
 			//ps.setString(2, username);
 			
@@ -352,49 +365,40 @@
 			int succ = ps.executeUpdate();
 			
 			
-			System.out.println(succ);
-			System.out.println(succ2);
-			
 			if(succ > 0 && succ2 > 0){
-				out.print("<div class=\"container\">");
-				out.print("<div class=\"row\" style=\"margin-top: 20px\">");
-				out.print("<div class=\"col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3\">");
+				out.print("<div class=\"row\">");
+				out.print("<div class=\"col-md-12 my-3\">");
 				out.print("<div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">");
-				out.print("<strong>Listing Removal Successful</strong>!");
+				out.print("<strong>Renting Removal Successful!</strong>");
 				out.print("<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">");
-				out.print("<span aria-hidden=\"true\">&times;</span>");   
+				out.print("<span aria-hidden=\"true\">&times;</span>");
 				out.print("</button>");
-				out.print("</div>");
 				out.print("</div>");
 				out.print("</div>");
 				out.print("</div>");
 			}
 			else{
-				out.print("<div class=\"container\">");
-				out.print("<div class=\"row\" style=\"margin-top: 20px\">");
-				out.print("<div class=\"col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3\">");
+				out.print("<div class=\"row\">");
+				out.print("<div class=\"col-md-12 my-3\">");
 				out.print("<div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\">");
-				out.print("<strong>Listing Removal Failed</strong>!");
+				out.print("<strong>Renting Removal Failed!</strong> You do not have access to that listing.");
 				out.print("<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">");
-				out.print("<span aria-hidden=\"true\">&times;</span>");   
+				out.print("<span aria-hidden=\"true\">&times;</span>");
 				out.print("</button>");
-				out.print("</div>");
 				out.print("</div>");
 				out.print("</div>");
 				out.print("</div>");
 			}
 			con.close();
 		}catch(Exception e){
-			out.print("<div class=\"container\">");
-			out.print("<div class=\"row\" style=\"margin-top: 20px\">");
-			out.print("<div class=\"col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3\">");
+			System.out.println(e);
+			out.print("<div class=\"row\">");
+			out.print("<div class=\"col-md-12 my-3\">");
 			out.print("<div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\">");
-			out.print("<strong>Listing Removal Failed</strong>!");
-			out.print(e);
+			out.print("<strong>Renting Removal Failed!</strong>");
 			out.print("<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">");
-			out.print("<span aria-hidden=\"true\">&times;</span>");   
+			out.print("<span aria-hidden=\"true\">&times;</span>");
 			out.print("</button>");
-			out.print("</div>");
 			out.print("</div>");
 			out.print("</div>");
 			out.print("</div>");
@@ -402,6 +406,14 @@
 	}
 	
 	%>
+	
+		<footer class="mt-5 pt-5 text-muted text-center text-small">
+      <ul class="list-inline">
+          <li class="list-inline-item"><a href="<%=home%>">Go to home page</a></li>
+        </ul>
+        <p class="mb-1">&copy; 2018 Mehtallica</p>
+      </footer>
+		</div>
 	
 	<% } else { %>
 	

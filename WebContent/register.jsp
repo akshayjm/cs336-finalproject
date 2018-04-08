@@ -127,14 +127,6 @@
         </div>
       </div>
 
-      <footer class="mt-5 pt-5 text-muted text-center text-small">
-      <ul class="list-inline">
-          <li class="list-inline-item"><a href="index.jsp">Go to login page</a></li>
-        </ul>
-        <p class="mb-1">&copy; 2018 Mehtallica</p>
-      </footer>
-    </div>
-
 	<%
 		if (request.getParameter("register") != null) {
 			try {
@@ -145,14 +137,7 @@
 
 				//Create a SQL statement
 				Statement stmt = con.createStatement();
-				//Get the combobox from the index.jsp
-				/* 			String entity = request.getParameter("price"); */
-				//Make a SELECT query from the sells table with the price range specified by the 'price' parameter at the index.jsp
-				/* 			String str = "SELECT * FROM Log_in"; */
-				//Run the query against the database.
-				/* 			ResultSet result = stmt.executeQuery(str); */
 
-				//Get parameters from the HTML form at the HelloWorld.jsp
 				String newFirstname = request.getParameter("first_name");
 				String newLastname = request.getParameter("last_name");
 				String newUsername = request.getParameter("username");
@@ -171,12 +156,14 @@
 				ResultSet result = stmt.executeQuery(str);
 				while (result.next()) {
 					if (result.getString("username").equals(newUsername)) {
-						out.print("<div class=\"md-12\">");
+						out.print("<div class=\"row\">");
+						out.print("<div class=\"col-md-12 my-3\">");
 						out.print("<div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\">");
 						out.print("<strong>Registration Failed</strong>. Try a different username and submit again!");
 						out.print("<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">");
 						out.print("<span aria-hidden=\"true\">&times;</span>");
 						out.print("</button>");
+						out.print("</div>");
 						out.print("</div>");
 						out.print("</div>");
 						successful = false;
@@ -209,17 +196,14 @@
 					//Run the query against the DB
 					ps.executeUpdate();
 
-					/* 				out.print("<br>");
-									out.print("Registration Successful! Click the button below to log in.");
-									out.print("<form method=\"post\" action=\"index.jsp\">");
-									out.print("<input type=\"submit\" value=\"Log In\" />");
-									out.print("</form>"); */
-					out.print("<div class=\"md-12\">");				
+					out.print("<div class=\"row\">");				
+					out.print("<div class=\"col-md-12 my-3\">");				
 					out.print("<div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">");
 					out.print("<strong>Registration Successful</strong>! Click <a href=\"index.jsp\" class=\"alert-link\">here</a> to log in.");
 					out.print("<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">");
 					out.print("<span aria-hidden=\"true\">&times;</span>");
 					out.print("</button>");
+					out.print("</div>");
 					out.print("</div>");
 					out.print("</div>");
 				}
@@ -229,7 +213,8 @@
 
 			} catch (Exception e) {
 				System.out.println(e);
-				out.print("<div class=\"md-12\">");
+				out.print("<div class=\"row\">");
+				out.print("<div class=\"col-md-12 my-3\">");
 				out.print("<div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\">");
 				out.print("<strong>Registration Failed</strong>!");
 				out.print("<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">");
@@ -237,9 +222,18 @@
 				out.print("</button>");
 				out.print("</div>");
 				out.print("</div>");
+				out.print("</div>");
 			}
 		}
 	%>
+	
+	<footer class="mt-5 pt-5 text-muted text-center text-small">
+      <ul class="list-inline">
+          <li class="list-inline-item"><a href="index.jsp">Go to sign in page</a></li>
+        </ul>
+        <p class="mb-1">&copy; 2018 Mehtallica</p>
+      </footer>
+    </div>
 
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->

@@ -18,7 +18,6 @@
 	crossorigin="anonymous">
 <title>User Portal</title>
 </head>
-	
 	<%!
 		public String name;
 		public String username;
@@ -63,47 +62,71 @@
 
 	<% if (username != null) { %>
 	<body>
-	<div class="container">
-		<div class="row" style="margin-top: 20px">
-			<div
-				class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-				<%
-					out.print("<h1>");
-						out.print("Welcome Back, ");
-						out.print(name);
-						out.print("!</h1>");
-				%>
-			</div>
-		</div>
+	<div
+		class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+		<h1 class="display-4">Welcome back, <%=name%>!</h1>
 	</div>
 
 	<div class="container">
-		<div class="row" style="margin-top: 20px">
-			<div
-				class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-				<br>
-				<h2>
-					<a style="color: MEDIUMSEAGREEN;" href="<%=buy%>">Buy</a>
-				</h2>
-				<br>
-				<h2>
-					<a style="color: MEDIUMSEAGREEN;" href="<%=sell%>">Sell</a>
-				</h2>
-				<br>
-				<h2>
-					<a style="color: MEDIUMSEAGREEN;" href="<%=mycars%>">My Cars</a>
-				</h2>
-				<br>
-				<h2>
-					<a style="color: MEDIUMSEAGREEN;" href="<%=rent%>">Rent</a>
-				</h2>
-				<br>
-				<h2>
-					<a style="color: crimson;" href="index.jsp">Log out!</a>
-				</h2>
+		<div class="row">
+			<div class="col-md-6">
+				<div class="card mb-4 box-shadow text-center">
+					<div class="card-header">
+						<h4 class="my-0 font-weight-normal">Buy</h4>
+					</div>
+					<div class="card-body">
+						<p class="card-text">Search for cars to purchase here</p>
+						<a href="<%=buy%>" class="btn btn-block btn-success">Go!</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="card mb-4 box-shadow text-center">
+					<div class="card-header">
+						<h4 class="my-0 font-weight-normal">Sell</h4>
+					</div>
+					<div class="card-body">
+						<p class="card-text">List your cars for sale here</p>
+						<a href="<%=sell%>" class="btn btn-block btn-success">Go!</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-6">
+				<div class="card mb-4 box-shadow text-center">
+					<div class="card-header">
+						<h4 class="my-0 font-weight-normal">Rent</h4>
+					</div>
+					<div class="card-body">
+						<p class="card-text">Search our inventory for any need here</p>
+						<a href="<%=rent%>" class="btn btn-block btn-success">Go!</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="card mb-4 box-shadow text-center">
+					<div class="card-header">
+						<h4 class="my-0 font-weight-normal">My Cars</h4>
+					</div>
+					<div class="card-body">
+						<p class="card-text">Display your active listings and rentals</p>
+						<a href="<%=mycars%>" class="btn btn-block btn-success">Go!</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<a href="index.jsp" class="btn btn-danger btn-lg btn-block">Click here to Log out!</a>
 			</div>
 		</div>
 	</div>
+	
+	<footer class="mt-5 pt-5 text-muted text-center text-small">
+        <p class="mb-1">&copy; 2018 Mehtallica</p>
+      </footer>
 
 	<%
 		} else {
