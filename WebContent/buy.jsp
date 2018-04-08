@@ -130,7 +130,7 @@
               </div>
               <div class="col-md-6 mb-3">
                 <label for="mode">Enter Model</label>
-                <input type="text" class="form-control" id="model" placeholder="" value="" name="model" pattern="^.{0,15}$" required>
+                <input type="text" class="form-control" id="model" placeholder="" value="" name="model" maxlength="15" required>
                 <div class="invalid-feedback">
                   Valid model is required.
                 </div>
@@ -228,7 +228,7 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text">$</span>
                 </div>
-                <input type="text" class="form-control" id="price" placeholder="" value="" name="price" pattern="^[0-9]{0,10}$" required>
+                <input type="text" class="form-control" id="price" placeholder="" value="" name="price" maxlength="10" pattern="^[0-9]{0,10}$" required>
                 <div class="invalid-feedback" style="width: 100%;">
                   Valid price required.
                 </div>
