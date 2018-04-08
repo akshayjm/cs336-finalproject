@@ -243,14 +243,7 @@
 
 			//Create a SQL statement
 			Statement stmt = con.createStatement();
-			//Get the combobox from the index.jsp
-			/* 			String entity = request.getParameter("price"); */
-			//Make a SELECT query from the sells table with the price range specified by the 'price' parameter at the index.jsp
-			/* 			String str = "SELECT * FROM Log_in"; */
-			//Run the query against the database.
-			/* 			ResultSet result = stmt.executeQuery(str); */
 
-			//Get parameters from the HTML form at the HelloWorld.jsp
 			String newCar_id = request.getParameter("car_id");
 			String newMake = request.getParameter("make");
 			String newModel = request.getParameter("model");
@@ -339,7 +332,7 @@
 
 		} catch (Exception e) {
 			System.out.println(e);
-			out.print("<div class=\"row\">");
+			/* out.print("<div class=\"row\">");
 			out.print("<div class=\"col-md-12 my-3\">");
 			out.print("<div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\">");
 			out.print("<strong>Listing Failed!</strong>");
@@ -348,7 +341,7 @@
 			out.print("</button>");
 			out.print("</div>");
 			out.print("</div>");
-			out.print("</div>");
+			out.print("</div>"); */
 		}
 		
 	}

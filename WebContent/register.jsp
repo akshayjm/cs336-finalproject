@@ -213,7 +213,7 @@
 
 			} catch (Exception e) {
 				System.out.println(e);
-				out.print("<div class=\"row\">");
+				/* out.print("<div class=\"row\">");
 				out.print("<div class=\"col-md-12 my-3\">");
 				out.print("<div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\">");
 				out.print("<strong>Registration Failed</strong>!");
@@ -222,7 +222,7 @@
 				out.print("</button>");
 				out.print("</div>");
 				out.print("</div>");
-				out.print("</div>");
+				out.print("</div>"); */
 			}
 		}
 	%>

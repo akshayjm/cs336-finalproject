@@ -163,10 +163,6 @@
 					
 					ResultSet result2 = stmt2.executeQuery(str2);
 					
-	/* 				System.out.println(username); */
-					
-					//out.print("<p>Currently Renting</p>");
-					
 					out.print("<table class=\"table\">");
 					out.print("<thead>");
 					out.print("<tr>");
@@ -179,7 +175,6 @@
 					out.print("<th scope=\"col\">Year</th>");
 					out.print("<th scope=\"col\">Condition</th>");
 					out.print("<th scope=\"col\">Type</th>");
-					//out.print("<th scope=\"col\">Price</th>");
 					out.print("<th scope=\"col\">Start Date</th>");
 					out.print("</tr></thead>");
 					
@@ -226,10 +221,6 @@
 						out.print("<td>");
 						out.print(result2.getString("carType"));
 						out.print("</td>");
-						
-						//out.print("<td>");
-						//out.print(result.getString("price"));
-						//out.print("</td>");
 						
 						out.print("<td>");
 						out.print(result2.getString("out_date"));
@@ -338,7 +329,7 @@
 				con.close();
 			}catch(Exception e){
 				System.out.println(e);
-				out.print("<div class=\"row\">");
+				/* out.print("<div class=\"row\">");
 				out.print("<div class=\"col-md-12 my-3\">");
 				out.print("<div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\">");
 				out.print("<strong>Listing Removal Failed!</strong>");
@@ -347,7 +338,7 @@
 				out.print("</button>");
 				out.print("</div>");
 				out.print("</div>");
-				out.print("</div>");
+				out.print("</div>"); */
 			}
 		}
 	
@@ -406,13 +397,14 @@
 				carType = car_type.getString("carType");
 			}
 			
-			System.out.println(rental_days);
+			/* System.out.println(rental_days);
 			System.out.println(tax);
-			System.out.println(carType);
+			System.out.println(carType); */
 			
 			if(carType.equals("Sedan")){
 				float finalPrice = sedan*rental_days;
 				finalPrice = finalPrice + finalPrice*tax;
+
 				
 				if(rental_days == 0){
 					finalPrice = sedan + sedan*tax;
@@ -421,6 +413,9 @@
 				//formatter.format("%.2f", finalPrice);
 				
 				System.out.println(finalPrice);
+
+				/* System.out.println(finalPrice); */
+
 				out.print("<div class=\"row\">");
 				out.print("<div class=\"col-md-12 my-3\">");
 				out.print("<div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">");
@@ -436,6 +431,7 @@
 			if(carType.equals("Coupe")){
 				float finalPrice = coupe*rental_days;
 				finalPrice = finalPrice + finalPrice*tax;
+
 				
 				if(rental_days == 0){
 					finalPrice = coupe + coupe*tax;
@@ -444,6 +440,8 @@
 				//formatter.format("%.2f", finalPrice);
 				
 				System.out.println(finalPrice);
+
+				/* System.out.println(finalPrice); */
 				out.print("<div class=\"row\">");
 				out.print("<div class=\"col-md-12 my-3\">");
 				out.print("<div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">");
@@ -467,6 +465,9 @@
 				//formatter.format("%.2f", finalPrice);
 				
 				System.out.println(finalPrice);
+				
+				/* System.out.println(finalPrice); */
+				
 				out.print("<div class=\"row\">");
 				out.print("<div class=\"col-md-12 my-3\">");
 				out.print("<div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">");
@@ -482,6 +483,7 @@
 			if(carType.equals("Minivan")){
 				float finalPrice = minivan*rental_days;
 				finalPrice = finalPrice + finalPrice*tax;
+
 				
 				if(rental_days == 0){
 					finalPrice = minivan + minivan*tax;
@@ -490,6 +492,9 @@
 				//formatter.format("%.2f", finalPrice);
 				
 				System.out.println(finalPrice);
+
+				/* System.out.println(finalPrice); */
+
 				out.print("<div class=\"row\">");
 				out.print("<div class=\"col-md-12 my-3\">");
 				out.print("<div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">");
@@ -505,6 +510,7 @@
 			if(carType.equals("Truck")){
 				float finalPrice = truck*rental_days;
 				finalPrice = finalPrice + finalPrice*tax;
+
 				
 				if(rental_days == 0){
 					finalPrice = truck + truck*tax;
@@ -513,6 +519,9 @@
 				//formatter.format("%.2f", finalPrice);
 				
 				System.out.println(finalPrice);
+
+				/* System.out.println(finalPrice); */
+
 				out.print("<div class=\"row\">");
 				out.print("<div class=\"col-md-12 my-3\">");
 				out.print("<div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">");
@@ -557,7 +566,7 @@
 			con.close();
 		}catch(Exception e){
 			System.out.println(e);
-			out.print("<div class=\"row\">");
+			/* out.print("<div class=\"row\">");
 			out.print("<div class=\"col-md-12 my-3\">");
 			out.print("<div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\">");
 			out.print("<strong>Renting Removal Failed!</strong>");
@@ -566,7 +575,7 @@
 			out.print("</button>");
 			out.print("</div>");
 			out.print("</div>");
-			out.print("</div>");
+			out.print("</div>"); */
 		}
 	}
 	

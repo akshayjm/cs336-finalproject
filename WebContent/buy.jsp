@@ -230,10 +230,10 @@
 						CarNode node = new CarNode(result.getString("sale_num"));
 						//System.out.println("DOES "+result.getString("make")+" EQUAL "+newMake+"????");
 						if (result.getString("make").equals(newMake)){
-							node.add(7);
+							node.add(11);
 						}
 						if (result.getString("model").equals(newModel)){
-							node.add(3);
+							node.add(9);
 						}
 						if (result.getString("color").equals(newColor)){
 							node.add(2);
