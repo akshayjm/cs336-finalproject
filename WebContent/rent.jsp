@@ -278,7 +278,11 @@
 		    			String counter = "SELECT MAX(rental_num) As Counter FROM Rental";
 					ResultSet countInit = stmt.executeQuery(counter);
 					countInit.next();
-					int rent_num = Integer.parseInt(countInit.getString("Counter"));
+					String rent_num_string = countInit.getString("Counter");
+					if (rent_num_string == null) {
+						rent_num_string = "0";
+					}
+					int rent_num = Integer.parseInt(rent_num_string);
 					rent_num++;
 		    			
 		    			ps.setString(1, Integer.toString(rent_num));
@@ -353,7 +357,11 @@
 		    			String counter = "SELECT MAX(rental_num) As Counter FROM Rental";
 					ResultSet countInit = stmt.executeQuery(counter);
 					countInit.next();
-					int rent_num = Integer.parseInt(countInit.getString("Counter"));
+					String rent_num_string = countInit.getString("Counter");
+					if (rent_num_string == null) {
+						rent_num_string = "0";
+					}
+					int rent_num = Integer.parseInt(rent_num_string);
 					rent_num++;
 		    			
 		    			ps.setString(1, Integer.toString(rent_num));
@@ -428,7 +436,11 @@
 		    			String counter = "SELECT MAX(rental_num) As Counter FROM Rental";
 					ResultSet countInit = stmt.executeQuery(counter);
 					countInit.next();
-					int rent_num = Integer.parseInt(countInit.getString("Counter"));
+					String rent_num_string = countInit.getString("Counter");
+					if (rent_num_string == null) {
+						rent_num_string = "0";
+					}
+					int rent_num = Integer.parseInt(rent_num_string);
 					rent_num++;
 		    			
 		    			ps.setString(1, Integer.toString(rent_num));
@@ -503,7 +515,11 @@
 		    			String counter = "SELECT MAX(rental_num) As Counter FROM Rental";
 					ResultSet countInit = stmt.executeQuery(counter);
 					countInit.next();
-					int rent_num = Integer.parseInt(countInit.getString("Counter"));
+					String rent_num_string = countInit.getString("Counter");
+					if (rent_num_string == null) {
+						rent_num_string = "0";
+					}
+					int rent_num = Integer.parseInt(rent_num_string);
 					rent_num++;
 		    			
 		    			ps.setString(1, Integer.toString(rent_num));
@@ -578,7 +594,11 @@
 		    			String counter = "SELECT MAX(rental_num) As Counter FROM Rental";
 					ResultSet countInit = stmt.executeQuery(counter);
 					countInit.next();
-					int rent_num = Integer.parseInt(countInit.getString("Counter"));
+					String rent_num_string = countInit.getString("Counter");
+					if (rent_num_string == null) {
+						rent_num_string = "0";
+					}
+					int rent_num = Integer.parseInt(rent_num_string);
 					rent_num++;
 		    			
 		    			ps.setString(1, Integer.toString(rent_num));
