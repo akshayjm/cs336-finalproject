@@ -237,6 +237,30 @@
 			</div>
 		</div>
 	</div>
+	
+	<div class="container">
+		<div class="row" style="margin-top: 20px">
+			<div class="col-xs-12 col-sm-8 col-md-12 col-sm-offset-2 col-md-offset-3">
+				<form role="form" method="post">
+					<fieldset>
+						<h3>Enter the Rental Number you wish to delete below:</h3>
+						<div class="row">
+							<div class="col-xs-6 col-sm-6 col-md-6">
+								<div class="form-group">
+									<input type="text" class="form-control input-lg" id="rental_num" name="rental_num" placeholder="Rental Number" pattern= "^.{1,}$" required/>
+								</div>
+							</div>
+							
+							<div class="col-xs-6 col-sm-6 col-md-6">
+								<input type="submit" name="delete_rental" class="btn btn-sm btn-danger btn-block" value="Remove Rental">
+							</div>
+						</div>
+					</fieldset>
+				</form>
+			</div>
+		</div>
+	</div>
+	
 	<%
 		if(request.getParameter("delete") != null){
 			try{
@@ -302,6 +326,80 @@
 				out.print("</div>");
 			}
 		}
+	
+	if(request.getParameter("delete_rental") != null){
+		try{
+			//Get the database connection
+			ApplicationDB db = new ApplicationDB();
+			Connection con = db.getConnection();
+
+			//Create a SQL statement
+			
+			
+			String rentalNum = request.getParameter("rental_num");
+			String deletion_rental = "DELETE FROM Rental WHERE Rental.rental_num = ?";
+			
+			String addToInventory = "UPDATE Car SET inventory = inventory +1 WHERE car_id IN(SELECT car_id FROM Rental where rental_num = ?)";
+			
+			PreparedStatement ps = con.prepareStatement(deletion_rental);
+			PreparedStatement ps2 = con.prepareStatement(addToInventory);
+					
+			ps.setInt(1, Integer.parseInt(rentalNum));
+			ps2.setInt(1, Integer.parseInt(rentalNum));
+			//ps.setString(2, username);
+			
+			int succ2 = ps2.executeUpdate();
+			int succ = ps.executeUpdate();
+			
+			
+			System.out.println(succ);
+			System.out.println(succ2);
+			
+			if(succ > 0 && succ2 > 0){
+				out.print("<div class=\"container\">");
+				out.print("<div class=\"row\" style=\"margin-top: 20px\">");
+				out.print("<div class=\"col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3\">");
+				out.print("<div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">");
+				out.print("<strong>Listing Removal Successful</strong>!");
+				out.print("<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">");
+				out.print("<span aria-hidden=\"true\">&times;</span>");   
+				out.print("</button>");
+				out.print("</div>");
+				out.print("</div>");
+				out.print("</div>");
+				out.print("</div>");
+			}
+			else{
+				out.print("<div class=\"container\">");
+				out.print("<div class=\"row\" style=\"margin-top: 20px\">");
+				out.print("<div class=\"col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3\">");
+				out.print("<div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\">");
+				out.print("<strong>Listing Removal Failed</strong>!");
+				out.print("<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">");
+				out.print("<span aria-hidden=\"true\">&times;</span>");   
+				out.print("</button>");
+				out.print("</div>");
+				out.print("</div>");
+				out.print("</div>");
+				out.print("</div>");
+			}
+			con.close();
+		}catch(Exception e){
+			out.print("<div class=\"container\">");
+			out.print("<div class=\"row\" style=\"margin-top: 20px\">");
+			out.print("<div class=\"col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3\">");
+			out.print("<div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\">");
+			out.print("<strong>Listing Removal Failed</strong>!");
+			out.print(e);
+			out.print("<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">");
+			out.print("<span aria-hidden=\"true\">&times;</span>");   
+			out.print("</button>");
+			out.print("</div>");
+			out.print("</div>");
+			out.print("</div>");
+			out.print("</div>");
+		}
+	}
 	
 	%>
 	
