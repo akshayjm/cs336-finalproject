@@ -359,19 +359,135 @@
 
 			//Create a SQL statement
 			
+			int sedan = 45;
+			int coupe = 60;
+			int suv = 75;
+			int minivan = 90;
+			int truck = 115;
+			int rental_days = -1;
+			float tax = -1;
+			String carType = "";
 			
 			String rentalNum = request.getParameter("rental_num");
 			String deletion_rental = "DELETE FROM Rental WHERE Rental.rental_num = ? AND Rental.renter_id = ?";
-			
+			String days = "SELECT DATEDIFF(now(), (SELECT out_date from Rental WHERE rental_num = ?)) AS days";
+			String taxes = "SELECT tax_rate FROM State WHERE State.name in(SELECT User.state from User WHERE username = ?)";
 			String addToInventory = "UPDATE Car SET inventory = inventory +1 WHERE car_id IN(SELECT car_id FROM Rental where rental_num = ?)";
+			String type = "SELECT carType FROM Car Where car_id in(SELECT car_id from Rental where rental_num = ?)";
 			
 			PreparedStatement ps = con.prepareStatement(deletion_rental);
 			PreparedStatement ps2 = con.prepareStatement(addToInventory);
+			PreparedStatement ps3 = con.prepareStatement(days);
+			PreparedStatement ps4 = con.prepareStatement(taxes);
+			PreparedStatement ps5 = con.prepareStatement(type);
 					
 			ps.setInt(1, Integer.parseInt(rentalNum));
 			ps.setString(2, username);
 			ps2.setInt(1, Integer.parseInt(rentalNum));
+			ps3.setInt(1, Integer.parseInt(rentalNum));
+			ps4.setString(1, username);
+			ps5.setString(1, rentalNum);
 			//ps.setString(2, username);
+			
+			ResultSet days_rented = ps3.executeQuery();
+			ResultSet tax_rate = ps4.executeQuery();
+			ResultSet car_type = ps5.executeQuery();
+			
+			while(days_rented.next()){
+				rental_days = Integer.parseInt(days_rented.getString("days"));
+			}
+			
+			while(tax_rate.next()){
+				tax = Float.parseFloat(tax_rate.getString("tax_rate"));
+			}
+			while(car_type.next()){
+				carType = car_type.getString("carType");
+			}
+			
+			System.out.println(rental_days);
+			System.out.println(tax);
+			System.out.println(carType);
+			
+			if(carType.equals("Sedan")){
+				float finalPrice = sedan*rental_days;
+				finalPrice = finalPrice + finalPrice*tax;
+				System.out.println(finalPrice);
+				out.print("<div class=\"row\">");
+				out.print("<div class=\"col-md-12 my-3\">");
+				out.print("<div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">");
+				out.print("<strong>Your Amount Due Is: </strong>");
+				out.print(finalPrice);
+				out.print("<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">");
+				out.print("<span aria-hidden=\"true\">&times;</span>");
+				out.print("</button>");
+				out.print("</div>");
+				out.print("</div>");
+				out.print("</div>");
+			}
+			if(carType.equals("Coupe")){
+				float finalPrice = coupe*rental_days;
+				finalPrice = finalPrice + finalPrice*tax;
+				System.out.println(finalPrice);
+				out.print("<div class=\"row\">");
+				out.print("<div class=\"col-md-12 my-3\">");
+				out.print("<div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">");
+				out.print("<strong>Your Amount Due Is: </strong>");
+				out.print(finalPrice);
+				out.print("<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">");
+				out.print("<span aria-hidden=\"true\">&times;</span>");
+				out.print("</button>");
+				out.print("</div>");
+				out.print("</div>");
+				out.print("</div>");
+			}
+			if(carType.equals("SUV")){
+				float finalPrice = suv*rental_days;
+				finalPrice = finalPrice + finalPrice*tax;
+				System.out.println(finalPrice);
+				out.print("<div class=\"row\">");
+				out.print("<div class=\"col-md-12 my-3\">");
+				out.print("<div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">");
+				out.print("<strong>Your Amount Due Is: </strong>");
+				out.print(finalPrice);
+				out.print("<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">");
+				out.print("<span aria-hidden=\"true\">&times;</span>");
+				out.print("</button>");
+				out.print("</div>");
+				out.print("</div>");
+				out.print("</div>");
+			}
+			if(carType.equals("Minivan")){
+				float finalPrice = minivan*rental_days;
+				finalPrice = finalPrice + finalPrice*tax;
+				System.out.println(finalPrice);
+				out.print("<div class=\"row\">");
+				out.print("<div class=\"col-md-12 my-3\">");
+				out.print("<div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">");
+				out.print("<strong>Your Amount Due Is: </strong>");
+				out.print(finalPrice);
+				out.print("<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">");
+				out.print("<span aria-hidden=\"true\">&times;</span>");
+				out.print("</button>");
+				out.print("</div>");
+				out.print("</div>");
+				out.print("</div>");
+			}
+			if(carType.equals("Truck")){
+				float finalPrice = truck*rental_days;
+				finalPrice = finalPrice + finalPrice*tax;
+				System.out.println(finalPrice);
+				out.print("<div class=\"row\">");
+				out.print("<div class=\"col-md-12 my-3\">");
+				out.print("<div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">");
+				out.print("<strong>Your Amount Due Is: </strong>");
+				out.print(finalPrice);
+				out.print("<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">");
+				out.print("<span aria-hidden=\"true\">&times;</span>");
+				out.print("</button>");
+				out.print("</div>");
+				out.print("</div>");
+				out.print("</div>");
+			}
 			
 			int succ2 = ps2.executeUpdate();
 			int succ = ps.executeUpdate();
