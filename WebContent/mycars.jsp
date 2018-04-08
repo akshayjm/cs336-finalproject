@@ -62,7 +62,7 @@
 					Statement stmt = con.createStatement();
 					Statement stmt2 = con.createStatement();
 					
-					String str = "SELECT C.car_id, C.make, C.model, C.color, C.carYear, C.cond, C.carType, L.sale_num, L.price, L.date_posted ";
+					String str = "SELECT C.car_id, C.imageURL, C.make, C.model, C.color, C.carYear, C.cond, C.carType, L.sale_num, L.price, L.date_posted ";
 					str += "FROM Car As C, Listing As L WHERE C.car_id = L.car_id AND L.seller_id = \"";
 					str += username + "\" ORDER BY date_posted";
 					
@@ -75,6 +75,7 @@
 					out.print("<tr>");
 					out.print("<th scope=\"col\">Listing Number</th>");
 					out.print("<th scope=\"col\">VIN Number</th>");
+					out.print("<th scope=\"col\">Logo</th>");
 					out.print("<th scope=\"col\">Make</th>");
 					out.print("<th scope=\"col\">Model</th>");
 					out.print("<th scope=\"col\">Color</th>");
@@ -96,6 +97,10 @@
 						
 						out.print("<td>");
 						out.print(result.getString("car_id"));
+						out.print("</td>");
+						
+						out.print("<td>");
+						out.print("<img src=\""+result.getString("imageURL")+"\" alt=\"\" height=50 width=50>");
 						out.print("</td>");
 						
 						out.print("<td>");
@@ -152,7 +157,7 @@
 
 				<%
 					
-					String str2 = "SELECT C.car_id, C.make, C.model, C.color, C.carYear, C.cond, C.carType, R.rental_num, R.out_date ";
+					String str2 = "SELECT C.car_id, C.imageURL, C.make, C.model, C.color, C.carYear, C.cond, C.carType, R.rental_num, R.out_date ";
 					str2 += "FROM Car As C, Rental As R WHERE C.car_id = R.car_id AND R.renter_id = \"";
 					str2 += username + "\" ORDER BY out_date";
 					
@@ -167,6 +172,7 @@
 					out.print("<tr>");
 					out.print("<th scope=\"col\">Rental Number</th>");
 					out.print("<th scope=\"col\">VIN Number</th>");
+					out.print("<th scope=\"col\">Logo</th>");
 					out.print("<th scope=\"col\">Make</th>");
 					out.print("<th scope=\"col\">Model</th>");
 					out.print("<th scope=\"col\">Color</th>");
@@ -191,6 +197,10 @@
 						
 						out.print("<td>");
 						out.print(result2.getString("car_id"));
+						out.print("</td>");
+						
+						out.print("<td>");
+						out.print("<img src=\""+result2.getString("imageURL")+"\" alt=\"\" height=50 width=50>");
 						out.print("</td>");
 						
 						out.print("<td>");
@@ -297,6 +307,8 @@
 				ps.setString(2, username);
 				
 				int succ = ps.executeUpdate();
+				
+				response.setIntHeader("Refresh", 300);
 				
 				
 				if(succ > 0){
