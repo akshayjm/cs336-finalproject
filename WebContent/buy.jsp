@@ -31,9 +31,18 @@
 
 <%
 	username = request.getParameter("username");
+	boolean found = false;
+	CarNode temp;
+	
+	//Get the database connection
+	ApplicationDB db = new ApplicationDB();
+	Connection con = db.getConnection();
+	
 %>
 
-<% if (username != null) { %>
+<%
+	if (username != null) {
+%>
 <body>
 	<div class="container">
 		<div class="row" style="margin-top: 20px">
@@ -42,32 +51,15 @@
 					<fieldset>
 						<h3>Search for a car to buy</h3>
 						<div class="form-group">
-							<p>Select your car's type below</p>
-							<select>
-								<option value="Convertible">Convertible</option>
-								<option value="Coupe">Coupe</option>
-								<option value="Crossover">Crossover</option>
-								<option value="Hatchback">Hatchback</option>
-								<option value="Hybrid">Hybrid</option>
-								<option value="Luxury">Luxury</option>
-								<option value="Minivan">Minivan</option>
-								<option value="Sedan">Sedan</option>
-								<option value="Sport">Sport</option>
-								<option value="SUV">SUV</option>
-								<option value="Truck">Truck</option>
-								<option value="Wagon">Wagon</option>
-							</select>
-						</div>
-						<div class="form-group">
 							<p>Select your car's make below</p>
-							<select>
+							<select name="make" id="make"> 
 								<option value="Acura">Acura</option>
 								<option value="Alpha Romeo">Alpha Romeo</option>
 								<option value="Aptera">Aptera</option>
 								<option value="Aston Martin">Aston Martin</option>
- 								<option value="Audi">Audi</option>
+								<option value="Audi">Audi</option>
 								<option value="Bentley">Bentley</option>
- 								<option value="BMW">BMW</option>
+								<option value="BMW">BMW</option>
 								<option value="Buick">Buick</option>
 								<option value="Cadillac">Cadillac</option>
 								<option value="Chevrolet">Chevrolet</option>
@@ -76,27 +68,27 @@
 								<option value="Corbin">Corbin</option>
 								<option value="Dodge">Dodge</option>
 								<option value="Eagle">Eagle</option>
- 								<option value="Ferrari">Ferrari</option>
- 								<option value="Ford">Ford</option>
+								<option value="Ferrari">Ferrari</option>
+								<option value="Ford">Ford</option>
 								<option value="Geo">Geo</option>
 								<option value="GMC">GMC</option>
 								<option value="Holden">Holden</option>
- 								<option value="Honda">Honda</option>
+								<option value="Honda">Honda</option>
 								<option value="Hummer">Hummer</option>
- 								<option value="Hyundai">Hyundai</option>
- 								<option value="Infiniti">Infiniti</option>
+								<option value="Hyundai">Hyundai</option>
+								<option value="Infiniti">Infiniti</option>
 								<option value="Isuzu">Isuzu</option>
- 								<option value="Jaguar">Jaguar</option>
- 								<option value="Jeep">Jeep</option>
+								<option value="Jaguar">Jaguar</option>
+								<option value="Jeep">Jeep</option>
 								<option value="Kia">Kia</option>
 								<option value="Land Rover">Land Rover</option>
 								<option value="Kia">Honda</option>
- 								<option value="Lexus">Lexus</option>
+								<option value="Lexus">Lexus</option>
 								<option value="Lincoln">Lincoln</option>
 								<option value="Lotus">Lotus</option>
 								<option value="Maserati">Maserati</option>
 								<option value="Maybach">Maybach</option>
- 								<option value="Mazda">Mazda</option>
+								<option value="Mazda">Mazda</option>
 								<option value="Mercedes-Benz">Mercedes-Benz</option>
 								<option value="Mercury">Mercury</option>
 								<option value="Mitsubishi">Mitsubishi</option>
@@ -106,7 +98,7 @@
 								<option value="Plymouth">Plymouth</option>
 								<option value="Pontiac">Pontiac</option>
 								<option value="Mercedes">Mercedes</option>
- 								<option value="Porsche">Porsche</option>
+								<option value="Porsche">Porsche</option>
 								<option value="Ram">Ram</option>
 								<option value="Renault">Renault</option>
 								<option value="Rolls-Royce">Rolls-Royce</option>
@@ -115,24 +107,22 @@
 								<option value="Scion">Scion</option>
 								<option value="Spyker">Spyker</option>
 								<option value="Studebaker">Studebaker</option>
- 								<option value="Subaru">Subaru</option>
+								<option value="Subaru">Subaru</option>
 								<option value="Suzuki">Suzuki</option>
- 								<option value="Tesla">Tesla</option>
- 								<option value="Toyota">Toyota</option>
- 								<option value="Volkswagon">Volkswagon</option>
+								<option value="Tesla">Tesla</option>
+								<option value="Toyota">Toyota</option>
+								<option value="Volkswagon">Volkswagon</option>
 								<option value="Volvo">Volvo</option>
 							</select>
 						</div>
 						<div class="form-group">
 							<p>Enter your car's model below</p>
 							<input type="text" class="form-control input-lg" id="model"
-								name="model" placeholder="Model" pattern="^.{0,15}$"
-								required />
+								name="model" placeholder="Model" pattern="^.{0,15}$" required />
 						</div>
 						<div class="form-group">
-							<!--<input type="text" class="form-control input-lg" id="color" name="color" placeholder="Color" pattern="^[A-Za-z]{0,20}$" required/>-->
 							<p>Select your car's color below</p>
-							<select name="color">
+							<select name="color" id="color">
 								<option value="Blue">Blue</option>
 								<option value="Red">Red</option>
 								<option value="Yellow">Yellow</option>
@@ -143,11 +133,10 @@
 								<option value="Brown">Brown</option>
 								<option value="Pink">Pink</option>
 							</select>
-
 						</div>
 						<div class="form-group">
 							<p>Select your car's make below</p>
-							<select>
+							<select name="carYear" id="carYear">
 								<option value="2000">2000</option>
 								<option value="2001">2001</option>
 								<option value="2002">2002</option>
@@ -171,13 +160,30 @@
 						</div>
 						<div class="form-group">
 							<p>Select your car's condition below</p>
-							<select>
+							<select name="cond" id="cond">
 								<option value="New">New</option>
 								<option value="Like New">Like New</option>
 								<option value="Good">Good</option>
 								<option value="Fair">Fair</option>
 								<option value="Poor">Poor</option>
 								<option value="For Parts">For Parts</option>
+							</select>
+						</div>
+						<div class="form-group">
+							<p>Select your car's type below</p>
+							<select name="carType" id="carType">
+								<option value="Convertible">Convertible</option>
+								<option value="Coupe">Coupe</option>
+								<option value="Crossover">Crossover</option>
+								<option value="Hatchback">Hatchback</option>
+								<option value="Hybrid">Hybrid</option>
+								<option value="Luxury">Luxury</option>
+								<option value="Minivan">Minivan</option>
+								<option value="Sedan">Sedan</option>
+								<option value="Sport">Sport</option>
+								<option value="SUV">SUV</option>
+								<option value="Truck">Truck</option>
+								<option value="Wagon">Wagon</option>
 							</select>
 						</div>
 						<div class="form-group">
@@ -199,86 +205,95 @@
 	</div>
 	<%
 		if (request.getParameter("List") != null) {
-			try {
+				System.out.println("Pressed List button");
+				try {
 
-				//Get the database connection
-				ApplicationDB db = new ApplicationDB();
-				Connection con = db.getConnection();
+					//Create a SQL statement
+					Statement stmt = con.createStatement();
 
-				//Create a SQL statement
-				Statement stmt = con.createStatement();
+					//Get parameters from the HTML form at the HelloWorld.jsp
+					newMake = request.getParameter("make");
+					newModel = request.getParameter("model");
+					newColor = request.getParameter("color");
+					newCarYear = request.getParameter("carYear");
+					newCond = request.getParameter("cond");
+					newCarType = request.getParameter("carType");
+					newPrice = request.getParameter("price");
+					boolean successful = true;
 
-				//Get parameters from the HTML form at the HelloWorld.jsp
-				newMake = request.getParameter("make");
-				newModel = request.getParameter("model");
-				newColor = request.getParameter("color");
-				newCarYear = request.getParameter("carYear");
-				newCond = request.getParameter("cond");
-				newCarType = request.getParameter("carType");
-				newPrice = request.getParameter("price");
-				boolean successful = true;
-
-				String str = "SELECT * FROM Car NATURAL JOIN Listing";
-				//Run the query against the database.
-				ResultSet result = stmt.executeQuery(str);
-				head = null;
-				while (result.next()) {
-					CarNode node = new CarNode(result.getString("car_id"));
-					if (result.getString("make").equals(newMake))
-						node.add();
-					if (result.getString("model").equals(newModel))
-						node.add();
-					if (result.getString("color").equals(newColor))
-						node.add();
-					if (result.getString("carYear").equals(newCarYear))
-						node.add();
-					if (result.getString("cond").equals(newCond))
-						node.add();
-					if (result.getString("carType").equals(newCarType))
-						node.add();
-					if (result.getString("price").equals(newPrice))
-						node.add();
-
-					//add to list
-					if (head == null) {
-						head = node;
-					}
-					
-					//compare to head
-					else if (node.count() > head.count()){
-						node.next = head;
-						head = node;
-					}
-					
-					else {
-						CarNode temp = head.next;
-						CarNode prev = head;
-						while (temp != null) {
-
-						//insert between
-						if (node.count() > temp.count()) {
-							node.next = temp;
-							prev.next = node;
-							break;
+					String str = "SELECT * FROM Car NATURAL JOIN Listing";
+					//Run the query against the database.
+					ResultSet result = stmt.executeQuery(str);
+					head = null;
+					temp = null;
+					while (result.next()) {
+						CarNode node = new CarNode(result.getString("sale_num"));
+						//System.out.println("DOES "+result.getString("make")+" EQUAL "+newMake+"????");
+						if (result.getString("make").equals(newMake)){
+							node.add(7);
+						}
+						if (result.getString("model").equals(newModel)){
+							node.add(3);
+						}
+						if (result.getString("color").equals(newColor)){
+							node.add(2);
+						}
+						int year = Integer.parseInt(result.getString("carYear"));
+						int newYear = Integer.parseInt(newCarYear);
+						if (year % newYear < 3 || newYear % year < 3){
+							node.add(3);
+						}
+						if (result.getString("cond").equals(newCond)){
+							node.add(2);
+						}
+						if (result.getString("carType").equals(newCarType)){
+							node.add(3);
+						}
+						if (result.getString("price").equals(newPrice)){
+							node.add(1);
 						}
 
-						//move on
+						//add to list
+						if (head == null) {
+							head = node;
+						}
+
+						//compare to head
+						else if (node.count() > head.count()) {
+							node.next = head;
+							head = node;
+						}
+
 						else {
-							prev = temp;
-							temp = temp.next;
+							temp = head.next;
+							CarNode prev = head;
+							while (temp != null) {
+
+								//insert between
+								if (node.count() > temp.count()) {
+									node.next = temp;
+									prev.next = node;
+									break;
+								}
+
+								//move on
+								else {
+									prev = temp;
+									temp = temp.next;
+								}
+							}
+							
+							if (temp == null)
+								prev.next = node;
+
 						}
-						}
-						if (temp == null)
-							prev.next = node;
-						
 					}
-				}
-				//NOW PRINT
-				
-				out.print("<table class=\"table\">");
+					//NOW PRINT
+
+					out.print("<table class=\"table\">");
 					out.print("<thead>");
 					out.print("<tr>");
-					out.print("<th scope=\"col\">Listing Number</th>");
+					out.print("<th scope=\"col\">Sale Number</th>");
 					out.print("<th scope=\"col\">Make</th>");
 					out.print("<th scope=\"col\">Model</th>");
 					out.print("<th scope=\"col\">Color</th>");
@@ -288,129 +303,107 @@
 					out.print("<th scope=\"col\">Price</th>");
 					out.print("<th scope=\"col\">Date Posted</th>");
 					out.print("</tr></thead>");
-					
-					
-				CarNode temp = head;
-				CarNode temp2;
-				result.close();
-				int count = 0;
-				
-				out.print("<tbody>");
-				while(count < 30 && temp != null){
-					
-					str = "SELECT Car.car_id, make, model, color, carYear, cond, carType, price, date_posted, Listing.sale_num FROM Car NATURAL JOIN Listing WHERE Listing.car_id = \""
-							+ temp.carID + "\" AND Car.car_id = \"" + temp.carID + "\"";
-					//String str = "SELECT C.car_id, C.make, C.model, C.color, C.carYear, C.cond, C.carType, L.sale_num, L.price, L.date_posted ";
-					/*str += "FROM Car As C, Listing As L WHERE C.car_id = L.car_id AND L.seller_id = \"";
-					str += username + "\" ORDER BY date_posted";*/
-					//Run the query against the database.
-					result = stmt.executeQuery(str);
-					result.next();
-					
-					String tempMake = result.getString("make");
-					String tempModel = result.getString("model");
-					String tempColor = result.getString("color");
-					String tempCarYear = result.getString("carYear");
-					String tempCond = result.getString("cond");
-					String tempCarType = result.getString("carType");
-					String tempPrice = result.getString("price");
-					String tempDate = result.getString("date_posted");
-					String tempSaleNum = result.getString("Listing.sale_num");
 
-					//System.out.println(temp.carID);
-					
-					//Row
-					out.print("<tr>");
-					//Columns				
-					out.print("<td>");
-					out.print(tempSaleNum);
-					out.print("</td>");
-					
-					out.print("<td>");
-					out.print(tempMake);
-					out.print("</td>");
-					
-					out.print("<td>");
-					out.print(tempModel);
-					out.print("</td>");
-					
-					out.print("<td>");
-					out.print(tempColor);
-					out.print("</td>");
-					
-					out.print("<td>");
-					out.print(tempCarYear);
-					out.print("</td>");
-					
-					out.print("<td>");
-					out.print(tempCond);
-					out.print("</td>");
-					
-					out.print("<td>");
-					out.print(tempCarType);
-					out.print("</td>");
-					
-					out.print("<td>");
-					out.print(tempPrice);
-					out.print("</td>");
-					
-					out.print("<td>");
-					out.print(tempDate);
-					out.print("</td>");
-					
-					out.print("</tr>");
-					
-					temp = temp.next;
-					
-					count++;
-				}
-				out.print("</tbody></table>");
-				
-/* 				while (temp != null) {
+					temp = head;
+					CarNode temp2;
+					result.close();
+					int count = 0;
 
-					str = "SELECT make, model, color, carYear, cond, carType, price FROM Car NATURAL JOIN Listing WHERE Listing.car_id = "
-							+ temp.carID + " AND Car.car_id = " + temp.carID;
-					//Run the query against the database.
-					result = stmt.executeQuery(str);
-					result.next();
-					
-					String tempMake = result.getString("make");
-					String tempModel = result.getString("model");
-					String tempColor = result.getString("color");
-					String tempCarYear = result.getString("carYear");
-					String tempCond = result.getString("cond");
-					String tempCarType = result.getString("carType");
-					String tempPrice = result.getString("price");
+					ArrayList<String> arr = new ArrayList<String>();
+					out.print("<tbody>");
+					while (count < 30 && temp != null) {
+						
+						//add to String array to store temporarily
+						arr.add(temp.carID);
+						
+						str = "SELECT make, model, color, carYear, cond, carType, price, date_posted, sale_num FROM Car NATURAL JOIN Listing WHERE Listing.sale_num = "
+								+ "'" + temp.carID + "'";
 
-					System.out.println(temp.carID);
-					
-					out.print("<div class=\"card\" style=\"width: 18rem;\">");
-					out.print("<img class=\"card-img-top\" src=\"...\" alt=\"Card image cap\">");
-					out.print("<div class=\"card-body\">");
-					out.print("<h5 class=\"card-title\">" + tempMake + " " + tempModel + "</h5>");
-					out.print("<p class=\"card-text\">Color: "+tempColor+"<br/>Year: "+tempCarYear+"<br/>");
-					out.print("Condition: "+tempCond+"<br/>Type: "+tempCarType+"<br/>Price: "+tempPrice+"</p>");
-				    out.print("<input type=\"submit\" name=\"buy\" class=\"btn btn-primary\" value=\"Buy\">");
-				    out.print("</div>");
-					out.print("</div>");
+						//Run the query against the database.
+						result = stmt.executeQuery(str);
+						result.next();
 
-				} */
+						String tempMake = result.getString("make");
+						String tempModel = result.getString("model");
+						String tempColor = result.getString("color");
+						String tempCarYear = result.getString("carYear");
+						String tempCond = result.getString("cond");
+						String tempCarType = result.getString("carType");
+						String tempPrice = result.getString("price");
+						String tempDate = result.getString("date_posted");
+						//System.out.println(temp.carID);
+
+						//Row
+						out.print("<tr>");
+						//Columns				
+						out.print("<td>");
+						out.print(temp.carID);
+						out.print("</td>");
+
+						out.print("<td>");
+						out.print(tempMake);
+						out.print("</td>");
+
+						out.print("<td>");
+						out.print(tempModel);
+						out.print("</td>");
+
+						out.print("<td>");
+						out.print(tempColor);
+						out.print("</td>");
+
+						out.print("<td>");
+						out.print(tempCarYear);
+						out.print("</td>");
+
+						out.print("<td>");
+						out.print(tempCond);
+						out.print("</td>");
+
+						out.print("<td>");
+						out.print(tempCarType);
+						out.print("</td>");
+
+						out.print("<td>");
+						out.print(tempPrice);
+						out.print("</td>");
+
+						out.print("<td>");
+						out.print(tempDate);
+						out.print("</td>");
+
+						out.print("</tr>");
+
+						temp = temp.next;
+
+						count++;
+					}
+					out.print("</tbody></table>");
+					
+					//store into file called storage.txt
+					TextStorage storage = new TextStorage();
+					storage.saveToFile(arr);
+					
 	%>
 	<div class="container">
 		<div class="row" style="margin-top: 20px">
-			<div class="col-xs-12 col-sm-8 col-md-12 col-sm-offset-2 col-md-offset-3">
+			<div
+				class="col-xs-12 col-sm-8 col-md-12 col-sm-offset-2 col-md-offset-3">
 				<form role="form" method="post">
 					<fieldset>
-						<h3>Enter the Listing Number of the car you wish to buy:</h3>
+						<h3>Enter the Sale Number of the car you wish to buy:</h3>
 						<div class="row">
 							<div class="col-xs-6 col-sm-6 col-md-6">
 								<div class="form-group">
-									<input type="text" class="form-control input-lg" id="sale_num" name="sale_num" placeholder="Listing Number" pattern= "^.{1,}$" required/>
+									<input type="text" class="form-control input-lg" id="sale_num"
+										name="sale_num" placeholder="Sale Number" pattern="^.{1,}$"
+										required />
 								</div>
 							</div>
-							
+
 							<div class="col-xs-6 col-sm-6 col-md-6">
-								<input type="submit" name="buy" class="btn btn-sm btn-danger btn-block" value="Buy Listing">
+								<input type="submit" name="buy"
+									class="btn btn-sm btn-danger btn-block" value="Buy Listing">
 							</div>
 						</div>
 					</fieldset>
@@ -419,52 +412,30 @@
 		</div>
 	</div>
 	<%
-	if (head == null){
-		out.print("<div class=\"container\">");
-		out.print("<div class=\"row\" style=\"margin-top: 20px\">");
-		out.print("<div class=\"col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3\">");
-		out.print("<div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\">");
-		out.print("<strong>Sorry, no car fits those parameters :(</strong>");
-		out.print("<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">");
-		out.print("<span aria-hidden=\"true\">&times;</span>");
-		out.print("</button>");
-		out.print("</div>");
-		out.print("</div>");
-		out.print("</div>");
-		out.print("</div>");
-	}
-	else if (request.getParameter("buy") != null) {
-		String saleNum = request.getParameter("sale_num");
-		String str2 = "SELECT car_id FROM Car WHERE car_id IN (SELECT car_id FROM Listing WHERE sale_num = \"" + saleNum + "\")";
-		Statement stmt2 = con.createStatement();
-		ResultSet res = stmt2.executeQuery(str2);
-		String vinNum = res.getString("car_id");
-		boolean found = false;
-		temp = head;
-		
-		while(temp != null){
-			if (temp.carID.equals(vinNum)){
-				found = true;
-				break;
-			}
-			temp = temp.next;
-		}
-		
-		if (found) {
-					//System.out.println("Are you being pressed");
-					//Make a select statement for the Car table:
-					String carDelete = "DELETE FROM Car WHERE car_id = '"+vinNum+"'";
+				if (head == null) {
+						out.print("<div class=\"container\">");
+						out.print("<div class=\"row\" style=\"margin-top: 20px\">");
+						out.print("<div class=\"col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3\">");
+						out.print("<div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\">");
+						out.print("<strong>Sorry, no cars exist in the database :(</strong>");
+						out.print(
+								"<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">");
+						out.print("<span aria-hidden=\"true\">&times;</span>");
+						out.print("</button>");
+						out.print("</div>");
+						out.print("</div>");
+						out.print("</div>");
+						out.print("</div>");
+					}
+					result.close();
 
-					//Create a Prepared SQL statement allowing you to introduce the parameters of the query
-					PreparedStatement ps = con.prepareStatement(carDelete);
-					ps.executeUpdate();
-
+				} catch (Exception e) {
 					out.print("<div class=\"container\">");
 					out.print("<div class=\"row\" style=\"margin-top: 20px\">");
 					out.print("<div class=\"col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3\">");
-					out.print("<div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">");
-					out.print("<strong>Buying Successful</strong>! Click <a href=\"login.jsp?name=" + username
-							+ "\" class=\"alert-link\">here</a> to return home.");
+					out.print("<div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\">");
+					out.print("<strong>Purchase Failed</strong>!");
+					out.print(e);
 					out.print(
 							"<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">");
 					out.print("<span aria-hidden=\"true\">&times;</span>");
@@ -473,23 +444,42 @@
 					out.print("</div>");
 					out.print("</div>");
 					out.print("</div>");
-
 				}
-		}
-		else{
-			
-		}
-				//close the connection.
-				result.close();
-				con.close();
 
-			} catch (Exception e) {
+			} else if (request.getParameter("buy") != null) {
+				
+				String saleNum = request.getParameter("sale_num");
+				System.out.println("Sale Num: "+saleNum);
+				
+				TextStorage storage = new TextStorage();
+				if (true/*storage.check(saleNum)*/){
+				
+				String str2 = "SELECT email,phone FROM User NATURAL JOIN Listing WHERE username = seller_id AND sale_num = "
+						+ saleNum;
+				
+				String sellerEmail = "";
+				String sellerPhone = "";
+			
+				try{
+				Statement stmt2 = con.createStatement();
+				ResultSet result = stmt2.executeQuery(str2);
+				result.next();
+				sellerEmail = result.getString("email");
+				sellerPhone = result.getString("phone");
+				con.close();
+				result.close();
+				}
+				catch (Exception e){
+					System.out.println("Exception found");
+					e.getStackTrace();
+				}
 				out.print("<div class=\"container\">");
 				out.print("<div class=\"row\" style=\"margin-top: 20px\">");
 				out.print("<div class=\"col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3\">");
-				out.print("<div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\">");
-				out.print("<strong>Purchase Failed</strong>!");
-				out.print(e);
+				out.print("<div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">");
+				out.print("<strong>Found!</strong> Here's the seller's contact information.<br>");
+				out.print("Email: "+sellerEmail+"<br>");
+				out.print("Phone: "+sellerPhone);
 				out.print("<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">");
 				out.print("<span aria-hidden=\"true\">&times;</span>");
 				out.print("</button>");
@@ -497,32 +487,41 @@
 				out.print("</div>");
 				out.print("</div>");
 				out.print("</div>");
+				}
+				else{
+					out.print("<div class=\"container\">");
+					out.print("<div class=\"row\" style=\"margin-top: 20px\">");
+					out.print("<div class=\"col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3\">");
+					out.print("<div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">");
+					out.print("<strong>Please choose a car from the list.</strong>");
+					out.print("<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">");
+					out.print("<span aria-hidden=\"true\">&times;</span>");
+					out.print("</button>");
+					out.print("</div>");
+					out.print("</div>");
+					out.print("</div>");
+					out.print("</div>");
+				}
 			}
+	%>
 
+	<%
+		} else {
+	%>
+
+<body class="text-center"
+	style="height: 100%; display: -ms-flexbox; display: -webkit-box; display: flex; -ms-flex-align: center; -ms-flex-pack: center; -webkit-box-align: center; align-items: center; -webkit-box-pack: center; justify-content: center; padding-top: 40px; padding-bottom: 40px; background-color: #f5f5f5;">
+	<form class="form-signin" method="post" action="index.jsp">
+		<h1 class="h3 mb-3 font-weight-normal">Please log in before
+			buying</h1>
+		<button class="btn btn-lg btn-primary btn-block" type="submit">Click
+			here to log in</button>
+	</form>
+
+
+	<%
 		}
 	%>
-	
-	<% } else { %>
-    
-    <body class="text-center" style="height: 100%; display: -ms-flexbox;
-  display: -webkit-box;
-  display: flex;
-  -ms-flex-align: center;
-  -ms-flex-pack: center;
-  -webkit-box-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  justify-content: center;
-  padding-top: 40px;
-  padding-bottom: 40px;
-  background-color: #f5f5f5;">
-    <form class="form-signin" method="post" action="index.jsp">
-      <h1 class="h3 mb-3 font-weight-normal">Please log in before buying</h1>
-      <button class="btn btn-lg btn-primary btn-block" type="submit">Click here to log in</button>
-    </form>
-    
-    
-    <% } %>
 
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
